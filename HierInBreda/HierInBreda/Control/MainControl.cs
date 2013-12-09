@@ -9,7 +9,7 @@ namespace HierInBreda.Control
     /*
      * @author:
      * @version:
-     * @discription:
+     * @description:
      */
     class MainControl
     {
