@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sightList>
+  <sight id="1">
+    <name>VVV Breda</name>
+    <latitude>51.59380N</latitude>
+    <longitude>477963E</longitude>
+    <descrition>Beginpunt</descrition>
+  </sight>
+
+  <sight id="2">
+    <name>Liefdeszuster</name>
+    <latitude>51.59307N</latitude>
+    <longitude>4.77969E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="3">
+    <name>Valkenberg</name>
+    <latitude>51.59250N</latitude>
+    <longitude>4.77969E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="4">
+    <name>Nassau Baronie Monument</name>
+    <latitude>51.59250N</latitude>
+    <longitude>4.77969E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="5">
+    <name>The Light House</name>
+    <latitude>51.59256N</latitude>
+    <longitude>4.77889E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="6">
+    <name>Kasteel van Breda</name>
+    <latitude>51.59061N</latitude>
+    <longitude>4.77624E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="7">
+    <name>Stadhouderspoort</name>
+    <latitude>51.58992N</latitude>
+    <longitude>4.77634E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="8">
+    <name>Huis van Brecht</name>
+    <latitude>51.59043N</latitude>
+    <longitude>4.77518E</longitude>
+    <descrition>1e bocht Cingelstraat</descrition>
+  </sight>
+
+  <sight id="9">
+    <name>Spanjaardsgat (rechter zijde)</name>
+    <latitude>51.59010N</latitude>
+    <longitude>4.77336E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="10">
+    <name>Begin Vismarkt</name>
+    <latitude>51.58982N</latitude>
+    <longitude>4.77321E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="11">
+    <name>Begin Havermarkt</name>
+    <latitude>51.58932N</latitude>
+    <longitude>4.77444E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="12">
+    <name>Grote Kerk</name>
+    <latitude>51.58878N</latitude>
+    <longitude>4.77549E</longitude>
+    <descrition>Driehoek Kerkplein 2</descrition>
+  </sight>
+
+  <sight id="13">
+    <name>Het poortje</name>
+    <latitude>51.58822N</latitude>
+    <longitude>4.77525E</longitude>
+      <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="14">
+    <name>Ridderstraat</name>
+    <latitude>51.58716N</latitude>
+    <longitude>4.77582E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="15">
+    <name>Grote Markt</name>
+    <latitude>51.58747N</latitude>
+    <longitude>4.77662E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="16">
+    <name>Het Wit Lam</name>
+    <latitude>51.58771N</latitude>
+    <longitude>4.77652E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="17">
+    <name>Bevrijdingsmonument</name>
+    <latitude>51.58797N</latitude>
+    <longitude>4.77638E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="18">
+    <name>Stadshuis</name>
+    <latitude>51.58885N</latitude>
+    <longitude>4.77616E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="19">
+    <name>Antonius van Paduakerk</name>
+    <latitude>51.58761N</latitude>
+    <longitude>4.77712E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="20">
+    <name>Bibliotheek</name>
+    <latitude>51.58773N</latitude>
+    <longitude>4.77948E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="21">
+    <name>Kloosterkazerne</name>
+    <latitude>51.58794N</latitude>
+    <longitude>4.78105E</longitude>
+    <descrition>1e bocht Kloosterplein</descrition>
+  </sight>
+
+  <sight id="22">
+    <name>Chasse theater</name>
+    <latitude>51.58794N</latitude>
+    <longitude>4.78218E</longitude>
+    <descrition>2e bocht Kloosterplein</descrition>
+  </sight>
+
+  <sight id="23">
+    <name>Binding van Isaäc</name>
+    <latitude>51.58862N</latitude>
+    <longitude>4.78079E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="24">
+    <name>Beyerd</name>
+    <latitude>51.58966N</latitude>
+    <longitude>4.78076E</longitude>
+    <descrition>nvt</descrition>
+  </sight>
+
+  <sight id="25">
+    <name>Gasthuispoort</name>
+    <latitude>51.58939N</latitude>
+    <longitude>4.77982E</longitude>
+    <descrition>1e bocht Catharinastraat / Veemarktstraat</descrition>
+  </sight>
+
+  <sight id="26">
+    <name>Willem Merkxtuin</name>
+    <latitude>51.58905N</latitude>
+    <longitude>4.77801E</longitude>
+    <descrition>De ingang</descrition>
+  </sight>
+
+  <sight id="27">
+    <name>Begijnenhof</name>
+    <latitude>51.58965N</latitude>
+    <longitude>4.77830E</longitude>
+    <descrition>De ingang</descrition>
+  </sight>
+
+  <sight id="28">
+    <name>Eindpunt stadswandeling</name>
+    <latitude>51.58950N</latitude>
+    <longitude>4.77649E</longitude>
+    <descrition>Eindpunt</descrition>
+  </sight>
+  
+</sightList>

@@ -114,6 +114,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\LanguageControl.cs" />
     <Compile Include="Control\MainControl.cs" />
     <Compile Include="Control\MapControl.cs" />
     <Compile Include="Control\StartControl.cs" />
@@ -143,6 +144,7 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Sights.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
