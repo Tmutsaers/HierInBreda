@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 namespace HierInBreda.Model
 {
     /*
-     * @author:
-     * @version:
-     * @description:
+     * @author: Raymond Rohder
+     * @version: 1.0
+     * @description: class containing all the information for the sights
      */
     class Sight
     {
+        public Sight()
+        {
+
+        }
+
     }
 }
