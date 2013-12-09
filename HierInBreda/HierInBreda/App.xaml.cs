@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HierInBreda.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace HierInBreda
         /// </summary>
         public App()
         {
+            new MainControl();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

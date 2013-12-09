@@ -13,5 +13,9 @@ namespace HierInBreda.Control
      */
     class MainControl
     {
+        public MainControl()
+        {
+            LanguageControl.GetInstance();
+        }
     }
 }
