@@ -8,18 +8,22 @@ using Windows.Devices.Geolocation;
 namespace HierInBreda.Model
 {
     /*
-     * @author:
-     * @version:
-     * @description:
+     * @author: Johannes [imp] Michel
+     * @version: 
+     * @description: 
      */
     class GPS
     {
+        private Geolocator geolocator = null;
+
         ///<summary>
         /// Standard constructor 
         ///</summary>
         public GPS()
         {
-            
+            geolocator = new Geolocator();
         }
+
+
     }
 }
