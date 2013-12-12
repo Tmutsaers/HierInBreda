@@ -9,7 +9,7 @@ namespace HierInBreda.Model
     /*
      * @author:
      * @version:
-     * @discription:
+     * @description:
      */
     class GPS
     {

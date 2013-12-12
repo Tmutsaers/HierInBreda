@@ -10,7 +10,7 @@ namespace HierInBreda.Control
     /*
      * @author:
      * @version:
-     * @discription:
+     * @description:
      */
     class MapControl
     {

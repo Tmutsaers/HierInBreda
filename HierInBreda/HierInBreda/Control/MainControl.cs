@@ -9,9 +9,13 @@ namespace HierInBreda.Control
     /*
      * @author:
      * @version:
-     * @discription:
+     * @description:
      */
     class MainControl
     {
+        public MainControl()
+        {
+            LanguageControl.GetInstance();
+        }
     }
 }
