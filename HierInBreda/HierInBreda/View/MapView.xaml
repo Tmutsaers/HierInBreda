@@ -1,13 +1,14 @@
 ﻿<Page
-    x:Class="HierInBreda.MapView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:HierInBreda"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Bing.Maps"
+    x:Class="HierInBreda.MapView"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-884,-263">
+        <Maps:Map x:Name="Map"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="1011" Width="2230" Credentials="AlSE2QMzCF8JsjfwIXd4ZG_MVGyCVPvVoRNPIlW4VZm57T65WZY3FI7FsSBf1-pG" />
     </Grid>
 </Page>
