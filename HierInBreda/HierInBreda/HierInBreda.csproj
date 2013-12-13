@@ -143,6 +143,12 @@
     <None Include="HierInBreda_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\agslogo.jpg" />
+    <Content Include="Assets\AlertImage.png" />
+    <Content Include="Assets\battery_0.png" />
+    <Content Include="Assets\battery_1.png" />
+    <Content Include="Assets\battery_2.png" />
+    <Content Include="Assets\battery_3.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

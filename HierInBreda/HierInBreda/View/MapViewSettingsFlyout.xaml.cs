@@ -22,6 +22,7 @@ namespace HierInBreda.View
         public MapViewSettingsFlyout()
         {
             this.InitializeComponent();
+            TimeText.Text = String.Format("Het is nu: {0}:{1}:{2}", System.DateTime.Now.Hour, System.DateTime.Now.Minute, System.DateTime.Now.Second);
         }
     }
 }

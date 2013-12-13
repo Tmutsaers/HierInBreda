@@ -22,7 +22,9 @@ namespace HierInBreda.Control
         {
             Languages = new List<Language>();
             initLanguages();
+         //
             SetActiveLanguage("Dutch");
+        
             string s1 = getActiveLanguage().getText(42);
             string s2 = getActiveLanguage().getText(1);
             SetActiveLanguage("English");
