@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HierInBreda.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,29 +9,33 @@ using Windows.UI.Popups;
 namespace HierInBreda.Control
 {
     /*
-     * @author:
-     * @version:
-     * @description:
+     * @author: Tektaara
+     * @version: v1.0
+     * @description: Control class for Main
      */
     class MainControl
     {
+        private static MapView mapView;
         public MainControl()
         {
             LanguageControl.GetInstance();
-            //showMessage("hello");
         }
 
         private static void startTutorial(IUICommand command)
         {
-            MapView.GetFrame().Navigate(typeof(View.TutorialView));
+            if(mapView.Frame != null)
+            {
+                mapView.Frame.Navigate(typeof(View.TutorialView));
+            }
         }
 
         private static void skipTutorial(IUICommand command)
         {
         }
 
-        public static async void promptUserForTutorial()
+        public static async void promptUserForTutorial(MapView mapView)
         {
+            MainControl.mapView = mapView;
             MessageDialog msgDialog = new MessageDialog("Would you like to follow the tutorial?", "Tutorial");
 
             //OK Button

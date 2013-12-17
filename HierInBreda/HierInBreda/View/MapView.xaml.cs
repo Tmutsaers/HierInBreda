@@ -44,16 +44,8 @@ namespace HierInBreda
         public MapViewSettingsFlyout flyout;
         public MapControl control;
 
-        private static Frame currentFrame;
-
-        public static Frame GetFrame()
-        {
-            return currentFrame;
-        }
-
         public MapView()
         {
-            currentFrame = this.Frame;
             this.InitializeComponent();
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
@@ -61,7 +53,6 @@ namespace HierInBreda
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
-            Control.MainControl.promptUserForTutorial();
         }
 
         public MapView(MapControl control)
@@ -201,6 +192,11 @@ namespace HierInBreda
         private void AppbarButton_Click(object sender, RoutedEventArgs e)
         {
             flyout.Show();
+        }
+
+        private void TutorialButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainControl.promptUserForTutorial(this);
         }
 
 
