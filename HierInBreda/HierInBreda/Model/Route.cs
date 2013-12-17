@@ -15,15 +15,21 @@ namespace HierInBreda.Model
     public class Route
     {
         private Dictionary<Int32, Boolean> visited;
+        private List<Sight> list;
 
         public Route(DataControl dc)
         {
-            List<Sight> list = dc.getSightDutch();
+            setList(dc);
 
             foreach(Sight sight in list)
             {
                 visited.Add(sight.id, false);
             }
+        }
+
+        private async void setList(DataControl dc)
+        {
+            list = await dc.getSightDutch();
         }
 
         /// <summary>
