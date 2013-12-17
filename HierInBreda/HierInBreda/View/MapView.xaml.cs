@@ -20,6 +20,8 @@ using Windows.UI.Xaml.Media.Imaging;
 using Bing.Maps.Directions;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation.Geofencing;
+using HierInBreda.Control;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,16 +30,24 @@ namespace HierInBreda
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+    public delegate void SightPinTappedHandler(object sender,Pushpin pin);
+    public delegate void UserPositionChangedHandler(object sender,Location l);
+
     public sealed partial class MapView : Page
     {
+        public event SightPinTappedHandler sightPinTapped;
+        public event UserPositionChangedHandler userPosChanged;
         private Geolocator _geolocator;
         public Location currentLoc { get; set; }
         private Pushpin userPin;
         public MapViewSettingsFlyout flyout;
+        private MapControl control;
 
-        public MapView()
+        public MapView(MapControl control)
         {
             this.InitializeComponent();
+            this.control = control;
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
             //flyout.Show();
@@ -57,10 +67,12 @@ namespace HierInBreda
 
             RouteResponse route_response = await manager.CalculateDirectionsAsync();
             manager.ShowRoutePath(route_response.Routes[0]);
+            control.Route = route_response.Routes[0];
         }
 
         public List<Pushpin> createSightPins(List<Location> locations)
         {
+            clearGeofences();
             List<Pushpin> pins = new List<Pushpin>();
             foreach(Location l in locations)
             {
@@ -69,8 +81,43 @@ namespace HierInBreda
                 MapLayer.SetPosition(p, l);
                 Map.Children.Add(p);
                 pins.Add(p);
+                p.Tapped += p_Tapped;
             }
             return pins;
+        }
+
+        void p_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            OnSightPinTappedHandler(this, sender as Pushpin);
+        }
+
+        protected virtual void OnSightPinTappedHandler(object o,Pushpin p)
+        {
+            Pushpin pin = p;
+            if (pin != null && sightPinTapped != null)
+            {
+                sightPinTapped(this, pin);
+            }
+        }
+
+        protected virtual void OnUserPositionChanged(object o,Location l)
+        {
+            Location loc = l;
+            if(l != null && userPosChanged != null)
+            {
+                userPosChanged(this, l);
+            }
+        }
+
+        public void clearGeofences()
+        {
+            GeofenceMonitor.Current.Geofences.Clear();
+        }
+
+        public Geofence createGeofence(Location l,String name)
+        {
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 1));
+            return fence;
         }
 
         //Zooms to the Users Location and makes a User PushPin
@@ -91,6 +138,11 @@ namespace HierInBreda
             _geolocator.PositionChanged += _geolocator_PositionChanged;
         }
 
+        public void zoomToLocation2(Location l)
+        {
+            Map.SetView(l,15.0);
+        }
+
 
         //Automatically changes UserPushPin when the user's location changes
         async void _geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
@@ -102,7 +154,11 @@ namespace HierInBreda
                     currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                     System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                     if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
+                    {
                         MapLayer.SetPosition(userPin, currentLoc);
+                        zoomToLocation2(currentLoc);
+                        OnUserPositionChanged(this, currentLoc);
+                    }
                 });
             }
             catch (Exception x)
