@@ -35,8 +35,16 @@ namespace HierInBreda
         private Pushpin userPin;
         public MapViewSettingsFlyout flyout;
 
+        private static Frame currentFrame;
+
+        public static Frame GetFrame()
+        {
+            return currentFrame;
+        }
+
         public MapView()
         {
+            currentFrame = this.Frame;
             this.InitializeComponent();
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
@@ -44,6 +52,7 @@ namespace HierInBreda
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+            Control.MainControl.promptUserForTutorial();
         }
 
         public async void createRoute(Location a,Location b)
