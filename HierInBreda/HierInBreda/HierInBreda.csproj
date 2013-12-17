@@ -126,6 +126,7 @@
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\ObservableDictionary.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
     <Compile Include="Model\Tutorial.cs" />
