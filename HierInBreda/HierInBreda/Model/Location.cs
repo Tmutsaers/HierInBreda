@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 namespace HierInBreda.Model
 {
     /*
-     * @author:
-     * @version:
-     * @description:
+     * @author: Johannes [imp] Michel
+     * @version: 1.0
+     * @description: Class containing the GPS of a location
      */
-    class Location
+    public class Location
     {
+        public double latitude { get; set; }
+        public double longitude { get; set; }
+
+        ///<summary>
+        /// Standard constructor.
+        ///</summary>
+        public Location()
+        {
+
+        }
     }
 }

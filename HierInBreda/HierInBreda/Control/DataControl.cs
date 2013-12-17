@@ -41,6 +41,7 @@ namespace HierInBreda.Control
 
             int count = await conn.ExecuteScalarAsync<int>("Select Count id From Sight");
 
+            //kijkt of er iets in de database staat
             if(count < 1)
             { 
             var sights = from elm in doc.Descendants("sight")
@@ -50,7 +51,7 @@ namespace HierInBreda.Control
                              name = (string)elm.Element("name"),
                              lat = (string)elm.Element("latitude"),
                              longi = (string)elm.Element("longitude"),
-                             disc = (string)elm.Element("descrition")
+                             disc = (string)elm.Element("description")
                          };
             List<Sight> sightsList = sights.ToList<Sight>();
 
@@ -67,6 +68,12 @@ namespace HierInBreda.Control
 
             //Query return lijst met uitkomsten.
             //List<Sight> e = await conn.QueryAsync<Sight>("Select * From Sight WHERE id = ? OR id = ?", new object[] { "5", "12" });
+        }
+
+        public async Task<List<Sight>> getSight()
+        {
+            List<Sight> list = await conn.QueryAsync<Sight>("Select * From Sight");
+            return list;
         }
     }
 }
