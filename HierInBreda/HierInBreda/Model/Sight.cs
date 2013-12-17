@@ -12,7 +12,7 @@ namespace HierInBreda.Model
      * @version: 1.0
      * @description: class containing all the information for the sights
      */
-    class Sight
+    public class Sight
     {
         public int id { get; set; }
         public string name { get; set; }

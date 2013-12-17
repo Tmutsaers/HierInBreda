@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace HierInBreda.Control
 {
-    class DataControl
+    public class DataControl
     {
         SQLiteAsyncConnection conn;
 

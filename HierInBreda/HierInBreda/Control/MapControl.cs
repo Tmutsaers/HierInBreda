@@ -22,10 +22,15 @@ namespace HierInBreda.Control
         private LocationRect userRadius;
         public Bing.Maps.Directions.Route Route { get; set; }
         private bool insideRoute = true;
+        public DataControl dataControl;
+        private List<Sight> sights;
+        private Dictionary<Pushpin, Geofence> sightFences = new Dictionary<Pushpin, Geofence>();
+        private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
 
         public MapControl()
         {
             MapView = new MapView(this);
+            dataControl = new DataControl();
             MapView.sightPinTapped += MapView_sightPinTapped;
             MapView.userPosChanged += MapView_userPosChanged;
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
@@ -45,6 +50,20 @@ namespace HierInBreda.Control
 
                     }
                 }
+        }
+
+        public async void createSights()
+        {
+            sights = await dataControl.getSight();
+            //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
+            foreach(Sight s in sights)
+            {
+                Pushpin p = MapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
+                pins.Add(s,p);
+                sightFences.Add(p,MapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
+                //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
+            }
+            //MapView.createSightPins(locs);
         }
 
         public void UpdateUserRadius(String Radius,Bing.Maps.Location loc)
