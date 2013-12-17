@@ -42,7 +42,18 @@ namespace HierInBreda
         public Location currentLoc { get; set; }
         private Pushpin userPin;
         public MapViewSettingsFlyout flyout;
-        private MapControl control;
+        public MapControl control;
+
+        public MapView()
+        {
+            this.InitializeComponent();
+            zoomToLocation();
+            flyout = new MapViewSettingsFlyout();
+            //flyout.Show();
+            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
+            AgsLogo.Source = new BitmapImage(uri);
+            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+        }
 
         public MapView(MapControl control)
         {
@@ -91,7 +102,7 @@ namespace HierInBreda
             OnSightPinTappedHandler(this, sender as Pushpin);
         }
 
-        protected virtual void OnSightPinTappedHandler(object o,Pushpin p)
+        protected void OnSightPinTappedHandler(object o,Pushpin p)
         {
             Pushpin pin = p;
             if (pin != null && sightPinTapped != null)
@@ -100,7 +111,7 @@ namespace HierInBreda
             }
         }
 
-        protected virtual void OnUserPositionChanged(object o,Location l)
+        protected void OnUserPositionChanged(object o,Location l)
         {
             Location loc = l;
             if(l != null && userPosChanged != null)

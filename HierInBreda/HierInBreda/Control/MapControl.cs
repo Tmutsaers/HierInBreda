@@ -14,11 +14,11 @@ namespace HierInBreda.Control
      * @version:
      * @description:
      */
-    class MapControl
+    public class MapControl
     {
         private MapView MapView;
         private List<Sight> Sights = new List<Sight>();
-        public Route route;
+        //public Route route;
         private LocationRect userRadius;
         public Bing.Maps.Directions.Route Route { get; set; }
         private bool insideRoute = true;
