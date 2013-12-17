@@ -10,6 +10,11 @@ using System.Xml.Linq;
 
 namespace HierInBreda.Control
 {
+    /*
+     * @author:Raymond Rohder
+     * @version: 1.3
+     * @description:Klasse die de database beheert
+     */
     class DataControl
     {
         SQLiteAsyncConnection conn;
@@ -51,7 +56,10 @@ namespace HierInBreda.Control
                              name = (string)elm.Element("name"),
                              lat = (string)elm.Element("latitude"),
                              longi = (string)elm.Element("longitude"),
-                             disc = (string)elm.Element("description")
+                             img = (string)elm.Element("image"),
+                             audio = (string)elm.Element("audio"),
+                             disc = (string)elm.Element("description"),
+                             discEng = (string)elm.Element("descriptionEng")
                          };
             List<Sight> sightsList = sights.ToList<Sight>();
 
@@ -70,9 +78,15 @@ namespace HierInBreda.Control
             //List<Sight> e = await conn.QueryAsync<Sight>("Select * From Sight WHERE id = ? OR id = ?", new object[] { "5", "12" });
         }
 
-        public async Task<List<Sight>> getSight()
+        public async Task<List<Sight>> getSightDutch()
         {
-            List<Sight> list = await conn.QueryAsync<Sight>("Select * From Sight");
+            List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude, image, audio, description From Sight");
+            return list;
+        }
+
+        public async Task<List<Sight>> getSightEng()
+        {
+            List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude image, audio, descriptionEng From Sight");
             return list;
         }
     }
