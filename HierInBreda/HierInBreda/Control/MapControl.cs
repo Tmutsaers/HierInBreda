@@ -77,7 +77,7 @@ namespace HierInBreda.Control
 
         void MapView_userPosChanged(object sender, Bing.Maps.Location l)
         {
-            UpdateUserRadius("1", l);
+            UpdateUserRadius("0.1", l);
             MapShapeLayer layer = new MapShapeLayer();
             if(userRadius.Intersects(Route.Bounds) && Route != null)
             {
