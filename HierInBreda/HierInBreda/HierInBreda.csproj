@@ -142,6 +142,9 @@
     <Compile Include="View\MapViewSettingsFlyout.xaml.cs">
       <DependentUpon>MapViewSettingsFlyout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SightInfoFlyout.xaml.cs">
+      <DependentUpon>SightInfoFlyout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MapViewSettingsFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SightInfoFlyout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
