@@ -18,7 +18,10 @@ namespace HierInBreda.Model
         public string name { get; set; }
         public string lat { get; set; }
         public string longi { get; set; }
+        public string img { get; set; }
+        public string audio { get; set; }
         public string disc { get; set; }
+        public string discEng { get; set; }
 
         public Sight()
         {

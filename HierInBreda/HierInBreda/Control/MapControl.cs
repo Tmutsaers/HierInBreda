@@ -54,7 +54,7 @@ namespace HierInBreda.Control
 
         public async void createSights()
         {
-            sights = await dataControl.getSight();
+            sights = await dataControl.getSightDutch();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
