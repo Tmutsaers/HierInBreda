@@ -15,9 +15,12 @@ namespace HierInBreda.Control
      */
     class MainControl
     {
+        StartControl startControl;
         private static MapView mapView;
+
         public MainControl()
         {
+            startControl = new StartControl();
             LanguageControl.GetInstance();
         }
 
