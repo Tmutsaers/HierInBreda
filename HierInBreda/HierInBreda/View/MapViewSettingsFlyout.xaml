@@ -34,7 +34,7 @@
         </StackPanel>
         <HubSection Header="BeziensWaardigheden" Name="SightsList" FontFamily="Comic Sans MS" Grid.Row="2" BorderBrush="Black" BorderThickness="1">
             <DataTemplate>
-                <ListView SelectionMode="None" >
+                <ListView SelectionMode="None" ItemsSource="{Binding Path=Sights}" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="10" Width="100" Height="60">
@@ -43,7 +43,7 @@
                                     <ColumnDefinition Width="90*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
-                                <TextBlock Grid.Column="1"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

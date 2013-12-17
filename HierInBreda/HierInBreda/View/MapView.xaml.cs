@@ -41,7 +41,7 @@ namespace HierInBreda
         private Geolocator _geolocator;
         public Location currentLoc { get; set; }
         private Pushpin userPin;
-        public MapViewSettingsFlyout flyout;
+        public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
 
         public MapView()
@@ -79,6 +79,16 @@ namespace HierInBreda
             RouteResponse route_response = await manager.CalculateDirectionsAsync();
             manager.ShowRoutePath(route_response.Routes[0]);
             control.Route = route_response.Routes[0];
+        }
+
+        public Pushpin createSightPin(Location l,String id)
+        {
+            Pushpin p = new Pushpin();
+            p.Text = id;
+            MapLayer.SetPosition(p, l);
+            Map.Children.Add(p);
+            p.Tapped += p_Tapped;
+            return p;
         }
 
         public List<Pushpin> createSightPins(List<Location> locations)
@@ -192,6 +202,11 @@ namespace HierInBreda
         private void AppbarButton_Click(object sender, RoutedEventArgs e)
         {
             flyout.Show();
+        }
+
+        private void TutorialButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainControl.promptUserForTutorial(this);
         }
 
 

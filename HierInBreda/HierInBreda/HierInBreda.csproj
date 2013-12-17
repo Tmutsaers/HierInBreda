@@ -118,6 +118,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Control\DataControl.cs" />
     <Compile Include="Control\LanguageControl.cs" />
     <Compile Include="Control\MainControl.cs" />
@@ -127,9 +131,10 @@
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Notification.cs" />
+    <Compile Include="Model\ObservableDictionary.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
-    <Compile Include="Model\Tutorial.cs" />
+    <Compile Include="View\Tutorial.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="View\MapView.xaml.cs">
@@ -144,6 +149,9 @@
     </Compile>
     <Compile Include="View\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TutorialView.xaml.cs">
+      <DependentUpon>TutorialView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +297,7 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Common\ReadMe.txt" />
     <Content Include="Sights.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -311,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TutorialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
