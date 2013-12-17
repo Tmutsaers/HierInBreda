@@ -145,7 +145,7 @@ namespace HierInBreda
             Map.SetView(currentLoc, 15.0);
             //_geolocator.MovementThreshold = 10;
             //_geolocator.ReportInterval = 500;
-            _geolocator.DesiredAccuracy = PositionAccuracy.High;
+            _geolocator.DesiredAccuracy = PositionAccuracy.Default;
             _geolocator.PositionChanged += _geolocator_PositionChanged;
         }
 
