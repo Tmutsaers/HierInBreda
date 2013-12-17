@@ -17,6 +17,7 @@ namespace HierInBreda.Model
 
         public Notification()
         {
+
         }
 
         public string getNotificationDutch(string notification)
