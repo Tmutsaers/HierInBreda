@@ -13,8 +13,11 @@ namespace HierInBreda.Control
      */
     class MainControl
     {
+        StartControl startControl;
+
         public MainControl()
         {
+            startControl = new StartControl();
             LanguageControl.GetInstance();
         }
     }
