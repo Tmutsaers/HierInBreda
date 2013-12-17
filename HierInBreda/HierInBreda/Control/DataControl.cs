@@ -10,12 +10,12 @@ using System.Xml.Linq;
 
 namespace HierInBreda.Control
 {
-    /*
+        /*
      * @author:Raymond Rohder
      * @version: 1.3
      * @description:Klasse die de database beheert
      */
-    class DataControl
+    public class DataControl
     {
         SQLiteAsyncConnection conn;
 
