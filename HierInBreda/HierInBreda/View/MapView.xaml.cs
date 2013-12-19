@@ -22,6 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation.Geofencing;
 using HierInBreda.Control;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,6 +45,7 @@ namespace HierInBreda
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
         public SightInfoFlyout sightFlyout { get; set; }
+        public MessageDialog popup { get; set; }
 
         public MapView()
         {
@@ -68,6 +70,11 @@ namespace HierInBreda
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+        }
+
+        public AppBarButton getInfoButton()
+        {
+            return InfoButton;
         }
 
         public async void createRoute(List<Location> locs)
@@ -177,13 +184,16 @@ namespace HierInBreda
             {
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
-                    System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
-                    if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
+                    if (currentLoc != null && UserIsInRadius(0.1, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
-                        MapLayer.SetPosition(userPin, currentLoc);
-                        zoomToLocation2(currentLoc);
-                        OnUserPositionChanged(this, currentLoc);
+                        currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
+                        System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
+                        if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
+                        {
+                            MapLayer.SetPosition(userPin, currentLoc);
+                            zoomToLocation2(currentLoc);
+                            OnUserPositionChanged(this, currentLoc);
+                        }
                     }
                 });
             }
@@ -192,6 +202,35 @@ namespace HierInBreda
                 System.Diagnostics.Debug.WriteLine(x);
             }
         }
+
+        public bool UserIsInRadius(double radius,Location newLoc,Location oldLoc)
+        {
+            if(getDistanceFromLatLonInKm(newLoc.Latitude,newLoc.Longitude,oldLoc.Latitude,oldLoc.Longitude) <= radius)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public double getDistanceFromLatLonInKm(double lat1, double lon1, double lat2, double lon2)
+        {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+            var dLon = deg2rad(lon2 - lon1);
+            var a =
+              Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+              Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) *
+              Math.Sin(dLon / 2) * Math.Sin(dLon / 2)
+              ;
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+        public double deg2rad(double deg)
+        {
+            return deg * (Math.PI / 180);
+        }
+
 
         //private void geo_PositionChanged(Geolocator sender, PositionChangedEventArgs e)
         //{
@@ -212,6 +251,12 @@ namespace HierInBreda
         private void TutorialButton_Click(object sender, RoutedEventArgs e)
         {
             MainControl.promptUserForTutorial(this);
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
+            sightFlyout.Show();
         }
 
 
