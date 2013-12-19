@@ -26,8 +26,16 @@ namespace HierInBreda.View
         public MapViewSettingsFlyout()
         {
             this.InitializeComponent();
-            TimeText.Text = String.Format("Het is nu: {0}:{1}:{2}", System.DateTime.Now.Hour, System.DateTime.Now.Minute, System.DateTime.Now.Second);
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            timer.Start();
         }
+
+        void timer_Tick(object sender, object e)
+        {
+            TimeText.Text = String.Format("Het is nu: " + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
+        }      
 
         public ObservableDictionary DefaultViewModel
         {

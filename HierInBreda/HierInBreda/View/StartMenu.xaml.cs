@@ -47,9 +47,9 @@ namespace HierInBreda.View
                 dutchFlagCount = 0;
             if (englishFlagCount >= 37)
                 englishFlagCount = 0;
-            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", ++dutchFlagCount) + ".gif"));
+            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", dutchFlagCount) + ".gif"));
             System.Diagnostics.Debug.WriteLine(flagDutch.Source.GetValue(BitmapImage.UriSourceProperty));
-            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", ++englishFlagCount) + ".gif"));
+            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", englishFlagCount) + ".gif"));
         }       
 
         private void startMapView(String language)
