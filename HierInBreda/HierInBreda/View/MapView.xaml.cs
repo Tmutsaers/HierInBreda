@@ -70,14 +70,16 @@ namespace HierInBreda
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
         }
 
-        public async void createRoute(Location a,Location b)
+        public async void createRoute(List<Location> locs)
         {
-            WaypointCollection waypointCol = new WaypointCollection();
-            waypointCol.Add(new Waypoint(a));
-            waypointCol.Add(new Waypoint(b));
+            WaypointCollection col = new WaypointCollection();
+            foreach(Location loc in locs)
+            {
+                col.Add(new Waypoint(loc));
+            }
 
             DirectionsManager manager = Map.DirectionsManager;
-            manager.Waypoints = waypointCol;
+            manager.Waypoints = col;
 
             RouteResponse route_response = await manager.CalculateDirectionsAsync();
             manager.ShowRoutePath(route_response.Routes[0]);
