@@ -56,8 +56,24 @@ namespace HierInBreda.Control
                             if(sightpins[pin].Equals(geofence))
                             {
                                 Sight sight = sightpins[pin];
-                                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
-                                mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                String[] images = sight.img.Split(',');
+                                if (sight.img != "")
+                                {
+                                    if (sight.img.Length > 3)
+                                    {
+                                        mapView.sightFlyout.updateSightInfo(sight.img.Substring(0, 2), sight.disc, sight.name);
+                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    }
+                                    else
+                                    {
+                                        mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    }
+                                }
+                                else
+                                {
+
+                                }
                             }
                         }
                     }
