@@ -148,8 +148,26 @@ namespace HierInBreda.Control
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
-            Sight s = sightpins[pin];
-            mapView.sightFlyout.updateSightInfo(s.img, s.disc, s.name);
+            Sight sight = sightpins[pin];
+            if (sight.img != "")
+            {
+                if (sight.img.Length > 3)
+                {
+                    String[] images = sight.img.Split(',');
+                    mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                }
+                else
+                {
+                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                }
+            }
+            else
+            {
+                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+            }
             mapView.sightFlyout.Show();
         }
 
