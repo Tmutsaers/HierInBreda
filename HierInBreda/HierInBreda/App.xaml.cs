@@ -35,7 +35,6 @@ namespace HierInBreda
         public App()
         {           
             this.InitializeComponent();
-            Main = new MainControl();
             this.Suspending += OnSuspending;
         }
 
