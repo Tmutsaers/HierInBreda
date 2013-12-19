@@ -45,12 +45,12 @@
                         AutomationProperties.ItemType="Navigation Button"/>
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
-            <Button Content="Next" Grid.Column="1" HorizontalAlignment="Left" Margin="638,65,0,0" VerticalAlignment="Top"/>
+            <Button Content="Next" Grid.Column="1" HorizontalAlignment="Left" Margin="638,65,0,0" Tapped="Button_Tapped_1" VerticalAlignment="Top"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="520,60,0,0" TextWrapping="NoWrap" Style="{StaticResource HeaderTextBlockStyle}" FontSize="40" Text="{Binding CurrentText}" VerticalAlignment="Top" RenderTransformOrigin="1.935,0.576" Width="33"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="558,60,0,0" TextWrapping="NoWrap" Style="{StaticResource HeaderTextBlockStyle}" FontSize="40" Text="/" VerticalAlignment="Top" RenderTransformOrigin="1.935,0.576" Width="18" SelectionChanged="TextBlock_SelectionChanged"/>
             <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="581,60,0,0" TextWrapping="NoWrap" Style="{StaticResource HeaderTextBlockStyle}" FontSize="40" Text="{Binding TotalText}" VerticalAlignment="Top" RenderTransformOrigin="1.935,0.576" Width="33"/>
         </Grid>
-        <Button Content="Prev" HorizontalAlignment="Left" Margin="558,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.057,0.542"/>
+        <Button Content="Prev" HorizontalAlignment="Left" Margin="558,65,0,0" VerticalAlignment="Top" Tapped="Button_Tapped" RenderTransformOrigin="0.057,0.542"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TutorialText}" Style="{StaticResource HeaderTextBlockStyle}" FontSize="32" VerticalAlignment="Top" Height="608" Width="1346"/>
     </Grid>
 </Page>

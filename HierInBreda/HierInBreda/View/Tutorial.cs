@@ -14,51 +14,46 @@ namespace HierInBreda.Model
      */
     public class Tutorial
     {
-        public Tutorial(int i)
+        private List<string> texts = new List<string>();
+        private int index = 0;
+        public Tutorial()
         {
-            getTutorialTekst(i);
+
         }
 
-        //private Image getImage()
-        //{
-        //    Image img = "";
-        //    switch (i)
-        //    {
-        //        case 1: text = "";
-        //            break;
-        //        case 2: text = "";
-        //            break;
-        //        case 3: text = "";
-        //            break;
-        //        case 4: text = "";
-        //            break;
-        //        case 5: text = "";
-        //            break;
-        //        case 6: text = "";
-        //            break;
-        //    }
-        //    return img;
-        //}
-
-        private string getTutorialTekst(int i)
+        public int getMax()
         {
-            string text = "";
-            switch(i)
-            {
-                case 1: text = "uitleg";
-                    break;
-                case 2: text = "uitleg";
-                    break;
-                case 3: text = "uitleg";
-                    break;
-                case 4: text = "uitleg";
-                    break;
-                case 5: text = "uitleg";
-                    break;
-                case 6: text = "uitleg";
-                    break;
-            }
-            return text;
+            return texts.Count;
+        }
+
+        public void addText(string text)
+        {
+            texts.Add(text);
+        }
+
+        public string getText()
+        {
+            return texts[index];
+        }
+
+        public int getIndex()
+        {
+            return index;
+        }
+
+        private int clamp(int n, int min, int max)
+        {
+            return n < min ? min : n > max ? max : n;
+        }
+
+        public void next()
+        {
+            index = clamp(index + 1, 0, texts.Count-1); 
+        }
+
+        public void prev()
+        {
+            index = clamp(index - 1, 0, texts.Count-1); 
         }
     }
 }
