@@ -27,6 +27,8 @@ namespace HierInBreda.View
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        private Model.Tutorial tutorial = new Model.Tutorial();
+
         private int currentText;
         public int CurrentText { get { return currentText; } set { currentText = value; defaultViewModel["CurrentText"] = currentText.ToString(); } }
         private int totalText;
@@ -64,9 +66,18 @@ namespace HierInBreda.View
         public TutorialView()
         {
             this.InitializeComponent();
-            this.CurrentText = 1;
-            this.TotalText = 9;
-            this.TutorialText = "aap";
+            tutorial.addText("ik ben text 1");
+            tutorial.addText("ik ben text 2");
+            tutorial.addText("Aua!");
+            tutorial.addText("Ah-Ah!");
+            tutorial.addText("Au~ Au~!");
+            tutorial.addText("Hai☆Hai!");
+            tutorial.addText("Heresy grows from idleness");
+            tutorial.addText("DO A BARREL ROLL");
+            tutorial.addText("TEH STR⑨NGEST");
+            this.CurrentText = tutorial.getIndex() + 1;
+            this.TotalText = tutorial.getMax();
+            this.TutorialText = tutorial.getText();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -125,6 +136,20 @@ namespace HierInBreda.View
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            tutorial.prev();
+            this.CurrentText = tutorial.getIndex() + 1;
+            this.TutorialText = tutorial.getText();
+        }
+
+        private void Button_Tapped_1(object sender, TappedRoutedEventArgs e)
+        {
+            tutorial.next();
+            this.CurrentText = tutorial.getIndex() + 1;
+            this.TutorialText = tutorial.getText();
         }
     }
 }
