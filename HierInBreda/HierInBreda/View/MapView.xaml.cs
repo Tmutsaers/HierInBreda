@@ -211,8 +211,5 @@ namespace HierInBreda
         {
             MainControl.promptUserForTutorial(this);
         }
-
-
-
     }
 }

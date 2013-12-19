@@ -72,5 +72,34 @@ namespace HierInBreda.Control
         {
             mapControl = new MapControl(dataControl, map);
         }
+
+
+        public static async void promptUserForLanguage(MapViewSettingsFlyout flyout)
+        {
+            MessageDialog msgDialog = new MessageDialog("Welke taal wilt u? What language do you want?", "Taal / Language");
+
+            //NL Button
+            UICommand nlButton = new UICommand("NL");
+            nlButton.Invoked = switchToDutch;
+            msgDialog.Commands.Add(nlButton);
+
+            //EN Button
+            UICommand enButton = new UICommand("EN");
+            enButton.Invoked = switchToEnglish;
+            msgDialog.Commands.Add(enButton);
+
+            //Show message
+            await msgDialog.ShowAsync();
+        }
+
+        private static void switchToEnglish(IUICommand command)
+        {
+
+        }
+
+        private static void switchToDutch(IUICommand command)
+        {
+
+        }
     }
 }
