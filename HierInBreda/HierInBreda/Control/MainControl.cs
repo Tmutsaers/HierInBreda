@@ -15,12 +15,11 @@ namespace HierInBreda.Control
      */
     class MainControl
     {
-        private static StartControl startControl;
         private static MapView mapView;
 
         public MainControl()
         {
-            startControl = new StartControl();
+            new StartControl();
             LanguageControl.GetInstance();
         }
 
@@ -60,11 +59,6 @@ namespace HierInBreda.Control
             var msgDlg = new Windows.UI.Popups.MessageDialog(msg);
             msgDlg.DefaultCommandIndex = 1;
             await msgDlg.ShowAsync();
-        }
-
-        public StartControl getStartControl()
-        {
-            return startControl;
         }
     }
 }
