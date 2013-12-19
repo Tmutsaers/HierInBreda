@@ -29,7 +29,7 @@ namespace HierInBreda.Model
 
         private async void setList(DataControl dc)
         {
-            list = await dc.getSightDutch();
+            list = await dc.getSight();
         }
 
         /// <summary>

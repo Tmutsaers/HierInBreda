@@ -82,7 +82,7 @@ namespace HierInBreda.Control
 
         public async void createSightsDutch()
         {
-            sights = await dataControl.getSightDutch();
+            sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
@@ -97,7 +97,7 @@ namespace HierInBreda.Control
 
         public async void createSightsEnglish()
         {
-            sights = await dataControl.getSightEng();
+            sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach (Sight s in sights)
             {

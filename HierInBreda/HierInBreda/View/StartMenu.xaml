@@ -19,8 +19,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name ="flagDutch"  Grid.Column="1" Grid.Row="1"/>
-        <Image x:Name ="flagEnglish"  Grid.Column="3" Grid.Row="1"/>
-    </Grid>
-    
+            <Image x:Name ="flagDutch"  Grid.Column="1" Grid.Row="1" Tapped="flagDutch_Tapped"/>
+            <Image x:Name ="flagEnglish"  Grid.Column="3" Grid.Row="1" Tapped="flagEnglish_Tapped"/>
+    </Grid>    
 </Page>
