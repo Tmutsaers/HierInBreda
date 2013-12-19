@@ -14,26 +14,44 @@ namespace HierInBreda.Model
      */
     public class Tutorial
     {
-        private List<string> texts = new List<string>();
+        private static Tutorial instance;
         private int index = 0;
-        public Tutorial()
-        {
+        private const int maxTexts = 9; //INVULLEN DEZE!!
 
+        public static Tutorial getInstance()
+        {
+            return instance != null ? instance : (instance = new Tutorial());
+        }
+        private Tutorial()
+        {
+            
         }
 
+        public string getText(int i)
+        {
+            if (Control.LanguageControl.GetInstance().getActiveLanguage().Name.CompareTo("Dutch") == 0)
+            {
+                switch (i)
+                {
+                    default:
+                        break;
+                }
+            }
+
+            if (Control.LanguageControl.GetInstance().getActiveLanguage().Name.CompareTo("English") == 0)
+            {
+                switch (i)
+                {
+                    default:
+                        break;
+                }
+            }
+
+            return "default";
+        }
         public int getMax()
         {
-            return texts.Count;
-        }
-
-        public void addText(string text)
-        {
-            texts.Add(text);
-        }
-
-        public string getText()
-        {
-            return texts[index];
+            return maxTexts;
         }
 
         public int getIndex()
@@ -41,19 +59,5 @@ namespace HierInBreda.Model
             return index;
         }
 
-        private int clamp(int n, int min, int max)
-        {
-            return n < min ? min : n > max ? max : n;
-        }
-
-        public void next()
-        {
-            index = clamp(index + 1, 0, texts.Count-1); 
-        }
-
-        public void prev()
-        {
-            index = clamp(index - 1, 0, texts.Count-1); 
-        }
     }
 }
