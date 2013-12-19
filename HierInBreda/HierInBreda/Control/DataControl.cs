@@ -13,7 +13,7 @@ namespace HierInBreda.Control
         /*
      * @author:Raymond Rohder
      * @version: 1.3
-     * @description:Klasse die de database beheert
+     * @description: Class that controls the database
      */
     public class DataControl
     {
@@ -27,7 +27,7 @@ namespace HierInBreda.Control
 
         private void ConnData()
         {
-            //Als de database niet bestaat maakt hij die automatisch aan.
+            //Creates database if it doesn't exists
             var dbPath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
 
             conn = new SQLite.SQLiteAsyncConnection(dbPath);
@@ -35,18 +35,18 @@ namespace HierInBreda.Control
 
         private async void InitData()
         {
-            //Tabel aanmaken. Dit kan natuurlijk ook via sql. Zie delete hieronder.
+            //Create table
             var result = await conn.CreateTableAsync<Sight>();
 
-            //Delete kan via methode maak ook via sql.
+            //Delete
             // await conn.ExecuteAsync("DELETE FROM Sight", new object[] { });
 
-            //Makkleijke manier om sights toe te voegen. Via een lijst van objecten. Kan ook natuurlijk via sql met execute
+            //adding a list of sights
             XDocument doc = XDocument.Load("Sights.xml");
 
             int count = await conn.ExecuteScalarAsync<int>("Select Count id From Sight");
 
-            //kijkt of er iets in de database staat
+            //if database is empty -> fill it
             if(count < 1)
             { 
             var sights = from elm in doc.Descendants("sight")
@@ -71,19 +71,21 @@ namespace HierInBreda.Control
             //Select all query
             //List<Sight> re1 = await tableQuery.ToListAsync();
         
-            //Of select query. Scalar return altijd 1 rij
+            //Of select query. Scalar returns always 1 row
             //String i = await conn.ExecuteScalarAsync<String>("Select disc From Sight WHERE name = ?", new object[] { "Valkenberg" });
 
-            //Query return lijst met uitkomsten.
+            //Query returns a list
             //List<Sight> e = await conn.QueryAsync<Sight>("Select * From Sight WHERE id = ? OR id = ?", new object[] { "5", "12" });
         }
 
+        //returns a list with Dutch description
         public async Task<List<Sight>> getSightDutch()
         {
             List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude, image, audio, description From Sight");
             return list;
         }
 
+        //returns a list with Englisch description
         public async Task<List<Sight>> getSightEng()
         {
             List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude image, audio, descriptionEng From Sight");
