@@ -63,7 +63,7 @@ namespace HierInBreda.View
             }
         }
 
-        private void flagEnglish_Tapped_1(object sender, TappedRoutedEventArgs e)
+        private void flagEnglish_Tapped(object sender, TappedRoutedEventArgs e)
         {
             startMapView("english");
         }

@@ -9,7 +9,7 @@
 
     <Grid Background="White">
         <Image x:Name ="flagDutch"  HorizontalAlignment="Left" Height="369" Margin="117,116,0,0" VerticalAlignment="Top" Width="462" RenderTransformOrigin="0.516,0.493" Tapped="flagDutch_Tapped"/>
-        <Image x:Name ="flagEnglish" HorizontalAlignment="Left" Height="369" Margin="787,116,0,0" VerticalAlignment="Top" Width="450" Tapped="flagEnglish_Tapped_1"/>
+        <Image x:Name ="flagEnglish" HorizontalAlignment="Left" Height="369" Margin="787,116,0,0" VerticalAlignment="Top" Width="450" Tapped="flagEnglish_Tapped"/>
 
 
     </Grid>
