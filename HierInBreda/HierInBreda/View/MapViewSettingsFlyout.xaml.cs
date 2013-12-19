@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using HierInBreda.Model;
+using HierInBreda.Control;
 
 // The Settings Flyout item template is documented at http://go.microsoft.com/fwlink/?LinkId=273769
 
@@ -36,6 +37,11 @@ namespace HierInBreda.View
         public void setSights(List<Sight> sights)
         {
             defaultViewModel["Sights"] = sights;
+        }
+
+        private void LanguageSelectButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MainControl.promptUserForLanguage(this);
         }
     }
 }

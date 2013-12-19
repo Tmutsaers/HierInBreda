@@ -259,7 +259,5 @@ namespace HierInBreda
             sightFlyout.Show();
         }
 
-
-
     }
 }

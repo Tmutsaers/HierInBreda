@@ -50,7 +50,7 @@
                 </ListView>
             </DataTemplate>
         </HubSection>
-        <AppBarButton Name="LanguageSelectButton" Icon="World" Grid.Row="3" Label="Andere Taal Selecteren" FontFamily="Comic Sans MS" Margin="75,0"/> 
+        <AppBarButton Name="LanguageSelectButton" Icon="World" Grid.Row="3" Label="Andere Taal Selecteren" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
         <!--<Button Name="LanguageSelectButton" Grid.Row="3" Margin="75,0">
             <Grid>
                 <Grid.RowDefinitions>
