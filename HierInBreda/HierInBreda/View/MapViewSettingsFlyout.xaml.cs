@@ -22,10 +22,12 @@ namespace HierInBreda.View
     public sealed partial class MapViewSettingsFlyout : SettingsFlyout
     {
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        MapView mapView;
 
-        public MapViewSettingsFlyout()
+        public MapViewSettingsFlyout(MapView mapView)
         {
             this.InitializeComponent();
+            this.mapView = mapView;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -50,6 +52,15 @@ namespace HierInBreda.View
         private void LanguageSelectButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MainControl.promptUserForLanguage(this);
+        }
+
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (mapView.Frame != null)
+            {
+                mapView.Frame.Navigate(typeof(View.TutorialView));
+                this.Hide();
+            }
         }
     }
 }

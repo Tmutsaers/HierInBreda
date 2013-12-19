@@ -28,7 +28,7 @@ namespace HierInBreda.View
 
         public void updateSightInfo(String imageName,String desc,String name)
         {
-            SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName));
+            SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName + ".jpg"));
             SightName.Text = name;
             SightInfo.Text = desc;
         }
