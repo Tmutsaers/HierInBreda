@@ -7,6 +7,7 @@ using Bing.Maps;
 using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace HierInBreda.Control
 {
@@ -72,8 +73,10 @@ namespace HierInBreda.Control
                                 }
                                 else
                                 {
-
+                                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                 }
+                                pin.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
                             }
                         }
                     }

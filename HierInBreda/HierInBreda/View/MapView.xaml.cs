@@ -114,7 +114,7 @@ namespace HierInBreda
             p.Text = id;
             MapLayer.SetPosition(p, l);
             Map.Children.Add(p);
-            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, G = 100, B = 100 } };
+            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 0 ,G = 100, B = 0 } };
             p.Tapped += p_Tapped;
             System.Diagnostics.Debug.WriteLine("Lat: " + l.Latitude);
             System.Diagnostics.Debug.WriteLine("Lon: " + l.Longitude);

@@ -23,7 +23,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Name="SightName" Text="Sight Name" FontSize="20" Grid.Row="0"/>
-                <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" FontSize="16" />
+                <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" FontSize="16" TextWrapping="Wrap" />
             </Grid>
         </Grid>
     </StackPanel>
