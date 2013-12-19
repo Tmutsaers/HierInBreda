@@ -37,6 +37,7 @@ namespace HierInBreda
 
     public sealed partial class MapView : Page
     {
+        private static MapView instance;
         public event SightPinTappedHandler sightPinTapped;
         public event UserPositionChangedHandler userPosChanged;
         private Geolocator _geolocator;
@@ -46,10 +47,18 @@ namespace HierInBreda
         public MapControl control;
         public SightInfoFlyout sightFlyout { get; set; }
         public MessageDialog popup { get; set; }
+        public DataControl dc { get; set; }
+        public MapControl mc { get; set; }
+
+        public static MapView getInstance()
+        {
+            return instance != null ? instance : (instance = new MapView());
+        }
 
         public MapView()
         {
             this.InitializeComponent();
+            instance = this;
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
             sightFlyout = new SightInfoFlyout();
@@ -57,6 +66,12 @@ namespace HierInBreda
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+            System.Diagnostics.Debug.WriteLine("Test");
+        }
+
+        public void initMapView()
+        {
+            mc = new MapControl(dc, this);
         }
 
         public MapView(MapControl control)
@@ -99,7 +114,10 @@ namespace HierInBreda
             p.Text = id;
             MapLayer.SetPosition(p, l);
             Map.Children.Add(p);
+            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, G = 100, B = 100 } };
             p.Tapped += p_Tapped;
+            System.Diagnostics.Debug.WriteLine("Lat: " + l.Latitude);
+            System.Diagnostics.Debug.WriteLine("Lon: " + l.Longitude);
             return p;
         }
 
@@ -149,7 +167,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.02));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.2));
             return fence;
         }
 
