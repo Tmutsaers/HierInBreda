@@ -23,7 +23,14 @@ namespace HierInBreda.View
         public SightInfoFlyout()
         {
             this.InitializeComponent();
-            SightImage.Source = new BitmapImage(new Uri("Assets/agslogo.png"));
+            SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Assets/agslogo.png"));
+        }
+
+        public void updateSightInfo(String imageName,String desc,String name)
+        {
+            SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName));
+            SightName.Text = name;
+            SightInfo.Text = desc;
         }
     }
 }

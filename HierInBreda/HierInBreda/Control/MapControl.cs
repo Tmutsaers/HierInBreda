@@ -10,9 +10,9 @@ using Windows.Devices.Geolocation.Geofencing;
 namespace HierInBreda.Control
 {
     /*
-     * @author:
-     * @version:
-     * @description:
+     * @author:Tim Mutsaers
+     * @version: 1.1.0
+     * @description:De klasse die de View Controleert 
      */
     public class MapControl
     {
@@ -25,6 +25,7 @@ namespace HierInBreda.Control
         public DataControl dataControl;
         private List<Sight> sights;
         private Dictionary<Pushpin, Geofence> sightFences = new Dictionary<Pushpin, Geofence>();
+        private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
 
         public MapControl()
@@ -47,12 +48,12 @@ namespace HierInBreda.Control
 
                     if (state == GeofenceState.Entered)
                     {
-
+                        
                     }
                 }
         }
 
-        public async void createSights()
+        public async void createSightsDutch()
         {
             sights = await dataControl.getSightDutch();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
@@ -60,6 +61,7 @@ namespace HierInBreda.Control
             {
                 Pushpin p = MapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
                 pins.Add(s,p);
+                sightpins.Add(p, s);
                 sightFences.Add(p,MapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
                 //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
             }
@@ -111,7 +113,9 @@ namespace HierInBreda.Control
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
-            
+            Sight s = sightpins[pin];
+            MapView.sightFlyout.updateSightInfo(s.img, s.disc, s.name);
+            MapView.sightFlyout.Show();
         }
 
         public Bing.Maps.Location getCurrentLocation()

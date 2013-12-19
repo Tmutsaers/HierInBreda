@@ -19,7 +19,7 @@ namespace HierInBreda.Model
 
         }
 
-        private string getTutorialTekst(int i)
+        private string getTutorialTekstDutch(int i)
         {
             string text = "";
             switch(i)

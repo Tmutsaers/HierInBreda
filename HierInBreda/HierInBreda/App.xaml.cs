@@ -32,8 +32,8 @@ namespace HierInBreda
         /// </summary>
         public App()
         {
-            new MainControl();
             this.InitializeComponent();
+            new MainControl();
             this.Suspending += OnSuspending;
         }
 
@@ -79,7 +79,7 @@ namespace HierInBreda
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MapView), e.Arguments);
+                rootFrame.Navigate(typeof(StartMenu), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
