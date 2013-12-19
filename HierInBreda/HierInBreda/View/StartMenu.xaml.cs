@@ -55,12 +55,14 @@ namespace HierInBreda.View
         private void startMapView(String language)
         {
             //TODO: do something with language
-            MapView map = new MapView();
-            mainControl.startMap(map);
-            
+            //MapView map = new MapView();
+            //mainControl.startMap(map);
+
             if (this.Frame != null)
             {
-                this.Frame.Navigate(typeof(MapView), map);
+
+                this.Frame.Navigate(typeof(MapView));
+                mainControl.startMap2();
             }
         }
 

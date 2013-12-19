@@ -38,6 +38,11 @@ namespace HierInBreda.Control
             }
         }
 
+        public DataControl getDataControl()
+        {
+            return dataControl;
+        }
+
         private static void skipTutorial(IUICommand command)
         {
         }
@@ -71,6 +76,12 @@ namespace HierInBreda.Control
         public void startMap(MapView map)
         {
             mapControl = new MapControl(dataControl, map);
+        }
+
+        public void startMap2()
+        {
+            MapView.getInstance().dc = dataControl;
+            MapView.getInstance().initMapView();
         }
 
 
