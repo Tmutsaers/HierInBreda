@@ -89,6 +89,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -117,6 +118,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Control\DataControl.cs" />
     <Compile Include="Control\LanguageControl.cs" />
     <Compile Include="Control\MainControl.cs" />
@@ -129,7 +134,7 @@
     <Compile Include="Model\ObservableDictionary.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
-    <Compile Include="Model\Tutorial.cs" />
+    <Compile Include="View\Tutorial.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="View\MapView.xaml.cs">
@@ -145,6 +150,9 @@
     <Compile Include="View\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TutorialView.xaml.cs">
+      <DependentUpon>TutorialView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -159,6 +167,132 @@
     <Content Include="Assets\battery_1.png" />
     <Content Include="Assets\battery_2.png" />
     <Content Include="Assets\battery_3.png" />
+    <Content Include="Assets\dutchFlag\00.gif" />
+    <Content Include="Assets\dutchFlag\01.gif" />
+    <Content Include="Assets\dutchFlag\02.gif" />
+    <Content Include="Assets\dutchFlag\03.gif" />
+    <Content Include="Assets\dutchFlag\04.gif" />
+    <Content Include="Assets\dutchFlag\05.gif" />
+    <Content Include="Assets\dutchFlag\06.gif" />
+    <Content Include="Assets\dutchFlag\07.gif" />
+    <Content Include="Assets\dutchFlag\08.gif" />
+    <Content Include="Assets\dutchFlag\09.gif" />
+    <Content Include="Assets\dutchFlag\10.gif" />
+    <Content Include="Assets\dutchFlag\11.gif" />
+    <Content Include="Assets\dutchFlag\12.gif" />
+    <Content Include="Assets\dutchFlag\13.gif" />
+    <Content Include="Assets\dutchFlag\14.gif" />
+    <Content Include="Assets\dutchFlag\15.gif" />
+    <Content Include="Assets\dutchFlag\16.gif" />
+    <Content Include="Assets\dutchFlag\17.gif" />
+    <Content Include="Assets\dutchFlag\18.gif" />
+    <Content Include="Assets\dutchFlag\19.gif" />
+    <Content Include="Assets\dutchFlag\20.gif" />
+    <Content Include="Assets\dutchFlag\21.gif" />
+    <Content Include="Assets\dutchFlag\22.gif" />
+    <Content Include="Assets\dutchFlag\23.gif" />
+    <Content Include="Assets\dutchFlag\24.gif" />
+    <Content Include="Assets\dutchFlag\25.gif" />
+    <Content Include="Assets\dutchFlag\26.gif" />
+    <Content Include="Assets\dutchFlag\27.gif" />
+    <Content Include="Assets\dutchFlag\28.gif" />
+    <Content Include="Assets\dutchFlag\29.gif" />
+    <Content Include="Assets\dutchFlag\30.gif" />
+    <Content Include="Assets\dutchFlag\31.gif" />
+    <Content Include="Assets\dutchFlag\32.gif" />
+    <Content Include="Assets\dutchFlag\33.gif" />
+    <Content Include="Assets\dutchFlag\34.gif" />
+    <Content Include="Assets\dutchFlag\35.gif" />
+    <Content Include="Assets\dutchFlag\36.gif" />
+    <Content Include="Assets\dutchFlag\37.gif" />
+    <Content Include="Assets\dutchFlag\38.gif" />
+    <Content Include="Assets\dutchFlag\39.gif" />
+    <Content Include="Assets\dutchFlag\40.gif" />
+    <Content Include="Assets\dutchFlag\41.gif" />
+    <Content Include="Assets\dutchFlag\42.gif" />
+    <Content Include="Assets\dutchFlag\43.gif" />
+    <Content Include="Assets\dutchFlag\44.gif" />
+    <Content Include="Assets\dutchFlag\45.gif" />
+    <Content Include="Assets\dutchFlag\46.gif" />
+    <Content Include="Assets\dutchFlag\47.gif" />
+    <Content Include="Assets\dutchFlag\48.gif" />
+    <Content Include="Assets\dutchFlag\49.gif" />
+    <Content Include="Assets\dutchFlag\50.gif" />
+    <Content Include="Assets\dutchFlag\51.gif" />
+    <Content Include="Assets\dutchFlag\52.gif" />
+    <Content Include="Assets\dutchFlag\53.gif" />
+    <Content Include="Assets\dutchFlag\54.gif" />
+    <Content Include="Assets\dutchFlag\55.gif" />
+    <Content Include="Assets\dutchFlag\56.gif" />
+    <Content Include="Assets\dutchFlag\57.gif" />
+    <Content Include="Assets\dutchFlag\58.gif" />
+    <Content Include="Assets\dutchFlag\59.gif" />
+    <Content Include="Assets\dutchFlag\60.gif" />
+    <Content Include="Assets\dutchFlag\61.gif" />
+    <Content Include="Assets\dutchFlag\62.gif" />
+    <Content Include="Assets\dutchFlag\63.gif" />
+    <Content Include="Assets\dutchFlag\64.gif" />
+    <Content Include="Assets\dutchFlag\65.gif" />
+    <Content Include="Assets\dutchFlag\66.gif" />
+    <Content Include="Assets\dutchFlag\67.gif" />
+    <Content Include="Assets\dutchFlag\68.gif" />
+    <Content Include="Assets\dutchFlag\69.gif" />
+    <Content Include="Assets\dutchFlag\70.gif" />
+    <Content Include="Assets\dutchFlag\71.gif" />
+    <Content Include="Assets\dutchFlag\72.gif" />
+    <Content Include="Assets\dutchFlag\73.gif" />
+    <Content Include="Assets\dutchFlag\74.gif" />
+    <Content Include="Assets\dutchFlag\75.gif" />
+    <Content Include="Assets\dutchFlag\76.gif" />
+    <Content Include="Assets\dutchFlag\77.gif" />
+    <Content Include="Assets\dutchFlag\78.gif" />
+    <Content Include="Assets\dutchFlag\79.gif" />
+    <Content Include="Assets\dutchFlag\80.gif" />
+    <Content Include="Assets\dutchFlag\81.gif" />
+    <Content Include="Assets\dutchFlag\82.gif" />
+    <Content Include="Assets\dutchFlag\83.gif" />
+    <Content Include="Assets\dutchFlag\84.gif" />
+    <Content Include="Assets\dutchFlag\85.gif" />
+    <Content Include="Assets\dutchFlag\86.gif" />
+    <Content Include="Assets\dutchFlag\87.gif" />
+    <Content Include="Assets\englishFlag\00.gif" />
+    <Content Include="Assets\englishFlag\01.gif" />
+    <Content Include="Assets\englishFlag\02.gif" />
+    <Content Include="Assets\englishFlag\03.gif" />
+    <Content Include="Assets\englishFlag\04.gif" />
+    <Content Include="Assets\englishFlag\05.gif" />
+    <Content Include="Assets\englishFlag\06.gif" />
+    <Content Include="Assets\englishFlag\07.gif" />
+    <Content Include="Assets\englishFlag\08.gif" />
+    <Content Include="Assets\englishFlag\09.gif" />
+    <Content Include="Assets\englishFlag\10.gif" />
+    <Content Include="Assets\englishFlag\11.gif" />
+    <Content Include="Assets\englishFlag\12.gif" />
+    <Content Include="Assets\englishFlag\13.gif" />
+    <Content Include="Assets\englishFlag\14.gif" />
+    <Content Include="Assets\englishFlag\15.gif" />
+    <Content Include="Assets\englishFlag\16.gif" />
+    <Content Include="Assets\englishFlag\17.gif" />
+    <Content Include="Assets\englishFlag\18.gif" />
+    <Content Include="Assets\englishFlag\19.gif" />
+    <Content Include="Assets\englishFlag\20.gif" />
+    <Content Include="Assets\englishFlag\21.gif" />
+    <Content Include="Assets\englishFlag\22.gif" />
+    <Content Include="Assets\englishFlag\23.gif" />
+    <Content Include="Assets\englishFlag\24.gif" />
+    <Content Include="Assets\englishFlag\25.gif" />
+    <Content Include="Assets\englishFlag\26.gif" />
+    <Content Include="Assets\englishFlag\27.gif" />
+    <Content Include="Assets\englishFlag\28.gif" />
+    <Content Include="Assets\englishFlag\29.gif" />
+    <Content Include="Assets\englishFlag\30.gif" />
+    <Content Include="Assets\englishFlag\31.gif" />
+    <Content Include="Assets\englishFlag\32.gif" />
+    <Content Include="Assets\englishFlag\33.gif" />
+    <Content Include="Assets\englishFlag\34.gif" />
+    <Content Include="Assets\englishFlag\35.gif" />
+    <Content Include="Assets\englishFlag\36.gif" />
+    <Content Include="Assets\englishFlag\37.gif" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100%281%29.png" />
@@ -190,6 +324,7 @@
     <Content Include="Images\7.jpg" />
     <Content Include="Images\8.jpg" />
     <Content Include="Images\9.jpg" />
+    <Content Include="Common\ReadMe.txt" />
     <Content Include="Sights.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -212,6 +347,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TutorialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,7 +9,7 @@ namespace HierInBreda.Model
     /*
      * @author:Raymond Rohder
      * @version:1.0
-     * @description: Klasse met de notificaties
+     * @description: Class for notifications
      */
     class Notification
     {
@@ -17,6 +17,7 @@ namespace HierInBreda.Model
 
         public Notification()
         {
+
         }
 
         public string getNotificationDutch(string notification)

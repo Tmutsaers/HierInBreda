@@ -14,33 +14,12 @@ namespace HierInBreda.Model
      */
     public class Tutorial
     {
-        public Tutorial(int i)
-        {
-            getTutorialTekst(i);
+        public Tutorial()
+        {   
+
         }
 
-        //private Image getImage()
-        //{
-        //    Image img = "";
-        //    switch (i)
-        //    {
-        //        case 1: text = "";
-        //            break;
-        //        case 2: text = "";
-        //            break;
-        //        case 3: text = "";
-        //            break;
-        //        case 4: text = "";
-        //            break;
-        //        case 5: text = "";
-        //            break;
-        //        case 6: text = "";
-        //            break;
-        //    }
-        //    return img;
-        //}
-
-        private string getTutorialTekst(int i)
+        private string getTutorialTekstDutch(int i)
         {
             string text = "";
             switch(i)

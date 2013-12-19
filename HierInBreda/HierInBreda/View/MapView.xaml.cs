@@ -207,6 +207,11 @@ namespace HierInBreda
             flyout.Show();
         }
 
+        private void TutorialButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainControl.promptUserForTutorial(this);
+        }
+
 
 
     }

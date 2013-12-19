@@ -14,5 +14,6 @@
         <Image Name="AgsLogo" HorizontalAlignment="Left" Height="62" Margin="252,10,0,0" VerticalAlignment="Top" Width="79" />
         <AppBarButton Name="InfoButton" HorizontalAlignment="Left" Label="Info" Margin="614,6,0,0" VerticalAlignment="Top" Icon="Help" FontFamily="Comic Sans MS">
         </AppBarButton>
+        <AppBarButton x:Name="TutorialButton" HorizontalAlignment="Left" Label="Tutorial" Margin="733,5,0,0" VerticalAlignment="Top" Icon="Help" Click="TutorialButton_Click" FontFamily="Comic Sans MS"/>
     </Grid>
 </Page>
