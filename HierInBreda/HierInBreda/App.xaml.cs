@@ -30,9 +30,11 @@ namespace HierInBreda
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        /// 
+        private MainControl Main;
         public App()
         {
-            new MainControl();
+            Main = new MainControl();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -52,7 +54,7 @@ namespace HierInBreda
             }
 #endif
 
-            Frame rootFrame = Window.Current.Content as Frame;
+            Frame rootFrame = Main.getStartControl().getStartMenu().Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -79,7 +81,7 @@ namespace HierInBreda
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MapView), e.Arguments);
+                rootFrame.Navigate(typeof(StartMenu), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

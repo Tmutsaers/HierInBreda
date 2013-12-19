@@ -20,5 +20,10 @@ namespace HierInBreda.Control
         {
             startMenu = new StartMenu(this);
         }
+
+        public StartMenu getStartMenu()
+        {
+            return startMenu;
+        }
     }
 }
