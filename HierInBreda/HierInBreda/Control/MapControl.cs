@@ -16,7 +16,7 @@ namespace HierInBreda.Control
      */
     public class MapControl
     {
-        private MapView MapView;
+        private MapView mapView;
         private List<Sight> Sights = new List<Sight>();
         //public Route route;
         private LocationRect userRadius;
@@ -28,12 +28,13 @@ namespace HierInBreda.Control
         private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
 
-        public MapControl(DataControl dc)
+        public MapControl(DataControl dc, MapView mv)
         {
             dataControl = dc;
-
-            MapView.sightPinTapped += MapView_sightPinTapped;
-            MapView.userPosChanged += MapView_userPosChanged;
+            mapView = mv;
+            
+            mapView.sightPinTapped += MapView_sightPinTapped;
+            mapView.userPosChanged += MapView_userPosChanged;
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
         }
 
@@ -59,10 +60,10 @@ namespace HierInBreda.Control
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
-                Pushpin p = MapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
+                Pushpin p = mapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
                 pins.Add(s,p);
                 sightpins.Add(p, s);
-                sightFences.Add(p,MapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
+                sightFences.Add(p,mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
                 //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
             }
             //MapView.createSightPins(locs);
@@ -100,27 +101,27 @@ namespace HierInBreda.Control
         {
             UpdateUserRadius("0.1", l);
             MapShapeLayer layer = new MapShapeLayer();
-            if(userRadius.Intersects(Route.Bounds) && Route != null)
-            {
-                insideRoute = true;
-            }
-            else
-                if(!userRadius.Intersects(Route.Bounds))
-                {
-                    insideRoute = false;
-                }
+            //if(userRadius.Intersects(Route.Bounds) && Route != null)
+            //{
+            //    insideRoute = true;
+            //}
+            //else
+            //    if(!userRadius.Intersects(Route.Bounds))
+            //    {
+            //        insideRoute = false;
+            //    }
         }
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
             Sight s = sightpins[pin];
-            MapView.sightFlyout.updateSightInfo(s.img, s.disc, s.name);
-            MapView.sightFlyout.Show();
+            mapView.sightFlyout.updateSightInfo(s.img, s.disc, s.name);
+            mapView.sightFlyout.Show();
         }
 
         public Bing.Maps.Location getCurrentLocation()
         {
-            return MapView.currentLoc;
+            return mapView.currentLoc;
         }
     }
 }
