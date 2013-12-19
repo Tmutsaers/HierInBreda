@@ -100,15 +100,15 @@ namespace HierInBreda.Control
         {
             UpdateUserRadius("0.1", l);
             MapShapeLayer layer = new MapShapeLayer();
-            if(userRadius.Intersects(Route.Bounds) && Route != null)
-            {
-                insideRoute = true;
-            }
-            else
-                if(!userRadius.Intersects(Route.Bounds))
-                {
-                    insideRoute = false;
-                }
+            //if(userRadius.Intersects(Route.Bounds) && Route != null)
+            //{
+            //    insideRoute = true;
+            //}
+            //else
+            //    if(!userRadius.Intersects(Route.Bounds))
+            //    {
+            //        insideRoute = false;
+            //    }
         }
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
