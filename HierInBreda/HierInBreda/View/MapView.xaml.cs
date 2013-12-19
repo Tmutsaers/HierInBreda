@@ -51,7 +51,7 @@ namespace HierInBreda
         {
             this.InitializeComponent();
             zoomToLocation();
-            flyout = new MapViewSettingsFlyout();
+            flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
@@ -64,7 +64,7 @@ namespace HierInBreda
             this.InitializeComponent();
             this.control = control;
             zoomToLocation();
-            flyout = new MapViewSettingsFlyout();
+            flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");

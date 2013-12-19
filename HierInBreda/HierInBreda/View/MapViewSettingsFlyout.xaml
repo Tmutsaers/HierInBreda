@@ -76,7 +76,7 @@
             <AppBarButton Name="PointerButton" Icon="Directions" Grid.Column="2"/>
          </Grid>
         <Button Grid.Row="5">
-            <TextBlock Text="Tutorial weergeven" FontFamily="Comic Sans MS" />
+            <TextBlock Text="Tutorial weergeven" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
         </Button>
         <TextBlock x:Name="TimeText" Text="Het is nu:" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="6"/>
     </Grid>
