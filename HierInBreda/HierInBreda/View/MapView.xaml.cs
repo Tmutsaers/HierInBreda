@@ -43,12 +43,14 @@ namespace HierInBreda
         private Pushpin userPin;
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
+        public SightInfoFlyout sightFlyout { get; set; }
 
         public MapView()
         {
             this.InitializeComponent();
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
+            sightFlyout = new SightInfoFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
@@ -61,6 +63,7 @@ namespace HierInBreda
             this.control = control;
             zoomToLocation();
             flyout = new MapViewSettingsFlyout();
+            sightFlyout = new SightInfoFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
@@ -137,7 +140,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 1));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.02));
             return fence;
         }
 
