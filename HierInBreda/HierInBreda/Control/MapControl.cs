@@ -37,7 +37,7 @@ namespace HierInBreda.Control
             mapView.sightPinTapped += MapView_sightPinTapped;
             mapView.userPosChanged += MapView_userPosChanged;
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
-            //createSightsDutch();
+            createSights();
         }
 
         void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
@@ -56,12 +56,12 @@ namespace HierInBreda.Control
                             if(sightpins[pin].Equals(geofence))
                             {
                                 Sight sight = sightpins[pin];
-                                String[] images = sight.img.Split(',');
                                 if (sight.img != "")
                                 {
                                     if (sight.img.Length > 3)
                                     {
-                                        mapView.sightFlyout.updateSightInfo(sight.img.Substring(0, 2), sight.disc, sight.name);
+                                        String[] images = sight.img.Split(',');
+                                        mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
                                         mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                     }
                                     else
@@ -80,7 +80,7 @@ namespace HierInBreda.Control
                 }
         }
 
-        public async void createSightsDutch()
+        public async void createSights()
         {
             sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
@@ -92,23 +92,11 @@ namespace HierInBreda.Control
                 sightFences.Add(p,mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
                 //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
             }
+            mapView.flyout.setSights(sights);
             //MapView.createSightPins(locs);
+            
         }
 
-        public async void createSightsEnglish()
-        {
-            sights = await dataControl.getSight();
-            //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
-            foreach (Sight s in sights)
-            {
-                Pushpin p = mapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
-                pins.Add(s, p);
-                sightpins.Add(p, s);
-                sightFences.Add(p, mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
-                //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
-            }
-            //MapView.createSightPins(locs);
-        }
 
         public void UpdateUserRadius(String Radius,Bing.Maps.Location loc)
         {

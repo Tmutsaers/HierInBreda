@@ -43,7 +43,7 @@
                                     <ColumnDefinition Width="90*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
-                                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding name}"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
