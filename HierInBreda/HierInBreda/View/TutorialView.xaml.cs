@@ -27,7 +27,7 @@ namespace HierInBreda.View
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        private Model.Tutorial tutorial = new Model.Tutorial();
+        private int index = 1;
 
         private int currentText;
         public int CurrentText { get { return currentText; } set { currentText = value; defaultViewModel["CurrentText"] = currentText.ToString(); } }
@@ -43,6 +43,21 @@ namespace HierInBreda.View
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(info));
             }
+        }
+
+        private int clamp(int n, int min, int max)
+        {
+            return n < min ? min : n > max ? max : n;
+        }
+
+        public void next()
+        {
+            index = clamp(index+1, 1, Model.Tutorial.getInstance().getMax());
+        }
+
+        public void prev()
+        {
+            index = clamp(index-1, 1, Model.Tutorial.getInstance().getMax());
         }
 
         /// <summary>
@@ -66,18 +81,9 @@ namespace HierInBreda.View
         public TutorialView()
         {
             this.InitializeComponent();
-            tutorial.addText("ik ben text 1");
-            tutorial.addText("ik ben text 2");
-            tutorial.addText("Aua!");
-            tutorial.addText("Ah-Ah!");
-            tutorial.addText("Au~ Au~!");
-            tutorial.addText("Hai☆Hai!");
-            tutorial.addText("Heresy grows from idleness");
-            tutorial.addText("DO A BARREL ROLL");
-            tutorial.addText("TEH STR⑨NGEST");
-            this.CurrentText = tutorial.getIndex() + 1;
-            this.TotalText = tutorial.getMax();
-            this.TutorialText = tutorial.getText();
+            this.CurrentText = index;
+            this.TotalText = Model.Tutorial.getInstance().getMax();
+            this.TutorialText = Model.Tutorial.getInstance().getText(index);
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
@@ -140,16 +146,18 @@ namespace HierInBreda.View
 
         private void Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            tutorial.prev();
-            this.CurrentText = tutorial.getIndex() + 1;
-            this.TutorialText = tutorial.getText();
+            prev();
+            this.CurrentText = index;
+            this.TotalText = Model.Tutorial.getInstance().getMax();
+            this.TutorialText = Model.Tutorial.getInstance().getText(index);
         }
 
         private void Button_Tapped_1(object sender, TappedRoutedEventArgs e)
         {
-            tutorial.next();
-            this.CurrentText = tutorial.getIndex() + 1;
-            this.TutorialText = tutorial.getText();
+            next();
+            this.CurrentText = index;
+            this.TotalText = Model.Tutorial.getInstance().getMax();
+            this.TutorialText = Model.Tutorial.getInstance().getText(index);
         }
     }
 }
