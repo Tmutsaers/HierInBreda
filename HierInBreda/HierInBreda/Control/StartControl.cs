@@ -18,7 +18,7 @@ namespace HierInBreda.Control
 
         public StartControl()
         {
-            startMenu = new StartMenu(this);
+            //startMenu = new StartMenu(this);
         }
     }
 }

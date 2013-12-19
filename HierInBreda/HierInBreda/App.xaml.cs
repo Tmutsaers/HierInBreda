@@ -30,10 +30,12 @@ namespace HierInBreda
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        /// 
+        private MainControl Main;
         public App()
-        {
+        {           
             this.InitializeComponent();
-            new MainControl();
+            Main = new MainControl();
             this.Suspending += OnSuspending;
         }
 

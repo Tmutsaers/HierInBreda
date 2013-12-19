@@ -24,14 +24,12 @@ namespace HierInBreda.View
     /// </summary>
     public sealed partial class StartMenu : Page
     {
-        private StartControl startControl;
         private int dutchFlagCount;
         private int englishFlagCount;
 
-        public StartMenu(StartControl startControl)
+        public StartMenu()
         {
             this.InitializeComponent();
-            this.startControl = startControl;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -46,9 +44,10 @@ namespace HierInBreda.View
                 dutchFlagCount = 0;
             if (englishFlagCount >= 37)
                 englishFlagCount = 0;
-            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, @"Assets/dutchFlag/" + string.Format("{0:00}", ++dutchFlagCount) + ".gif"));
-            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, @"Assets/englishFlag/" + string.Format("{0:00}", ++englishFlagCount) + ".gif"));
-        }
+            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", ++dutchFlagCount) + ".gif"));
+            System.Diagnostics.Debug.WriteLine(flagDutch.Source.GetValue(BitmapImage.UriSourceProperty));
+            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", ++englishFlagCount) + ".gif"));
+        }   
 
         private void flagDutch_Tapped(object sender, TappedRoutedEventArgs e)
         {
