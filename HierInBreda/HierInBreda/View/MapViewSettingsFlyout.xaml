@@ -26,7 +26,7 @@
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ToggleSwitch Header="Legenda" FontFamily="Comic Sans MS"/>
