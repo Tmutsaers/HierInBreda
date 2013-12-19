@@ -15,11 +15,17 @@ namespace HierInBreda.Control
      */
     class MainControl
     {
+
         StartControl startControl;
+        DataControl dataControl;
+        MapControl mapControl;
+
         private static MapView mapView;
 
         public MainControl()
         {
+
+            dataControl = new DataControl();
             startControl = new StartControl();
             LanguageControl.GetInstance();
         }
@@ -60,6 +66,11 @@ namespace HierInBreda.Control
             var msgDlg = new Windows.UI.Popups.MessageDialog(msg);
             msgDlg.DefaultCommandIndex = 1;
             await msgDlg.ShowAsync();
+        }
+
+        public void startMap(MapView map)
+        {
+            mapControl = new MapControl(dataControl, map);
         }
     }
 }
