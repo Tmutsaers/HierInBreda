@@ -26,13 +26,13 @@
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <ToggleSwitch Header="Legenda" FontFamily="Comic Sans MS"/>
             </Grid>
         </StackPanel>
-        <HubSection Header="BeziensWaardigheden" Name="SightsList" FontFamily="Comic Sans MS" Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+        <HubSection Header="BeziensWaardigheden" Name="SightsList" FontFamily="Comic Sans MS" Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="-34,0,0,0">
             <DataTemplate>
                 <ListView SelectionMode="None" ItemsSource="{Binding Path=Sights}" >
                     <ListView.ItemTemplate>
