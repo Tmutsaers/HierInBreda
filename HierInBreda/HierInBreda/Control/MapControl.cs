@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Bing.Maps;
 using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
+using Windows.UI.Xaml.Controls;
 
 namespace HierInBreda.Control
 {
@@ -36,6 +37,7 @@ namespace HierInBreda.Control
             mapView.sightPinTapped += MapView_sightPinTapped;
             mapView.userPosChanged += MapView_userPosChanged;
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+            //createSightsDutch();
         }
 
         void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
@@ -49,14 +51,38 @@ namespace HierInBreda.Control
 
                     if (state == GeofenceState.Entered)
                     {
-                        
+                        foreach(Pushpin pin in sightpins.Keys)
+                        {
+                            if(sightpins[pin].Equals(geofence))
+                            {
+                                Sight sight = sightpins[pin];
+                                String[] images = sight.img.Split(',');
+                                if (sight.img != "")
+                                {
+                                    if (sight.img.Length > 3)
+                                    {
+                                        mapView.sightFlyout.updateSightInfo(sight.img.Substring(0, 2), sight.disc, sight.name);
+                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    }
+                                    else
+                                    {
+                                        mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    }
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                        }
                     }
                 }
         }
 
         public async void createSightsDutch()
         {
-            sights = await dataControl.getSightDutch();
+            sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
@@ -64,6 +90,21 @@ namespace HierInBreda.Control
                 pins.Add(s,p);
                 sightpins.Add(p, s);
                 sightFences.Add(p,mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
+                //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
+            }
+            //MapView.createSightPins(locs);
+        }
+
+        public async void createSightsEnglish()
+        {
+            sights = await dataControl.getSight();
+            //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
+            foreach (Sight s in sights)
+            {
+                Pushpin p = mapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
+                pins.Add(s, p);
+                sightpins.Add(p, s);
+                sightFences.Add(p, mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
                 //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
             }
             //MapView.createSightPins(locs);
@@ -97,19 +138,24 @@ namespace HierInBreda.Control
             userRadius = new LocationRect(circlePoints);
         }
 
-        void MapView_userPosChanged(object sender, Bing.Maps.Location l)
+        async void MapView_userPosChanged(object sender, Bing.Maps.Location l)
         {
             UpdateUserRadius("0.1", l);
             MapShapeLayer layer = new MapShapeLayer();
-            //if(userRadius.Intersects(Route.Bounds) && Route != null)
-            //{
-            //    insideRoute = true;
-            //}
-            //else
-            //    if(!userRadius.Intersects(Route.Bounds))
-            //    {
-            //        insideRoute = false;
-            //    }
+            if (Route != null)
+            {
+                if (userRadius.Intersects(Route.Bounds) && Route != null)
+                {
+                    insideRoute = true;
+                }
+                else
+                    if (!userRadius.Intersects(Route.Bounds))
+                    {
+                        mapView.popup = new Windows.UI.Popups.MessageDialog("U wijkt van de Route af", "Route");
+                        await mapView.popup.ShowAsync();
+                        insideRoute = false;
+                    }
+            }
         }
 
         void MapView_sightPinTapped(object sender, Pushpin pin)

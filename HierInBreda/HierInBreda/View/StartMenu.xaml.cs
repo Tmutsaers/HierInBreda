@@ -27,12 +27,13 @@ namespace HierInBreda.View
         private int dutchFlagCount;
         private int englishFlagCount;
         private MainControl mainControl;
+        private DispatcherTimer timer;
 
         public StartMenu()
         {
             this.InitializeComponent();
             mainControl = new MainControl();
-            DispatcherTimer timer = new DispatcherTimer();
+            timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
@@ -46,9 +47,9 @@ namespace HierInBreda.View
                 dutchFlagCount = 0;
             if (englishFlagCount >= 37)
                 englishFlagCount = 0;
-            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", ++dutchFlagCount) + ".gif"));
+            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", dutchFlagCount) + ".gif"));
             System.Diagnostics.Debug.WriteLine(flagDutch.Source.GetValue(BitmapImage.UriSourceProperty));
-            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", ++englishFlagCount) + ".gif"));
+            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", englishFlagCount) + ".gif"));
         }       
 
         private void startMapView(String language)
@@ -63,13 +64,15 @@ namespace HierInBreda.View
             }
         }
 
-        private void flagEnglish_Tapped_1(object sender, TappedRoutedEventArgs e)
+        private void flagEnglish_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            timer.Stop();
             startMapView("english");
         }
 
         private void flagDutch_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            timer.Stop();
             startMapView("dutch");
         }
     }

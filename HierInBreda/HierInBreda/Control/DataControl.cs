@@ -12,15 +12,18 @@ namespace HierInBreda.Control
 {
         /*
      * @author:Raymond Rohder
-     * @version: 1.3
+     * @version: 2.0
      * @description: Class that controls the database
      */
     public class DataControl
     {
         SQLiteAsyncConnection conn;
+        private List<Sight> list;
 
         public DataControl()
         {
+            list = new List<Sight>();
+            
             ConnData();
             InitData();
         }
@@ -40,16 +43,16 @@ namespace HierInBreda.Control
 
             //Delete
             // await conn.ExecuteAsync("DELETE FROM Sight", new object[] { });
+                     
 
-            //adding a list of sights
-            XDocument doc = XDocument.Load("Sights.xml");
-
-            int count = 2;// await conn.ExecuteScalarAsync<int>("Select Count id From Sight");
+            int count = await conn.ExecuteScalarAsync<int>("Select Count(id) From Sight");
 
             //if database is empty -> fill it
             if(count < 1)
-            { 
-            var sights = from elm in doc.Descendants("sight")
+            {
+                //adding a list of sights
+                XDocument doc = XDocument.Load("Sights.xml");
+                var sights = from elm in doc.Descendants("sight")
                          select new Sight
                          {
                              id = (int)elm.Attribute("id"),
@@ -77,18 +80,10 @@ namespace HierInBreda.Control
             //Query returns a list
             //List<Sight> e = await conn.QueryAsync<Sight>("Select * From Sight WHERE id = ? OR id = ?", new object[] { "5", "12" });
         }
-
-        //returns a list with Dutch description
-        public async Task<List<Sight>> getSightDutch()
+                
+        public async Task<List<Sight>> getSight()
         {
-            List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude, image, audio, description From Sight");
-            return list;
-        }
-
-        //returns a list with Englisch description
-        public async Task<List<Sight>> getSightEng()
-        {
-            List<Sight> list = await conn.QueryAsync<Sight>("Select id, name, latitude, longitude image, audio, descriptionEng From Sight");
+            list = await conn.QueryAsync<Sight>("Select * From Sight");
             return list;
         }
     }
