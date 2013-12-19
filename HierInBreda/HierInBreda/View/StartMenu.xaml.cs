@@ -24,14 +24,14 @@ namespace HierInBreda.View
     /// </summary>
     public sealed partial class StartMenu : Page
     {
-        private StartControl startControl;
         private int dutchFlagCount;
         private int englishFlagCount;
+        private MainControl mainControl;
 
-        public StartMenu(StartControl startControl)
+        public StartMenu()
         {
             this.InitializeComponent();
-            this.startControl = startControl;
+            mainControl = new MainControl();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -52,12 +52,22 @@ namespace HierInBreda.View
 
         private void flagDutch_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //language = dutch
+            startMapView("dutch");
         }
 
         private void flagEnglish_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //language = english
+            startMapView("english");
         }      
+
+        private void startMapView(String language)
+        {
+            //TODO: do something with language
+            mainControl.startMap();
+            if (this.Frame != null)
+            {
+                this.Frame.Navigate(typeof(MapView));
+            }
+        }
     }
 }

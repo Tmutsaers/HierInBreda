@@ -28,10 +28,10 @@ namespace HierInBreda.Control
         private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
 
-        public MapControl()
+        public MapControl(DataControl dc)
         {
-            MapView = new MapView(this);
-            dataControl = new DataControl();
+            dataControl = dc;
+
             MapView.sightPinTapped += MapView_sightPinTapped;
             MapView.userPosChanged += MapView_userPosChanged;
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;

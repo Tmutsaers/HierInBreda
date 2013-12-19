@@ -44,7 +44,7 @@ namespace HierInBreda.Control
             //adding a list of sights
             XDocument doc = XDocument.Load("Sights.xml");
 
-            int count = await conn.ExecuteScalarAsync<int>("Select Count id From Sight");
+            int count = 2;// await conn.ExecuteScalarAsync<int>("Select Count id From Sight");
 
             //if database is empty -> fill it
             if(count < 1)
