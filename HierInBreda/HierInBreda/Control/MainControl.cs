@@ -105,12 +105,12 @@ namespace HierInBreda.Control
 
         private static void switchToEnglish(IUICommand command)
         {
-
+            LanguageControl.GetInstance().lang = "en";
         }
 
         private static void switchToDutch(IUICommand command)
         {
-
+            LanguageControl.GetInstance().lang = "nl";
         }
     }
 }
