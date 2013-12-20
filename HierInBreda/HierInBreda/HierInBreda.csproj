@@ -166,7 +166,6 @@
     <None Include="HierInBreda_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\agslogo.jpg" />
     <Content Include="Assets\agslogo.png" />
     <Content Include="Assets\AlertImage.png" />
     <Content Include="Assets\battery_0.png" />
