@@ -18,6 +18,8 @@ namespace HierInBreda.Control
         private static LanguageControl instance;
         private Language activeLanguage;
 
+        public String lang { get; set; }
+
         private LanguageControl()
         {
             Languages = new List<Language>();
