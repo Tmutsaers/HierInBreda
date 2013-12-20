@@ -120,10 +120,16 @@
   <data name="AppbarButton.Label" xml:space="preserve">
     <value>Opties</value>
   </data>
+  <data name="AppbarButtonLabel" xml:space="preserve">
+    <value>Opties</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Annuleer</value>
   </data>
   <data name="InfoButton.Label" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
     <value>Informatie</value>
   </data>
   <data name="LanguageSelectButton.Label" xml:space="preserve">
@@ -138,6 +144,9 @@
   <data name="Legenda.OnContent" xml:space="preserve">
     <value>Aan</value>
   </data>
+  <data name="OffRoutePopup" xml:space="preserve">
+    <value>U wijkt van de Route af.</value>
+  </data>
   <data name="OkText" xml:space="preserve">
     <value>Ja</value>
   </data>
@@ -147,11 +156,54 @@
   <data name="SightsListHeader.Text" xml:space="preserve">
     <value>Bezienswaardigheden</value>
   </data>
-  <data name="TimeText.Text" xml:space="preserve">
-    <value>Het is nu:</value>
+  <data name="TimeText" xml:space="preserve">
+    <value>Het is nu:  </value>
   </data>
   <data name="TutorialButton.Label" xml:space="preserve">
     <value>Handleiding</value>
+  </data>
+  <data name="TutorialButtonLabel" xml:space="preserve">
+    <value>Handleiding</value>
+  </data>
+  <data name="TutorialPage1.Text" xml:space="preserve">
+    <value>Welkom bij de handleiding van "Hier in Breda"
+
+In deze handleiding worden de volgende onderdelen behandeld:
+- Het uiterlijk van de applicatie
+- De kaart
+- De menubalk
+- De route
+- De bezienswaardigheden</value>
+  </data>
+  <data name="TutorialPage2.Text" xml:space="preserve">
+    <value>Het uiterlijk van de applicatie
+
+Voor u ziet u de kaart. Boven de kaart staan 3 knoppen. De linkse (info) is voor info van de bezienswaardigheden (deze wordt later behandeld bij ”bezienswaardigheden”). De middelste (tutorial) is zoals u al weet voor de tutorial. De rechter (opties)is om de menubalk te tonen.</value>
+  </data>
+  <data name="TutorialPage3.Text" xml:space="preserve">
+    <value>De kaart
+
+De kaart is de plattegrond van het centrum van Breda en hij toont u waar u op dit moment bent, laat de gehele route zien en toont alle bezienswaardigheden.</value>
+  </data>
+  <data name="TutorialPage4.Text" xml:space="preserve">
+    <value>De menubalk
+
+De menubalk bevat van boven naar beneden:
+- Legenda (aan/ uit zetten) 
+- lijst van bezienswaardigheden
+- andere taal selecteren
+- Connectie - batterijstatus -  GPS
+- De huidige lokale tijd</value>
+  </data>
+  <data name="TutorialPage5.Text" xml:space="preserve">
+    <value>De route
+
+De route is op de kaart geel gekleurd. Het deel van de route dat al gelopen is door u zal grijs kleuren.</value>
+  </data>
+  <data name="TutorialPage6.Text" xml:space="preserve">
+    <value>De bezienswaardigheden
+
+De bezienswaardigheden worden getoond als groene symbolen op de kaart. Als u in de buurt van een bezienswaardigheid komt zal het symbool van de info knop veranderen naar een uitroepteken. Als u daar op drukt zal de informatie van die bezienswaardigheid getoond worden.</value>
   </data>
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Wilt u de handleiding bekijken?</value>

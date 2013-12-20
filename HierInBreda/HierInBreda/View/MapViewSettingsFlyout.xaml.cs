@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using HierInBreda.Model;
 using HierInBreda.Control;
 using HierInBreda.Common;
+using Windows.ApplicationModel.Resources;
 
 // The Settings Flyout item template is documented at http://go.microsoft.com/fwlink/?LinkId=273769
 
@@ -47,7 +48,9 @@ namespace HierInBreda.View
 
         void timer_Tick(object sender, object e)
         {
-            TimeText.Text = String.Format("Het is nu: " + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
+            ResourceLoader rl = new ResourceLoader();
+
+            TimeText.Text = String.Format(rl.GetString("TimeText") + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
         }      
 
         public HierInBreda.Common.ObservableDictionary DefaultViewModel

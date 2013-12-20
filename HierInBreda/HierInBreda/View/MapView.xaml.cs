@@ -286,6 +286,13 @@ namespace HierInBreda
         public void refresh()
         {
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+            flyout = new MapViewSettingsFlyout(this);
+            sightFlyout = new SightInfoFlyout();
+
+            ResourceLoader rl = new ResourceLoader();
+            AppbarButton.Label = rl.GetString("AppbarButtonLabel");
+            InfoButton.Label = rl.GetString("InfoButtonLabel");
+            TutorialButton.Label = rl.GetString("TutorialButtonLabel");
         }
 
         public void setVisibilityLegenda(Boolean vis)

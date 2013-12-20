@@ -120,10 +120,16 @@
   <data name="AppbarButton.Label" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="AppbarButtonLabel" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="InfoButton.Label" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="LanguageSelectButton.Label" xml:space="preserve">
@@ -138,6 +144,9 @@
   <data name="Legenda.OnContent" xml:space="preserve">
     <value>On</value>
   </data>
+  <data name="OffRoutePopup" xml:space="preserve">
+    <value>You deviate from the route.</value>
+  </data>
   <data name="OkText" xml:space="preserve">
     <value>Yes</value>
   </data>
@@ -147,11 +156,54 @@
   <data name="SightsListHeader.Text" xml:space="preserve">
     <value>Sights</value>
   </data>
-  <data name="TimeText.Text" xml:space="preserve">
-    <value>Time:</value>
+  <data name="TimeText" xml:space="preserve">
+    <value>Time:  </value>
   </data>
   <data name="TutorialButton.Label" xml:space="preserve">
     <value>Tutorial</value>
+  </data>
+  <data name="TutorialButtonLabel" xml:space="preserve">
+    <value>Tutorial</value>
+  </data>
+  <data name="TutorialPage1.Text" xml:space="preserve">
+    <value>Welcome to the tutorial of "Hier in Breda"
+
+In this tutorial, the following topics will be covered:
+- The appearance of the application
+- The map
+- The menu bar
+- The route
+- The sights</value>
+  </data>
+  <data name="TutorialPage2.Text" xml:space="preserve">
+    <value>The appearance of the application
+
+Before you, you can see the map. Above the map are three buttons. The left one (info) is for information of the sights (this is treated later at "sights"). The middle is as you already know the tutorial. The last one is to show the menu bar.</value>
+  </data>
+  <data name="TutorialPage3.Text" xml:space="preserve">
+    <value>The map
+
+The map is a map of the centre of Breda, and he will show you where you are right now, shows the entire route and displays all the sights.</value>
+  </data>
+  <data name="TutorialPage4.Text" xml:space="preserve">
+    <value>The menu bar
+
+The menu bar contains from top to bottom: 
+- Legend (on / off) 
+- List of sights
+- Change language
+- Connection - battery status - GPS
+- The current local time</value>
+  </data>
+  <data name="TutorialPage5.Text" xml:space="preserve">
+    <value>The route
+
+The route on the map is colored yellow. The part of the route that has been walked by you will be colored gray.</value>
+  </data>
+  <data name="TutorialPage6.Text" xml:space="preserve">
+    <value>The sights
+
+The sights are shown as green symbols on the map. If you are near a sight the symbol of the info button will change to a question mark. If you press it the information of sight will be displayed.</value>
   </data>
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Would you like to follow the tutorial?</value>
