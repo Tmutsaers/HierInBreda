@@ -41,6 +41,17 @@ namespace HierInBreda.Control
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
         }
 
+        public async void createRoute()
+        {
+            List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
+            
+                foreach (Sight s in sights)
+                {
+                    locs.Add(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)));
+                }
+                mapView.createRoute(locs);
+        }
+
         void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
         {
             var reports = sender.ReadReports();
@@ -49,7 +60,6 @@ namespace HierInBreda.Control
                     GeofenceState state = report.NewState;
 
                     Geofence geofence = report.Geofence;
-
                     if (state == GeofenceState.Entered)
                     {
                         foreach(Pushpin pin in sightpins.Keys)
@@ -85,8 +95,8 @@ namespace HierInBreda.Control
 
         public async void createSights()
         {
-            //if (GeofenceMonitor.Current.Geofences.Count > 0)
-            //    GeofenceMonitor.Current.Geofences.Clear();
+            if (GeofenceMonitor.Current.Geofences.Count > 0)
+                GeofenceMonitor.Current.Geofences.Clear();
             sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
@@ -101,7 +111,7 @@ namespace HierInBreda.Control
             }
             mapView.flyout.setSights(sights);
             //MapView.createSightPins(locs);
-            
+            createRoute();
         }
 
 
