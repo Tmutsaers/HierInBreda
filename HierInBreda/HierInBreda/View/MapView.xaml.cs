@@ -276,6 +276,5 @@ namespace HierInBreda
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             sightFlyout.Show();
         }
-
     }
 }
