@@ -8,7 +8,9 @@
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
     Title="Terug"
-    Width="683.194">
+    Width="683.194"
+    Height="100"
+    >
     
     <Grid Height="660" Width="645">
         <Grid.RowDefinitions>
