@@ -70,7 +70,7 @@ namespace HierInBreda
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
-            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             System.Diagnostics.Debug.WriteLine("Test");
         }
 
@@ -159,7 +159,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.2));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.02));
             return fence;
         }
 

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="MapViewSettingsFlyout"
+    Title="Settings"
     d:DesignWidth="346">
     
 
@@ -40,13 +40,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1">
-                            <Grid Margin="5" >
+                            <Grid Margin="5" Width="100">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
-                                <TextBlock Grid.Column="1" Text="{Binding name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding name}" TextWrapping="Wrap"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
