@@ -153,6 +153,9 @@
   <data name="TutorialButton.Label" xml:space="preserve">
     <value>Handleiding</value>
   </data>
+  <data name="TutorialPage1.Text" xml:space="preserve">
+    <value>Welkom bij de handleiding van \"Hier in Breda\"\n\nIn deze handleiding worden de volgende onderdelen behandeld:\n- Het uiterlijk van de applicatie\n- De kaart\n- De menubalk\n- De route\n- De bezienswaardigheden</value>
+  </data>
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Wilt u de handleiding bekijken?</value>
   </data>

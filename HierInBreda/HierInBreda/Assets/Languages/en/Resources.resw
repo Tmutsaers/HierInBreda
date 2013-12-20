@@ -153,6 +153,9 @@
   <data name="TutorialButton.Label" xml:space="preserve">
     <value>Tutorial</value>
   </data>
+  <data name="TutorialPage1.Text" xml:space="preserve">
+    <value>Welcome to the tutorial of \"Hier in Breda\" \n\nIn this tutorial, the following topics will be covered:\n- The appearance of the application\n- The map\n- The menu bar\n- The route\n- The sights</value>
+  </data>
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Would you like to follow the tutorial?</value>
   </data>
