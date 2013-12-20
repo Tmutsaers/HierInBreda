@@ -283,5 +283,9 @@ namespace HierInBreda
             sightFlyout.Show();
         }
 
+        public void refresh()
+        {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+        }
     }
 }
