@@ -28,6 +28,7 @@ namespace HierInBreda.Model
 
         public string getText(int i)
         {
+            string text = "";
             if (Control.LanguageControl.GetInstance().getActiveLanguage().Name.CompareTo("Dutch") == 0)
             {
                 switch (i)
