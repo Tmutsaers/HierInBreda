@@ -298,6 +298,9 @@
     <Content Include="Assets\englishFlag\35.gif" />
     <Content Include="Assets\englishFlag\36.gif" />
     <Content Include="Assets\englishFlag\37.gif" />
+    <Content Include="Assets\LegendaIcons\blauweBalk.png" />
+    <Content Include="Assets\LegendaIcons\grijzeStip.png" />
+    <Content Include="Assets\LegendaIcons\groeneStip.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />

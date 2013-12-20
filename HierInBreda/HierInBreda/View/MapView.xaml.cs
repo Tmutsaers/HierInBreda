@@ -287,5 +287,14 @@ namespace HierInBreda
         {
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
         }
+
+        public void setVisibilityLegenda(Boolean vis)
+        {
+            if (vis)
+                mainGridLegenda.Visibility = Visibility.Visible;
+            else
+                mainGridLegenda.Visibility = Visibility.Collapsed;
+
+        }
     }
 }
