@@ -1,0 +1,24 @@
+# -----------------------------------------
+# DUTCH RESOURCE FILE
+# -----------------------------------------
+# MapView
+
+InfoButton=Info
+TutorialButton=Tutorial
+AppbarButton=Options
+UserPinText=You
+
+# -----------------------------------------
+# MapViewFlyout
+
+LegendaHeader=Legenda
+LegendaOnContent=On
+LegendaOffContent=Off
+SightsListHeader=Sights
+LanguageSelectButton=Change language
+ShowTutorialButton=Show tutorial
+TimeText=Time:
+
+# -----------------------------------------
+# Tutorial
+
