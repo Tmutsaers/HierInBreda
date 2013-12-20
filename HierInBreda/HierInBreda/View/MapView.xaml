@@ -29,5 +29,14 @@
         <AppBarButton x:Uid="InfoButton" x:Name="InfoButton" HorizontalAlignment="Left" Margin="614,6,0,0" VerticalAlignment="Top" Icon="Help" FontFamily="Comic Sans MS" Click="InfoButton_Click">
         </AppBarButton>
         <AppBarButton x:Uid="TutorialButton" x:Name="TutorialButton" HorizontalAlignment="Left" Margin="733,5,0,0" VerticalAlignment="Top" Icon="Help" Click="TutorialButton_Click" FontFamily="Comic Sans MS"/>
+        <Viewbox HorizontalAlignment="Left" 
+                 Height="150" 
+                 Margin="40,625,0,0" 
+                 VerticalAlignment="Top" 
+                 Width="215"
+                 Stretch="None"
+                 AllowDrop="True">
+            
+        </Viewbox>
     </Grid>
 </Page>
