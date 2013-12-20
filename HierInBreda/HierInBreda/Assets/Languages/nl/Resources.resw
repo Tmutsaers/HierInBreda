@@ -139,10 +139,10 @@
     <value>Legenda</value>
   </data>
   <data name="Legenda.OffContent" xml:space="preserve">
-    <value>Aan</value>
+    <value>Uit</value>
   </data>
   <data name="Legenda.OnContent" xml:space="preserve">
-    <value>Uit</value>
+    <value>Aan</value>
   </data>
   <data name="OffRoutePopup" xml:space="preserve">
     <value>U wijkt van de Route af.</value>

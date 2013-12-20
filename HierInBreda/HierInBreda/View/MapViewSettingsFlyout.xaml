@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ToggleSwitch x:Uid="Legenda" FontFamily="Comic Sans MS"/>
+                <ToggleSwitch x:Uid="Legenda" FontFamily="Comic Sans MS"  Toggled="ToggleSwitch_Toggled"/>
             </Grid>
         </StackPanel>
         <TextBlock x:Uid="SightsListHeader" Name="SightsListHeader" Grid.Row="2" FontSize="25" FontFamily="Comic Sans MS" />

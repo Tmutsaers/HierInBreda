@@ -78,5 +78,19 @@ namespace HierInBreda.View
                 this.Hide();
             }
         }
+
+        public bool isLegendaVisable()
+        {
+            return false;
+        }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            if (toggleSwitch != null)
+            {
+                mapView.setVisibilityLegenda(toggleSwitch.IsOn);                
+            }
+        }
     }
 }

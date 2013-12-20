@@ -294,5 +294,14 @@ namespace HierInBreda
             InfoButton.Label = rl.GetString("InfoButtonLabel");
             TutorialButton.Label = rl.GetString("TutorialButtonLabel");
         }
+
+        public void setVisibilityLegenda(Boolean vis)
+        {
+            if (vis)
+                mainGridLegenda.Visibility = Visibility.Visible;
+            else
+                mainGridLegenda.Visibility = Visibility.Collapsed;
+
+        }
     }
 }
