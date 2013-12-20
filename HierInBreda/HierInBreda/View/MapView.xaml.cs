@@ -87,17 +87,30 @@ namespace HierInBreda
         public async void createRoute(List<Location> locs)
         {
             WaypointCollection col = new WaypointCollection();
-            foreach(Location loc in locs)
+            for (int i = 0; i < locs.Count; i = i + 2)
             {
-                col.Add(new Waypoint(loc));
+                col.Add(new Waypoint(locs[i]));
+                System.Diagnostics.Debug.WriteLine("Lat: " + locs[i].Latitude);
+                System.Diagnostics.Debug.WriteLine("Lon: " + locs[i].Longitude);
             }
+            //col.Add(new Waypoint(locs[0]));
+            //col.Add(new Waypoint(locs[locs.Count - 1]));
+            //foreach (Location loc in locs)
+            //{
+            //    col.Add(new Waypoint(loc));
+            //    System.Diagnostics.Debug.WriteLine("Lat: " + loc.Latitude);
+            //    System.Diagnostics.Debug.WriteLine("Lon: " + loc.Longitude);
+            //}
 
             DirectionsManager manager = Map.DirectionsManager;
             manager.Waypoints = col;
+            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
 
             RouteResponse route_response = await manager.CalculateDirectionsAsync();
+            route_response.Routes[0].RoutePath.LineColor = new Windows.UI.Color { A = 200, R = 0, B = 200, G = 0 };
+            route_response.Routes[0].RoutePath.LineWidth = 10.0;
             manager.ShowRoutePath(route_response.Routes[0]);
-            control.Route = route_response.Routes[0];
+            mc.Route = route_response.Routes[0];
         }
 
         public Pushpin createSightPin(Location l,String id)
@@ -159,7 +172,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.02));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 5));
             return fence;
         }
 
@@ -170,10 +183,9 @@ namespace HierInBreda
             Geoposition currentPos = await _geolocator.GetGeopositionAsync();
             currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
             userPin = new Pushpin();
-
             ResourceLoader rl = new ResourceLoader();
             userPin.Text = rl.GetString("UserPinText");
-            userPin.Background = new SolidColorBrush(new Windows.UI.Color { A = 100, B = 0, G = 100, R = 0 });
+            userPin.Background = new SolidColorBrush(new Windows.UI.Color { A = 100, B = 0, G = 0, R = 100 });
             MapLayer.SetPosition(userPin, currentLoc);
             Map.Children.Add(userPin);
             Map.SetView(currentLoc, 15.0);
