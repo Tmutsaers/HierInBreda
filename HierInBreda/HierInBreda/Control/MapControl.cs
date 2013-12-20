@@ -37,8 +37,8 @@ namespace HierInBreda.Control
             
             mapView.sightPinTapped += MapView_sightPinTapped;
             mapView.userPosChanged += MapView_userPosChanged;
-            GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
             createSights();
+            GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
         }
 
         void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
@@ -85,14 +85,27 @@ namespace HierInBreda.Control
 
         public async void createSights()
         {
+            //if (GeofenceMonitor.Current.Geofences.Count > 0)
+            //    GeofenceMonitor.Current.Geofences.Clear();
             sights = await dataControl.getSight();
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
+                if(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "nl")
+                {
+                    string[] sub = s.lat.Split('.');
+                    s.lat = sub[0] + "," + sub[1];
+
+                    sub = s.longi.Split('.');
+                    s.longi = sub[0] + "," + sub[1];
+                }
+
                 Pushpin p = mapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
                 pins.Add(s,p);
                 sightpins.Add(p, s);
-                sightFences.Add(p,mapView.createGeofence(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)), s.name));
+                Geofence fence  = mapView.createGeofence(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
+                sightFences.Add(p,fence);
+                GeofenceMonitor.Current.Geofences.Add(fence);
                 //locs.Add(new Bing.Maps.Location(Double.Parse(s.lat), Double.Parse(s.longi)));
             }
             mapView.flyout.setSights(sights);
@@ -158,18 +171,15 @@ namespace HierInBreda.Control
                 {
                     String[] images = sight.img.Split(',');
                     mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
-                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                 }
                 else
                 {
                     mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
-                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                 }
             }
             else
             {
                 mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
-                mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
             }
             mapView.sightFlyout.Show();
         }

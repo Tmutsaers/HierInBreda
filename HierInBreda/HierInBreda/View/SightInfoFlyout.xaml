@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="Terug" Width="683.194">
+    Title="Terug"
+    Width="683.194">
+    
     <Grid Height="660" Width="645">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,7 +25,4 @@
         <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" Grid.Column="2" FontSize="16" TextWrapping="Wrap" />
         <Image Name="SightImage" Grid.Column="0" Grid.Row="1"/>
     </Grid>
-
-    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
-
 </SettingsFlyout>

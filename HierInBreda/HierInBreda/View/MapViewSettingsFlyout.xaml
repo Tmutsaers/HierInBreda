@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="MapViewSettingsFlyout"
+    Title="Settings"
     d:DesignWidth="346">
     
 
@@ -31,29 +31,29 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ToggleSwitch Header="Legenda" FontFamily="Comic Sans MS"/>
+                <ToggleSwitch x:Uid="Legenda" FontFamily="Comic Sans MS"/>
             </Grid>
         </StackPanel>
-        <TextBlock Name="SightsListHeader" Text="Bezienswaardigheden" Grid.Row="2" FontSize="25" FontFamily="Comic Sans MS" />
+        <TextBlock x:Uid="SightsListHeader" Name="SightsListHeader" Grid.Row="2" FontSize="25" FontFamily="Comic Sans MS" />
         <Border BorderBrush="Black"  BorderThickness="2" Grid.Row="3">
             <ListView x:Name="SightsList" SelectionMode="None" ItemsSource="{Binding Path=Sights}" Grid.Row="3" ScrollViewer.VerticalScrollMode="Auto" Height="250" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1">
-                            <Grid Margin="5" >
+                            <Grid Margin="5" Width="100">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
-                                <TextBlock Grid.Column="1" Text="{Binding name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding name}" TextWrapping="Wrap"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Border>
-        <AppBarButton Name="LanguageSelectButton" Icon="World" Grid.Row="4" Label="Andere Taal Selecteren" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
+        <AppBarButton x:Uid="LanguageSelectButton" Name="LanguageSelectButton" Icon="World" Grid.Row="4" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
         <!--<Button Name="LanguageSelectButton" Grid.Row="3" Margin="75,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -79,8 +79,8 @@
             <AppBarButton Name="PointerButton" Icon="Directions" Grid.Column="2"/>
          </Grid>
         <Button Grid.Row="6">
-            <TextBlock Name="TutorialButton" Text="Tutorial weergeven" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
+            <TextBlock x:Uid="ShowTutorialButton" Name="TutorialButton" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
         </Button>
-        <TextBlock x:Name="TimeText" Text="Het is nu:" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
+        <TextBlock x:Name="TimeText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
     </Grid>
 </SettingsFlyout>

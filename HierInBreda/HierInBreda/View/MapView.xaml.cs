@@ -23,6 +23,9 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation.Geofencing;
 using HierInBreda.Control;
 using Windows.UI.Popups;
+using System.Globalization;
+using System.Resources;
+using Windows.ApplicationModel.Resources;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -57,34 +60,23 @@ namespace HierInBreda
 
         public MapView()
         {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
             this.InitializeComponent();
             instance = this;
+
             zoomToLocation();
             flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
-            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             System.Diagnostics.Debug.WriteLine("Test");
         }
 
         public void initMapView()
         {
             mc = new MapControl(dc, this);
-        }
-
-        public MapView(MapControl control)
-        {
-            this.InitializeComponent();
-            this.control = control;
-            zoomToLocation();
-            flyout = new MapViewSettingsFlyout(this);
-            sightFlyout = new SightInfoFlyout();
-            //flyout.Show();
-            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
-            AgsLogo.Source = new BitmapImage(uri);
-            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
         }
 
         public AppBarButton getInfoButton()
@@ -167,7 +159,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.2));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.02));
             return fence;
         }
 
@@ -178,7 +170,9 @@ namespace HierInBreda
             Geoposition currentPos = await _geolocator.GetGeopositionAsync();
             currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
             userPin = new Pushpin();
-            userPin.Text = "Jij";
+
+            ResourceLoader rl = new ResourceLoader();
+            userPin.Text = rl.GetString("UserPinText");
             userPin.Background = new SolidColorBrush(new Windows.UI.Color { A = 100, B = 0, G = 100, R = 0 });
             MapLayer.SetPosition(userPin, currentLoc);
             Map.Children.Add(userPin);
