@@ -81,6 +81,6 @@
         <Button Grid.Row="6">
             <TextBlock x:Uid="ShowTutorialButton" Name="TutorialButton" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
         </Button>
-        <TextBlock x:Name="TimeText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
+        <TextBlock x:Uid="TimeText" x:Name="TimeText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
     </Grid>
 </SettingsFlyout>

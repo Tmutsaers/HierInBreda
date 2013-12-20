@@ -286,6 +286,8 @@ namespace HierInBreda
         public void refresh()
         {
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+            flyout = new MapViewSettingsFlyout(this);
+            sightFlyout = new SightInfoFlyout();
         }
     }
 }
