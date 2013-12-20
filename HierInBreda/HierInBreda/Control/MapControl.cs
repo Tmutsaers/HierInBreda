@@ -8,6 +8,7 @@ using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.ApplicationModel.Resources;
 
 namespace HierInBreda.Control
 {
@@ -165,7 +166,9 @@ namespace HierInBreda.Control
                 else
                     if (!userRadius.Intersects(Route.Bounds))
                     {
-                        mapView.popup = new Windows.UI.Popups.MessageDialog("U wijkt van de Route af", "Route");
+                        ResourceLoader rl = new ResourceLoader();
+                        mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+
                         await mapView.popup.ShowAsync();
                         insideRoute = false;
                     }

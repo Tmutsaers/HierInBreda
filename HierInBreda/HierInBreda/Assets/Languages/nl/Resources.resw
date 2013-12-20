@@ -120,10 +120,16 @@
   <data name="AppbarButton.Label" xml:space="preserve">
     <value>Opties</value>
   </data>
+  <data name="AppbarButtonLabel" xml:space="preserve">
+    <value>Opties</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Annuleer</value>
   </data>
   <data name="InfoButton.Label" xml:space="preserve">
+    <value>Informatie</value>
+  </data>
+  <data name="InfoButtonLabel" xml:space="preserve">
     <value>Informatie</value>
   </data>
   <data name="LanguageSelectButton.Label" xml:space="preserve">
@@ -138,6 +144,9 @@
   <data name="Legenda.OnContent" xml:space="preserve">
     <value>Uit</value>
   </data>
+  <data name="OffRoutePopup" xml:space="preserve">
+    <value>U wijkt van de Route af.</value>
+  </data>
   <data name="OkText" xml:space="preserve">
     <value>Ja</value>
   </data>
@@ -151,6 +160,9 @@
     <value>Het is nu:</value>
   </data>
   <data name="TutorialButton.Label" xml:space="preserve">
+    <value>Handleiding</value>
+  </data>
+  <data name="TutorialButtonLabel" xml:space="preserve">
     <value>Handleiding</value>
   </data>
   <data name="TutorialPage1.Text" xml:space="preserve">
