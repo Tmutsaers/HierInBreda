@@ -20,11 +20,15 @@ using HierInBreda.Common;
 
 namespace HierInBreda.View
 {
+    public delegate void SightsListViewItemTappedHandler(object source, Sight s);
+
     public sealed partial class MapViewSettingsFlyout : SettingsFlyout
     {
         private HierInBreda.Common.ObservableDictionary defaultViewModel = new HierInBreda.Common.ObservableDictionary();
         MapView mapView;
         private List<Sight> sights = new List<Sight>();
+
+        public event SightsListViewItemTappedHandler sightsListViewItemTapped;
         
 
         public MapViewSettingsFlyout(MapView mapView)
@@ -36,6 +40,15 @@ namespace HierInBreda.View
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
             this.Loaded += MapViewSettingsFlyout_Loaded;
+        }
+
+        protected void OnSightsListViewItemTapped(object o, Sight s)
+        {
+            Sight p = s;
+            if (s != null && sightsListViewItemTapped != null)
+            {
+                sightsListViewItemTapped(this, p);
+            }
         }
 
         void MapViewSettingsFlyout_Loaded(object sender, RoutedEventArgs e)
@@ -72,6 +85,30 @@ namespace HierInBreda.View
             {
                 mapView.Frame.Navigate(typeof(View.TutorialView));
                 this.Hide();
+            }
+        }
+
+        private void SightsList_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            foreach(Sight s in sights)
+            {
+                if (e.OriginalSource.GetType() == typeof(ListViewItemPresenter))
+                {
+                    ListViewItemPresenter presenter = e.OriginalSource as ListViewItemPresenter;
+                    Sight sp = presenter.Content as Sight;
+                    if (s.Equals(sp))
+                    {
+                        OnSightsListViewItemTapped(this, s);
+                    }
+                }
+                if(e.OriginalSource.GetType() == typeof(TextBlock))
+                {
+                    TextBlock tb = e.OriginalSource as TextBlock;
+                    if(s.name == tb.Text)
+                    {
+                        OnSightsListViewItemTapped(this, s);
+                    }
+                }
             }
         }
     }
