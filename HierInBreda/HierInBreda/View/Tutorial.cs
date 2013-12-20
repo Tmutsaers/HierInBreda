@@ -15,7 +15,6 @@ namespace HierInBreda.Model
     public class Tutorial
     {
         private static Tutorial instance;
-        private int index = 0;
         private const int maxTexts = 9; //INVULLEN DEZE!!
 
         public static Tutorial getInstance()
@@ -53,11 +52,5 @@ namespace HierInBreda.Model
         {
             return maxTexts;
         }
-
-        public int getIndex()
-        {
-            return index;
-        }
-
     }
 }

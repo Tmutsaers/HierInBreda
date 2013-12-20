@@ -7,6 +7,7 @@ using Bing.Maps;
 using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace HierInBreda.Control
 {
@@ -72,8 +73,10 @@ namespace HierInBreda.Control
                                 }
                                 else
                                 {
-
+                                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                 }
+                                pin.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
                             }
                         }
                     }
@@ -148,8 +151,26 @@ namespace HierInBreda.Control
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
-            Sight s = sightpins[pin];
-            mapView.sightFlyout.updateSightInfo(s.img, s.disc, s.name);
+            Sight sight = sightpins[pin];
+            if (sight.img != "")
+            {
+                if (sight.img.Length > 3)
+                {
+                    String[] images = sight.img.Split(',');
+                    mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                }
+                else
+                {
+                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                }
+            }
+            else
+            {
+                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+            }
             mapView.sightFlyout.Show();
         }
 

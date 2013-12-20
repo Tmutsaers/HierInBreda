@@ -7,10 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="SightInfoFlyout" Width="450">
+    Title="SightInfoFlyout" Width="1337.194">
 
     <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
-    <StackPanel>
+    <StackPanel Orientation="Vertical" >
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -19,11 +19,11 @@
             <Image Name="SightImage" Grid.Column="0"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Name="SightName" Text="Sight Name" FontSize="20" Grid.Row="0"/>
-                <TextBlock Name="SightInfo" Text="Test" Grid.Row="1"/>
+                <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" FontSize="16" TextWrapping="Wrap" />
             </Grid>
         </Grid>
     </StackPanel>

@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using HierInBreda.Model;
 using HierInBreda.Control;
+using HierInBreda.Common;
 
 // The Settings Flyout item template is documented at http://go.microsoft.com/fwlink/?LinkId=273769
 
@@ -21,8 +22,10 @@ namespace HierInBreda.View
 {
     public sealed partial class MapViewSettingsFlyout : SettingsFlyout
     {
-        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private HierInBreda.Common.ObservableDictionary defaultViewModel = new HierInBreda.Common.ObservableDictionary();
         MapView mapView;
+        private List<Sight> sights = new List<Sight>();
+        
 
         public MapViewSettingsFlyout(MapView mapView)
         {
@@ -32,6 +35,13 @@ namespace HierInBreda.View
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
+            this.Loaded += MapViewSettingsFlyout_Loaded;
+        }
+
+        void MapViewSettingsFlyout_Loaded(object sender, RoutedEventArgs e)
+        {
+            SightsList.ItemsSource = sights;
+            DefaultViewModel["Sights"] = sights;
         }
 
         void timer_Tick(object sender, object e)
@@ -39,15 +49,17 @@ namespace HierInBreda.View
             TimeText.Text = String.Format("Het is nu: " + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
         }      
 
-        public ObservableDictionary DefaultViewModel
+        public HierInBreda.Common.ObservableDictionary DefaultViewModel
         {
             get { return this.defaultViewModel; }
         }
 
         public void setSights(List<Sight> sights)
         {
-            defaultViewModel["Sights"] = sights;
+            this.sights = sights;
+           
         }
+
 
         private void LanguageSelectButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
