@@ -40,6 +40,7 @@ namespace HierInBreda.View
 
         void MapViewSettingsFlyout_Loaded(object sender, RoutedEventArgs e)
         {
+            SightsList.ItemsSource = sights;
             DefaultViewModel["Sights"] = sights;
         }
 

@@ -22,6 +22,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1">
@@ -33,25 +34,26 @@
                 <ToggleSwitch Header="Legenda" FontFamily="Comic Sans MS"/>
             </Grid>
         </StackPanel>
-        <HubSection Header="BeziensWaardigheden" Name="SightsList" FontFamily="Comic Sans MS" Grid.Row="2" BorderBrush="Black" BorderThickness="1" Margin="-34,0,0,0">
-            <DataTemplate>
-                <ListView SelectionMode="None" ItemsSource="{Binding Path=Sights}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="10" Width="100" Height="60">
+        <TextBlock Name="SightsListHeader" Text="Bezienswaardigheden" Grid.Row="2" FontSize="25" FontFamily="Comic Sans MS" />
+        <Border BorderBrush="Black"  BorderThickness="2" Grid.Row="3">
+            <ListView x:Name="SightsList" SelectionMode="None" ItemsSource="{Binding Path=Sights}" Grid.Row="3" ScrollViewer.VerticalScrollMode="Auto" Height="250" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <Grid Margin="5" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10*"/>
-                                    <ColumnDefinition Width="90*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
                                 <TextBlock Grid.Column="1" Text="{Binding name}"/>
                             </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </DataTemplate>
-        </HubSection>
-        <AppBarButton Name="LanguageSelectButton" Icon="World" Grid.Row="3" Label="Andere Taal Selecteren" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+        <AppBarButton Name="LanguageSelectButton" Icon="World" Grid.Row="4" Label="Andere Taal Selecteren" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
         <!--<Button Name="LanguageSelectButton" Grid.Row="3" Margin="75,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -62,7 +64,7 @@
                 <TextBlock Text="Taal Kiezen"/>
             </Grid>
         </Button>-->
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -76,9 +78,9 @@
             </AppBarButton>
             <AppBarButton Name="PointerButton" Icon="Directions" Grid.Column="2"/>
          </Grid>
-        <Button Grid.Row="5">
-            <TextBlock Text="Tutorial weergeven" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
+        <Button Grid.Row="6">
+            <TextBlock Name="TutorialButton" Text="Tutorial weergeven" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
         </Button>
-        <TextBlock x:Name="TimeText" Text="Het is nu:" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="6"/>
+        <TextBlock x:Name="TimeText" Text="Het is nu:" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
     </Grid>
 </SettingsFlyout>
