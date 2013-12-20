@@ -89,6 +89,15 @@ namespace HierInBreda.Control
             //List<Bing.Maps.Location> locs = new List<Bing.Maps.Location>();
             foreach(Sight s in sights)
             {
+                if(Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "nl")
+                {
+                    string[] sub = s.lat.Split('.');
+                    s.lat = sub[0] + "," + sub[1];
+
+                    sub = s.longi.Split('.');
+                    s.longi = sub[0] + "," + sub[1];
+                }
+
                 Pushpin p = mapView.createSightPin(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)), s.name);
                 pins.Add(s,p);
                 sightpins.Add(p, s);
