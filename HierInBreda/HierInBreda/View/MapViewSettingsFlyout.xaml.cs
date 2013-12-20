@@ -29,6 +29,7 @@ namespace HierInBreda.View
 
         public MapViewSettingsFlyout(MapView mapView)
         {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
             this.InitializeComponent();
             this.mapView = mapView;
             DispatcherTimer timer = new DispatcherTimer();

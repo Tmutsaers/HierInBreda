@@ -282,5 +282,10 @@ namespace HierInBreda
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             sightFlyout.Show();
         }
+
+        public void refresh()
+        {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+        }
     }
 }
