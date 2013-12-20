@@ -49,6 +49,7 @@ namespace HierInBreda
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
         public SightInfoFlyout sightFlyout { get; set; }
+        public TutorialViewFlyout turorialViewFlyout { get; set; }
         public MessageDialog popup { get; set; }
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
@@ -67,6 +68,7 @@ namespace HierInBreda
             zoomToLocation();
             flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
+            turorialViewFlyout = new TutorialViewFlyout();
             //flyout.Show();
             Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
             AgsLogo.Source = new BitmapImage(uri);
@@ -274,7 +276,7 @@ namespace HierInBreda
 
         private void TutorialButton_Click(object sender, RoutedEventArgs e)
         {
-            MainControl.promptUserForTutorial(this);
+            turorialViewFlyout.Show();
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)

@@ -134,7 +134,6 @@
     <Compile Include="Model\ObservableDictionary.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
-    <Compile Include="View\Tutorial.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="View\MapView.xaml.cs">
@@ -149,9 +148,6 @@
     </Compile>
     <Compile Include="View\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\TutorialView.xaml.cs">
-      <DependentUpon>TutorialView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TutorialViewFlyout.xaml.cs">
       <DependentUpon>TutorialViewFlyout.xaml</DependentUpon>
@@ -305,6 +301,7 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\TutorialImages\sample_pic.jpg" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\10.jpg" />
     <Content Include="Images\11.jpg" />
@@ -356,10 +353,6 @@
     <Page Include="View\StartMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\TutorialView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\TutorialViewFlyout.xaml">
       <SubType>Designer</SubType>

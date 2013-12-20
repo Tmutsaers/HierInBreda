@@ -23,5 +23,15 @@ namespace HierInBreda.View
         {
             this.InitializeComponent();
         }
+
+        private void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            
+        }
+
+        private void AppBarButton_Tapped_1(object sender, TappedRoutedEventArgs e)
+        {
+           
+        }
     }
 }

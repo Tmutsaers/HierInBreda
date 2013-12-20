@@ -33,10 +33,10 @@ namespace HierInBreda.Control
 
         private static void startTutorial(IUICommand command)
         {
-            if(mapView.Frame != null)
-            {
-                mapView.Frame.Navigate(typeof(View.TutorialView));
-            }
+            //if (mapView.Frame != null)
+            //{
+            //    mapView.Frame.Navigate(typeof(View.TutorialView));
+            //}
         }
 
         public DataControl getDataControl()

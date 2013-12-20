@@ -7,21 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="TutorialViewFlyout"
-    d:DesignWidth="562.418">
-    <Grid Height="625" Width="492">
+    Title="Tutorial"
+    Width="683">
+    <Grid Height="655" Width="645">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-        </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="190" Margin="302,0,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*"/>
+                <ColumnDefinition Width = "2*"/>
+                <ColumnDefinition Width = "*"/>                
+            </Grid.ColumnDefinitions>
+            <AppBarButton Icon="Previous" Label="Previous" Grid.Row="0" Grid.Column="0" Tapped="AppBarButton_Tapped_1"/>
+            <AppBarButton Icon="Next" Label="Next" Grid.Row="0" Grid.Column="2" Tapped="AppBarButton_Tapped"/>
+            <TextBlock x:Name="pageOfNumber"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="1 / 7" Grid.Row="0" Grid.Column="1" FontSize="40"/>
+
+
         </Grid>
-        <TextBlock HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0" FontSize="60" Text="Tutorial" Height="66" Width="196" Margin="32,23,264,0"/>
+        <Grid x:Name="gridForContent" Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="tutorialImage" Source="ms-appx:///Assets\TutorialImages\sample_pic.jpg" Grid.Row="0" Grid.Column="0"/>
+            <TextBlock x:Name="tutorialText" Text="Dit is een tutorialpagina die door Johannes ingevult gaat worden.!!" TextWrapping="Wrap" FontSize="40" Grid.Row="1" Grid.Column="0"/>
+        </Grid>
+        
+
     </Grid>
+
 </SettingsFlyout>

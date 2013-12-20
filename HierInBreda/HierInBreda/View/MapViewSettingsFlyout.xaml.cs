@@ -72,11 +72,11 @@ namespace HierInBreda.View
 
         private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (mapView.Frame != null)
-            {
-                mapView.Frame.Navigate(typeof(View.TutorialView));
-                this.Hide();
-            }
+            //if (mapView.Frame != null)
+            //{
+            //    mapView.Frame.Navigate(typeof(View.TutorialView));
+            //    this.Hide();
+            //}
         }
 
         public bool isLegendaVisable()
