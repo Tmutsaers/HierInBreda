@@ -8,9 +8,20 @@
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
     Title="TutorialViewFlyout"
-    d:DesignWidth="346">
-    <Grid Height="341" Width="287"/>
-
-
-
+    d:DesignWidth="562.418">
+    <Grid Height="625" Width="492">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="190" Margin="302,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Style="{StaticResource }" FontSize="40" Text="TextBlock" VerticalAlignment="Top" Height="89" Width="297"/>
+    </Grid>
 </SettingsFlyout>
