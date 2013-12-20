@@ -49,6 +49,7 @@ namespace HierInBreda
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
         public SightInfoFlyout sightFlyout { get; set; }
+        public TutorialViewFlyout turorialViewFlyout { get; set; }
         public MessageDialog popup { get; set; }
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
@@ -74,8 +75,9 @@ namespace HierInBreda
             zoomToLocation();
             flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
+            turorialViewFlyout = new TutorialViewFlyout();
             //flyout.Show();
-            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
+            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.png");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             System.Diagnostics.Debug.WriteLine("Test");
@@ -342,7 +344,7 @@ namespace HierInBreda
 
         private void TutorialButton_Click(object sender, RoutedEventArgs e)
         {
-            MainControl.promptUserForTutorial(this);
+            turorialViewFlyout.Show();
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
@@ -351,5 +353,25 @@ namespace HierInBreda
                 sightFlyout.Show();
         }
 
+        public void refresh()
+        {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+            flyout = new MapViewSettingsFlyout(this);
+            sightFlyout = new SightInfoFlyout();
+
+            ResourceLoader rl = new ResourceLoader();
+            AppbarButton.Label = rl.GetString("AppbarButtonLabel");
+            InfoButton.Label = rl.GetString("InfoButtonLabel");
+            TutorialButton.Label = rl.GetString("TutorialButtonLabel");
+        }
+
+        public void setVisibilityLegenda(Boolean vis)
+        {
+            if (vis)
+                mainGridLegenda.Visibility = Visibility.Visible;
+            else
+                mainGridLegenda.Visibility = Visibility.Collapsed;
+
+        }
     }
 }

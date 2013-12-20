@@ -9,14 +9,52 @@
     mc:Ignorable="d">
     <Page.Resources>
         <x:String x:Key="Info"></x:String>
+        <Flyout x:Key="FlyoutLegenda">
+            <Grid Height="100" Width="100"/>
+        </Flyout>
     </Page.Resources>
-   <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-236,-110">
-        <Maps:Map x:Name="Map"  HorizontalAlignment="Left" Margin="-11,86,0,0" VerticalAlignment="Top" Height="794" Width="1614" Credentials="AlSE2QMzCF8JsjfwIXd4ZG_MVGyCVPvVoRNPIlW4VZm57T65WZY3FI7FsSBf1-pG" />
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-236,-110">
+        <Maps:Map x:Name="Map"  HorizontalAlignment="Left" Margin="-11,86,0,0" VerticalAlignment="Top" Height="794" Width="1614" Credentials="AlSE2QMzCF8JsjfwIXd4ZG_MVGyCVPvVoRNPIlW4VZm57T65WZY3FI7FsSBf1-pG" FlyoutBase.AttachedFlyout="{StaticResource FlyoutLegenda}" >
+            <AppBar>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
+                </Grid>
+            </AppBar>
+            <TextBlock Height="100" TextWrapping="Wrap" Text="TextBlock" Width="100"/>
+        </Maps:Map>
         <AppBarButton x:Uid="AppbarButton" Name="AppbarButton" HorizontalAlignment="Left" Margin="1178,6,0,0" VerticalAlignment="Top" Icon="Back" Click="AppbarButton_Click" FontFamily="Comic Sans MS"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" TextWrapping="Wrap" Text="Hier In Breda" VerticalAlignment="Top" FontSize="35" FontFamily="Old English Text MT"/>
         <Image Name="AgsLogo" HorizontalAlignment="Left" Height="62" Margin="252,10,0,0" VerticalAlignment="Top" Width="79" />
         <AppBarButton x:Uid="InfoButton" x:Name="InfoButton" HorizontalAlignment="Left" Margin="614,6,0,0" VerticalAlignment="Top" Icon="Help" FontFamily="Comic Sans MS" Click="InfoButton_Click">
         </AppBarButton>
         <AppBarButton x:Uid="TutorialButton" x:Name="TutorialButton" HorizontalAlignment="Left" Margin="733,5,0,0" VerticalAlignment="Top" Icon="Help" Click="TutorialButton_Click" FontFamily="Comic Sans MS"/>
+        <Grid x:Name="mainGridLegenda" HorizontalAlignment="Left" Visibility="Collapsed"  Background="LightGray"  Height="165" Margin="10,595,0,0" VerticalAlignment="Top" Width="215">
+            <Border BorderBrush="#000000" BorderThickness="2"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="legendaBezochteBZW" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="black" Text="Bezochte bezienswaardigheid" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"/>
+                <TextBlock x:Name="legendaOnbezochteBZW" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="black" Text="Niet bezochte bezienswaardigheid" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap"/>
+                <TextBlock x:Name="legendaRoute" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Text="Route" Grid.Column="1" Grid.Row="2" />
+                <Image x:Name="grijs" Source="ms-appx:///Assets\LegendaIcons\grijzeStip.png"  Grid.Column="2" Grid.Row="0" Height="25" Width="25"/>
+                <Image x:Name="groen" Source="ms-appx:///Assets\LegendaIcons\groeneStip.png"  Grid.Column="2" Grid.Row="1" Height="25" Width="25"/>
+                <Image x:Name="blauwe" Source="ms-appx:///Assets\LegendaIcons\blauweBalk.png"  Grid.Column="2" Grid.Row="2" Height="25" Width="25"/>
+            </Grid>
+            
+        </Grid>
+
     </Grid>
 </Page>

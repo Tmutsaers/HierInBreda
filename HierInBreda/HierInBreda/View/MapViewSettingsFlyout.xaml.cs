@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using HierInBreda.Model;
 using HierInBreda.Control;
 using HierInBreda.Common;
+using Windows.ApplicationModel.Resources;
 
 // The Settings Flyout item template is documented at http://go.microsoft.com/fwlink/?LinkId=273769
 
@@ -33,6 +34,7 @@ namespace HierInBreda.View
 
         public MapViewSettingsFlyout(MapView mapView)
         {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
             this.InitializeComponent();
             this.mapView = mapView;
             DispatcherTimer timer = new DispatcherTimer();
@@ -59,7 +61,9 @@ namespace HierInBreda.View
 
         void timer_Tick(object sender, object e)
         {
-            TimeText.Text = String.Format("Het is nu: " + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
+            ResourceLoader rl = new ResourceLoader();
+
+            TimeText.Text = String.Format(rl.GetString("TimeText") + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
         }      
 
         public HierInBreda.Common.ObservableDictionary DefaultViewModel
@@ -81,10 +85,24 @@ namespace HierInBreda.View
 
         private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (mapView.Frame != null)
+            //if (mapView.Frame != null)
+            //{
+            //    mapView.Frame.Navigate(typeof(View.TutorialView));
+            //    this.Hide();
+            //}
+        }
+
+        public bool isLegendaVisable()
+        {
+            return false;
+        }
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            if (toggleSwitch != null)
             {
-                mapView.Frame.Navigate(typeof(View.TutorialView));
-                this.Hide();
+                mapView.setVisibilityLegenda(toggleSwitch.IsOn);                
             }
         }
 

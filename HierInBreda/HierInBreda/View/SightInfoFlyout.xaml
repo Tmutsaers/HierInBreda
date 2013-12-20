@@ -7,24 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
-    Title="Info" Width="1337.194">
-
-    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
-    <StackPanel Orientation="Vertical" >
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Image Name="SightImage" Grid.Column="0"/>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Name="SightName" Text="Sight Name" FontSize="20" Grid.Row="0"/>
-                <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" FontSize="16" TextWrapping="Wrap" />
-            </Grid>
-        </Grid>
-    </StackPanel>
+    Title="Terug"
+    Width="683.194"
+    Height="100"
+    >
+    
+    <Grid Height="660" Width="645">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="SightName" Text="Sight Name" TextAlignment="Center" FontSize="24" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" Grid.Column="2" FontSize="16" TextWrapping="Wrap" />
+        <Image Name="SightImage" Grid.Column="0" Grid.Row="1"/>
+    </Grid>
 </SettingsFlyout>

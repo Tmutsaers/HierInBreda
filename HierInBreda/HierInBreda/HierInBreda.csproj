@@ -134,7 +134,6 @@
     <Compile Include="Model\ObservableDictionary.cs" />
     <Compile Include="Model\Route.cs" />
     <Compile Include="Model\Sight.cs" />
-    <Compile Include="View\Tutorial.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="View\MapView.xaml.cs">
@@ -150,8 +149,8 @@
     <Compile Include="View\StartMenu.xaml.cs">
       <DependentUpon>StartMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TutorialView.xaml.cs">
-      <DependentUpon>TutorialView.xaml</DependentUpon>
+    <Compile Include="View\TutorialViewFlyout.xaml.cs">
+      <DependentUpon>TutorialViewFlyout.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +162,7 @@
     <None Include="HierInBreda_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\agslogo.jpg" />
+    <Content Include="Assets\agslogo.png" />
     <Content Include="Assets\AlertImage.png" />
     <Content Include="Assets\battery_0.png" />
     <Content Include="Assets\battery_1.png" />
@@ -295,10 +294,14 @@
     <Content Include="Assets\englishFlag\35.gif" />
     <Content Include="Assets\englishFlag\36.gif" />
     <Content Include="Assets\englishFlag\37.gif" />
+    <Content Include="Assets\LegendaIcons\blauweBalk.png" />
+    <Content Include="Assets\LegendaIcons\grijzeStip.png" />
+    <Content Include="Assets\LegendaIcons\groeneStip.png" />
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\TutorialImages\sample_pic.jpg" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\10.jpg" />
     <Content Include="Images\11.jpg" />
@@ -351,9 +354,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TutorialView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\TutorialViewFlyout.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup />

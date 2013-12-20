@@ -8,6 +8,7 @@ using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.ApplicationModel.Resources;
 
 namespace HierInBreda.Control
 {
@@ -102,23 +103,28 @@ namespace HierInBreda.Control
                             if(sightpins[pin].Equals(geofence))
                             {
                                 Sight sight = sightpins[pin];
+
+                                String description = sight.disc;
+                                if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
+                                    description = sight.discEng;
+
                                 if (sight.img != "")
                                 {
                                     if (sight.img.Length > 3)
                                     {
                                         String[] images = sight.img.Split(',');
-                                        mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                                        mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
                                         mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                     }
                                     else
                                     {
-                                        mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                        mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                                         mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                     }
                                 }
                                 else
                                 {
-                                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                    mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                                     mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                 }
                                 foreach(object o in mapView.getMap().Children)
@@ -212,7 +218,9 @@ namespace HierInBreda.Control
                 else
                     if (!userRadius.Intersects(Route.Bounds))
                     {
-                        mapView.popup = new Windows.UI.Popups.MessageDialog("U wijkt van de Route af", "Route");
+                        ResourceLoader rl = new ResourceLoader();
+                        mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+
                         await mapView.popup.ShowAsync();
                         insideRoute = false;
                     }
@@ -222,21 +230,25 @@ namespace HierInBreda.Control
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
             Sight sight = sightpins[pin];
+            String description = sight.disc;
+            if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
+                description = sight.discEng;
+
             if (sight.img != "")
             {
                 if (sight.img.Length > 3)
                 {
                     String[] images = sight.img.Split(',');
-                    mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                    mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
                 }
                 else
                 {
-                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                    mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                 }
             }
             else
             {
-                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
             }
             mapView.sightFlyout.Show();
         }
