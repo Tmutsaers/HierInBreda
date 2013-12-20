@@ -70,7 +70,7 @@ namespace HierInBreda
             sightFlyout = new SightInfoFlyout();
             turorialViewFlyout = new TutorialViewFlyout();
             //flyout.Show();
-            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
+            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.png");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             System.Diagnostics.Debug.WriteLine("Test");
