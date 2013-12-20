@@ -22,6 +22,6 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
         </Grid>
-        <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Style="{StaticResource }" FontSize="40" Text="TextBlock" VerticalAlignment="Top" Height="89" Width="297"/>
+        <TextBlock HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0" FontSize="60" Text="Tutorial" Height="66" Width="196" Margin="32,23,264,0"/>
     </Grid>
 </SettingsFlyout>
