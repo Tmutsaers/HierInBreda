@@ -11,12 +11,32 @@
         <x:String x:Key="Info"></x:String>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,-236,-110">
-        <Maps:Map x:Name="Map"  HorizontalAlignment="Left" Margin="-11,86,0,0" VerticalAlignment="Top" Height="794" Width="1614" Credentials="AlSE2QMzCF8JsjfwIXd4ZG_MVGyCVPvVoRNPIlW4VZm57T65WZY3FI7FsSBf1-pG" />
+        <Maps:Map x:Name="Map"  HorizontalAlignment="Left" Margin="-11,86,0,0" VerticalAlignment="Top" Height="794" Width="1614" Credentials="AlSE2QMzCF8JsjfwIXd4ZG_MVGyCVPvVoRNPIlW4VZm57T65WZY3FI7FsSBf1-pG" >
+            <AppBar>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal"/>
+                </Grid>
+            </AppBar>
+        </Maps:Map>
         <AppBarButton x:Uid="AppbarButton" Name="AppbarButton" HorizontalAlignment="Left" Margin="1178,6,0,0" VerticalAlignment="Top" Icon="Back" Click="AppbarButton_Click" FontFamily="Comic Sans MS"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" TextWrapping="Wrap" Text="Hier In Breda" VerticalAlignment="Top" FontSize="35" FontFamily="Old English Text MT"/>
         <Image Name="AgsLogo" HorizontalAlignment="Left" Height="62" Margin="252,10,0,0" VerticalAlignment="Top" Width="79" />
         <AppBarButton x:Uid="InfoButton" x:Name="InfoButton" HorizontalAlignment="Left" Margin="614,6,0,0" VerticalAlignment="Top" Icon="Help" FontFamily="Comic Sans MS" Click="InfoButton_Click">
         </AppBarButton>
         <AppBarButton x:Uid="TutorialButton" x:Name="TutorialButton" HorizontalAlignment="Left" Margin="733,5,0,0" VerticalAlignment="Top" Icon="Help" Click="TutorialButton_Click" FontFamily="Comic Sans MS"/>
+        <Viewbox HorizontalAlignment="Left" 
+                 Height="150" 
+                 Margin="40,625,0,0" 
+                 VerticalAlignment="Top" 
+                 Width="215"
+                 Stretch="None"
+                 AllowDrop="True">
+            
+        </Viewbox>
     </Grid>
 </Page>
