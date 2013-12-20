@@ -54,9 +54,7 @@ namespace HierInBreda.View
 
         private void startMapView(String language)
         {
-            //TODO: do something with language
-            //MapView map = new MapView();
-            //mainControl.startMap(map);
+            LanguageControl.GetInstance().lang = language;
 
             if (this.Frame != null)
             {
@@ -69,13 +67,13 @@ namespace HierInBreda.View
         private void flagEnglish_Tapped(object sender, TappedRoutedEventArgs e)
         {
             timer.Stop();
-            startMapView("english");
+            startMapView("en");
         }
 
         private void flagDutch_Tapped(object sender, TappedRoutedEventArgs e)
         {
             timer.Stop();
-            startMapView("dutch");
+            startMapView("nl");
         }
     }
 }
