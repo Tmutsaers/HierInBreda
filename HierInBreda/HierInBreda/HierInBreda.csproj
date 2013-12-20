@@ -153,6 +153,9 @@
     <Compile Include="View\TutorialView.xaml.cs">
       <DependentUpon>TutorialView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TutorialViewFlyout.xaml.cs">
+      <DependentUpon>TutorialViewFlyout.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -352,6 +355,10 @@
     <Page Include="View\TutorialView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TutorialViewFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
