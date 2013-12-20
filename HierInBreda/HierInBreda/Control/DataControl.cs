@@ -38,6 +38,7 @@ namespace HierInBreda.Control
 
         private async void InitData()
         {
+
             //Create table
             var result = await conn.CreateTableAsync<Sight>();
 

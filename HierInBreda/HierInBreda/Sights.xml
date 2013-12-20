@@ -6,8 +6,28 @@
     <longitude>4.77963</longitude>
     <image>1</image>
     <audio></audio>
-    <description>Beginpunt</description>
-    <descriptionEng>Starting point</descriptionEng>
+    <description>
+      Dit is het begin van uw route door Breda
+
+      Breda in vogelvlucht
+      De naam Breda dook voor het eerst op in een oorkonde van 1125, 
+      als nederzetting op de plaats waar de riviertjes de Mark en de Aa samenvloeien.
+
+      In 1252 verwierf Breda stadsrechten, waarna de stad, aan het begin van de 14e eeuw, 
+      werd ommuurd. Rondom de stad liggen de singels. 
+      De straten lopen in een soort ovaalvorm, een opvallend kenmerk van oude vestingsteden.
+    </description>
+    <descriptionEng>
+      This is the start of your route through Breda
+
+      Breda at a glance
+      The name Breda appeared for the first time in a document of 1125,
+      as a settlement at the place where the rivers Mark and the Aa merge.
+
+      In 1252 Breda acquired city rights, at the beginning of the 14th century the city
+      was walled. Around the city are the canals.
+      The streets run in an oval shape, a striking feature of ancient fortified towns.
+    </descriptionEng>
   </sight>
 
   <sight id="2">
@@ -16,7 +36,10 @@
     <longitude>4.77969</longitude>
     <image>3</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>
+      Bronzen beeld, voorstellende een lopende non met een boek in haar handen.
+      Het beeld werd door deMeeùs-groep aan de gemeente Breda geschonken ter gelegenheid van het gereedkomen van de nieuwbouw en renovatie van het hoofdkantoor van Meeùs. De religieuze congregatie liefdezuster  van St Vincent de Saint Paul, Vincentius a Paulo werd door de naamgever gesticht in de 17e eeuw. Vanaf de oprichting wijden vrouwen zich aan de verzorging van zieken, gevangenen en slaven, bedelaars en zwervers, vondelingen en oorlogsslachtoffers. Vincentius stond ook aan de basis van de kloosterorde der Lazaristen. In de 19e eeuw ontstond in zijn geest een beweging voor armenzorg; in Nederland bekend als de Vincentiusvereniging. Het is een symbolisch beeld voor het religieuze verleden van Breda.
+    </description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
