@@ -38,12 +38,12 @@ namespace HierInBreda.Control
 
         private async void InitData()
         {
-
+            var result1 = await conn.DropTableAsync<Sight>();
             //Create table
             var result = await conn.CreateTableAsync<Sight>();
 
             //Delete
-            // await conn.ExecuteAsync("DELETE FROM Sight", new object[] { });
+             //await conn.ExecuteAsync("DELETE FROM Sight", new object[] { });
                      
 
             int count = await conn.ExecuteScalarAsync<int>("Select Count(id) From Sight");
