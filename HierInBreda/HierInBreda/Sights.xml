@@ -6,8 +6,28 @@
     <longitude>4.77963</longitude>
     <image>1</image>
     <audio></audio>
-    <description>Beginpunt</description>
-    <descriptionEng>Starting point</descriptionEng>
+    <description>
+      Dit is het begin van uw route door Breda
+
+      Breda in vogelvlucht
+      De naam Breda dook voor het eerst op in een oorkonde van 1125, 
+      als nederzetting op de plaats waar de riviertjes de Mark en de Aa samenvloeien.
+
+      In 1252 verwierf Breda stadsrechten, waarna de stad, aan het begin van de 14e eeuw, 
+      werd ommuurd. Rondom de stad liggen de singels. 
+      De straten lopen in een soort ovaalvorm, een opvallend kenmerk van oude vestingsteden.
+    </description>
+    <descriptionEng>
+      This is the start of your route through Breda
+
+      Breda at a glance
+      The name Breda appeared for the first time in a document of 1125,
+      as a settlement at the place where the rivers Mark and the Aa merge.
+
+      In 1252 Breda acquired city rights, at the beginning of the 14th century the city
+      was walled. Around the city are the canals.
+      The streets run in an oval shape, a striking feature of ancient fortified towns.
+    </descriptionEng>
   </sight>
 
   <sight id="2">
@@ -16,15 +36,21 @@
     <longitude>4.77969</longitude>
     <image>3</image>
     <audio></audio>
-    <description>nvt</description>
-    <descriptionEng>n/a</descriptionEng>
+    <description>
+      Bronzen beeld, voorstellende een lopende non met een boek in haar handen.
+      Het beeld werd door deMeeùs-groep aan de gemeente Breda geschonken ter gelegenheid van het gereedkomen van de nieuwbouw en renovatie van het hoofdkantoor van Meeùs. De religieuze congregatie liefdezuster  van St Vincent de Saint Paul, Vincentius a Paulo werd door de naamgever gesticht in de 17e eeuw. Vanaf de oprichting wijden vrouwen zich aan de verzorging van zieken, gevangenen en slaven, bedelaars en zwervers, vondelingen en oorlogsslachtoffers. Vincentius stond ook aan de basis van de kloosterorde der Lazaristen. In de 19e eeuw ontstond in zijn geest een beweging voor armenzorg; in Nederland bekend als de Vincentiusvereniging. Het is een symbolisch beeld voor het religieuze verleden van Breda.
+    </description>
+    <descriptionEng>
+      Bronze sculpture, depicting a running nun with a book in her hands.
+      The image was deMeeùs group donated to the city of Breda on the occasion of the completion of the construction and renovation of the headquarters of Meeùs. The religious congregation love sister of St Vincent de Paul St, Vincent de Paul was founded by the namesake in the 17th century. From the founding women devote themselves to the care of the sick, prisoners and slaves, beggars and vagabonds, foundlings and war victims. Vincent was also at the base of the monastic order of Vincentians. In the 19th century, in his mind a movement for poor relief, known in the Netherlands as the Vincent de Paul Society. It is a symbolic image for the religious past of Breda.
+    </descriptionEng>
   </sight>
 
   <sight id="3">
     <name>Valkenberg</name>
-    <latitude>51.59250</latitude>
-    <longitude>4.77969</longitude>
-    <image></image>
+    <latitude>51.59225</latitude>
+    <longitude>4.77985</longitude>
+    <image>vb</image>
     <audio></audio>
     <description>
       Tot 1812 deed dit park dienst als kasteeltuin voor de Heren van Breda. Het park dankt zijn naam aan een val- kenhuis, dat aan de rand ervan stond en van waaruit de kasteelbewoners en hun gasten de valkenjacht bedreven. Het park was van orgine een echt bos met hoge bomen. In de zeventiende eeuw verdween dat karakter door de aanleg van een tuin naar Franse stijl.
@@ -62,8 +88,8 @@
     <longitude>4.77889</longitude>
     <image>5</image>
     <audio></audio>
-    <description>nvt</description>
-    <descriptionEng>n/a</descriptionEng>
+    <description>The lighthouse is een kunstwerk van Aldo Rossi, een Italiaanse architect en ontwerper.</description>
+    <descriptionEng>The lighthouse is an artwork by Aldo Rossi, an Italian architect and designer.</descriptionEng>
   </sight>
 
   <sight id="6">
@@ -92,7 +118,7 @@
     <longitude>4.77634</longitude>
     <image>11</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>De Stadhouderspoort is één van de toegangspoorten van het Kasteel van Breda in het centrum van Breda. Het Kasteel is voorzien van een slotgracht, maar de Stadhouderspoort kan bereikt worden over een loopbrug, na eerst de Kraanpoort met poortgebouw door te zijn gegaan. De Stadhouderspoort is voorzien van een driehoekig fronton en draagt het wapen van stadhouder Willem V waar omheen het devies van de Orde van de Kousenband "Honi soit qui mal y pense" (Schande over hem die er kwaad van denkt). De zuidkant van de poort is in 1959 gerestaureerd.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -102,8 +128,12 @@
     <longitude>4.77518</longitude>
     <image>7</image>
     <audio></audio>
-    <description>1e bocht Cingelstraat</description>
-    <descriptionEng>1st corner Cingelstraat</descriptionEng>
+    <description>
+      Het Huis van Brecht is een gebouw in het centrum van Breda op het terrein van het Kasteel van Breda. Het is gemaakt van steen en dateert uit de tweede helft van de veertiende eeuw. Gouvaert van Brecht kocht het in 1530 en vergrootte de woning met een galerij. Na de list met het Turfschip van Breda vlucht de Spaanse familie naar Luik en werd het huis van het Bredase stadsbestuur.
+
+      Tot 1605 heeft het gebouw verschillende functies vervuld, waaronder smidse; vanaf 1794 tot 1940 was het als militair hospitaal in gebruik. Tegenwoordig dient het gebouw als onderkomen voor de bibliotheek van de Koninklijke Militaire Academie (KMA).
+    </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="9">
@@ -112,7 +142,11 @@
     <longitude>4.77336</longitude>
     <image>6,14,21,22</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>
+      Het Spanjaardsgat symboliseert het gat dat de Spanjaarden in hun verdediging lieten vallen in 1590. Schipper Adriaen van Bergen zou hier een aantal soldaten de stad in hebben gesmokkeld om de Spanjaarden te verdrijven (in werkelijkheid is dit echter elders gebeurd). Van Bergen heeft met zijn turfschip verder gevaren naar de waterpoort van het Kasteel van Breda aan de huidige Academiesingel. Het Spanjaardsgat is 20 jaar na de gebeurtenis met het Turfschip van Breda gebouwd.
+
+      Het Spanjaardsgat, en met name de nabijgelegen 'brug', zijn bekend als 'rendez-vous' (afspreekpunt). In 2007 is de oude brug vervangen door een nieuwe Hoge Brug.
+    </description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -122,7 +156,11 @@
     <longitude>4.77321</longitude>
     <image>20</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>
+      Op de plaats van de vishal was een huis met de naam Het Paradijs. De gemeente kocht het huis en brak het af zodat er rond 1500 de eerste vishal kwam. Daarna werd naast de vishal een Indhuys gebouwd dat gebruikt werd door 6 keurmeesters. Indgeld werd betaald voor de opslag van afgeslagen vis. Het Indhuis was tevens gildehuis voor het Gilde Binnenvoerlieden die zorgden voor de distributie van de vis. Later werd het gebruikt door het Gilde der Nachtwakers. In circa 1720-1725 werd de oude vishal vervangen door de huidige vishal. Hier werd alleen zeevis afgeslagen. Aan de overzijde van de straat bij de Waag uit 1659 werd een riviervis-markt gebouwd.
+
+      In mei 1940 werd mede door de oorlog de visafslag gesloten. Daarna heeft er een viswinkel in de vishal gezeten. De vishal is in 2005 gerestaureerd daarna was er kort een bloemenwinkel in. Tegenwoordig is er horeca ingevestigd.
+    </description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -166,19 +204,19 @@
     <name>Het poortje</name>
     <latitude>51.58822</latitude>
     <longitude>4.77525</longitude>
-    <image></image>
+    <image>15</image>
     <audio></audio>
-    <description>nvt</description>
-    <descriptionEng>n/a</descriptionEng>
+    <description>nog geen uitleg beschikbaar</description>
+    <descriptionEng>no description yet</descriptionEng>
   </sight>
 
   <sight id="14">
     <name>Ridderstraat</name>
     <latitude>51.58716</latitude>
     <longitude>4.77582</longitude>
-    <image></image>
+    <image>rid</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>De ridderstraat komt uit op de grote markt en ligt dus in het shop gedeelte van Breda.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -186,9 +224,9 @@
     <name>Grote Markt</name>
     <latitude>51.58747</latitude>
     <longitude>4.77662</longitude>
-    <image>17</image>
+    <image>gm</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>De grote markt geeft zicht op de grote kerk van Breda. Zoals u kunt zien zijn hier vele gezellige barretjes waar u heerlijk kan lunchen en dinneren.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -196,9 +234,9 @@
     <name>Het Wit Lam</name>
     <latitude>51.58771</latitude>
     <longitude>4.77652</longitude>
-    <image></image>
+    <image>26</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>Het wit lam  is een voormalige vleeshal aan de Grote Markt 19 in Breda Centrum in Breda. Het monumentale pand was oorspronkelijk een particuliere woning ‘’Het witte lam’’ genaamd. In 1617 werd het een vleeshal, nog te zien aan de stenen poort met runderkoppen gemaakt door de steenhouwer Melchior van Herbach. Alleen op deze plaats mocht nog vlees worden verkocht.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -208,7 +246,7 @@
     <longitude>4.77638</longitude>
     <image>24,25</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>Judith met het hoofd van Holofernes is in 1947 gemaakt door beeldhouwer Niel Steenbergen als bevrijdingsmonument. De Joodse vrouw Judith staat voor het goede dat het kwade overwint. In haar rechterhand heeft zij het afgehakte hoofd van Holofernes, legeraanvoerder van de Babylonische koning Nebukadnezar.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -216,7 +254,7 @@
     <name>Stadshuis</name>
     <latitude>51.58885</latitude>
     <longitude>4.77616</longitude>
-    <image></image>
+    <image>sh</image>
     <audio></audio>
     <description>
       De hoofdingang van het standhuis bevindt zich boven het bordes, dat bewaakt wordt door twee zandstenen leeuwen. Het stadhuis, zoals dat er nu uitziet, kwam pas in 1767 tot stand. Het zijn eigenlijk vier huizen, die toen door de bouwmeester van Oranje, Philips Willem Schonck, achter één gevel werden verborgen. Het oudste deel is de grote hal. Al in de vijftiende eeuw werd daarnaast ook een zgn. 'Cleyn raedthuys' in gebruik genomen. In 1898 kwam het meest rechtse huis, het 'Liggend Hert' erbij, dat nog steeds een aparte gevel. heeft.
@@ -236,7 +274,7 @@
     <name>Antonius van Paduakerk</name>
     <latitude>51.58761</latitude>
     <longitude>4.77712</longitude>
-    <image></image>
+    <image>an</image>
     <audio></audio>
     <description>
       De St. Janstraat heeft ooit ook de Veterstraat geheten, waarschijnlijk naar de huydvetters of leerlooiers, die in de St. Janstraat hun beroep uitoefenden.
@@ -258,13 +296,13 @@
     <name>Bibliotheek</name>
     <latitude>51.58773</latitude>
     <longitude>4.77948</longitude>
-    <image></image>
+    <image>bieb</image>
     <audio></audio>
     <description>
-      In de Molenstraat ziet u recht de Bibliotheek, ontworpen door architect Herman Hertzberger. Omdat de Molenstraat vrij smal is, heeft de architect ruimte gecreëerd door de bibliotheek schuin oplopende wanden te geven. Op de plaats van de bibliotheek (op de hoek met de Oude Vest) bevond zich vroeger een poort. Boven deze poort bevond zich 's Heeren Gevangenhuys, waar de zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
+      In de Molenstraat ziet u rechts de Bibliotheek, ontworpen door architect Herman Hertzberger. Omdat de Molenstraat vrij smal is, heeft de architect ruimte gecreëerd door de bibliotheek schuin oplopende wanden te geven. Op de plaats van de bibliotheek (op de hoek met de Oude Vest) bevond zich vroeger een poort. Boven deze poort bevond zich 's Heeren Gevangenhuys, waar de zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
     </description>
     <descriptionEng>
-      Molenstraat shows law library, designed by architect Herman Hertzberger. Because Molenstraat is quite narrow, the architect created space to pass the library. sloping walls on the Instead of the library (on the corner of the Oude Vest) was then located a gate. Was above this gate is the Lord Caught Huys, where worst offenders were housed. The place is still cobbled in specified asphalt, the asphalt road is the site of the old moat.
+      At your right in the Molenstraat you see the library, designed by architect Herman Hertzberger. Because Molenstraat is quite narrow, the architect created space to pass the library. sloping walls on the Instead of the library (on the corner of the Oude Vest) was then located a gate. Was above this gate is the Lord Caught Huys, where worst offenders were housed. The place is still cobbled in specified asphalt, the asphalt road is the site of the old moat.
     </descriptionEng>
   </sight>
 
@@ -272,7 +310,7 @@
     <name>Kloosterkazerne</name>
     <latitude>51.58794</latitude>
     <longitude>4.78105</longitude>
-    <image></image>
+    <image>kk</image>
     <audio></audio>
     <description>
       Op deze hoek ziet u aan de overkant een voornaam monument uit de geschiedenis van Breda: de kloosterkazerne. Het is een deel van het vroegere zusterklooster St. Catharinadal, dat hier sinds 1295 gevestigd was. Het huidige gebouw dateert uit 1504. In 1645 werden de zusters Norbertinessen vanuit Breda naar Oosterhout verdreven.
@@ -286,19 +324,23 @@
     <name>Chasse theater</name>
     <latitude>51.58794</latitude>
     <longitude>4.78218</longitude>
-    <image></image>
+    <image>ch</image>
     <audio></audio>
-    <description>2e bocht Kloosterplein</description>
-    <descriptionEng>2nd corner Kloosterplein</descriptionEng>
+    <description>
+      Het Chassé Theater is een groot theater in de binnenstad van Breda, naast de oude Kloosterkazerne. Het theater is vernoemd naar de legerofficier David Hendrik Chassé. Het is gehuisvest in een modern gebouw met een opvallend golvend dak naar een ontwerp van Herman Hertzberger, dat uit 1995 dateert. Het theater bestaat uit drie theater- en drie filmzalen met in totaal ruim 2500 zitplaatsen.
+
+      Voorloper van het Chassé Theater was de Stadsschouwburg Concordia.
+    </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="23">
-    <name>Binding van Isaäc</name>
+    <name>Offer van Isaäc</name>
     <latitude>51.58862</latitude>
     <longitude>4.78079</longitude>
-    <image></image>
+    <image>bi</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>Het beeld Offer van Isaac is gemaakt door de kuntstenaar Menashe Kadishman</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -306,9 +348,9 @@
     <name>Beyerd</name>
     <latitude>51.58966</latitude>
     <longitude>4.78076</longitude>
-    <image></image>
+    <image>bey</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>De Beyerd is een Museum voor Grafische Vormgeving. Elke twee maanden kan de voorbijganger een nieuwe inrichting verwachten met steeds andere onderwerpen op het gebied van grafische vormgeving. </description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -316,39 +358,44 @@
     <name>Gasthuispoort</name>
     <latitude>51.58939</latitude>
     <longitude>4.77982</longitude>
-    <image></image>
+    <image>ghp</image>
     <audio></audio>
-    <description>1e bocht Catharinastraat / Veemarktstraat</description>
-    <descriptionEng>1st corner Catharinastraat / Veemarktstraat</descriptionEng>
+    <description>In het kader van de herontwikkeling van de Gasthuispoort heeft Gemeente Breda het plan van Bedaux de Brouwer Architecten als winnaar van de marktselectie gekozen. Volgens wethouder Wonen en Leven; Bob Bergkamp, versterkt het plan de oostelijke entree van de historische binnenstad.  </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="26">
     <name>Willem Merkxtuin</name>
     <latitude>51.58905</latitude>
     <longitude>4.77801</longitude>
-    <image></image>
+    <image>wm</image>
     <audio></audio>
-    <description>De ingang</description>
-    <descriptionEng>Entrance</descriptionEng>
+    <description>
+      De tuin is gelegen achter de voormalige hofhuizen in de Catharinastraat verlengde van de Reigerstraat. De tuin is vernoemd naar Willem Merkx, burgemeester van Breda van 1967 tot 1983. Het is een kleine groene oase in het midden van de stad.
+
+      In de tuin staan enkele beeldhouwwerken. Vanuit een doorgang achter de volière komt men via het Stadserf bij de achterkant van het stadhuis Breda op de Grote Markt Breda.
+    </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="27">
     <name>Begijnenhof</name>
     <latitude>51.58965</latitude>
     <longitude>4.77830</longitude>
-    <image></image>
+    <image>bp</image>
     <audio></audio>
-    <description>Entrance</description>
+    <description>Het Bredase Begijnhof is een door muren omringd complex bestaande uit huisjes en een kleine kerk in het centrum van Breda. De 29 huisjes verdeeld over twee hofjes zijn gegroepeerd rondom een kruidentuin. Hier staat ook een beeldje van twee begijnen in gesprek. Het is gelegen dichtbij het Park Valkenberg.</description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="28">
     <name>Eindpunt stadswandeling</name>
     <latitude>51.58950</latitude>
     <longitude>4.77649</longitude>
-    <image></image>
+    <image>logo</image>
     <audio></audio>
-    <description>Eindpunt</description>
-    <descriptionEng>End point</descriptionEng>
+    <description>Dit is het einde van de route. Vanaf hier gaan we terug naar het VVV. Hopelijk heeft u genoten van de tour.</description>
+    <descriptionEng></descriptionEng>
   </sight>
   
 </sightList>
