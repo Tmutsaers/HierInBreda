@@ -18,11 +18,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "*"/>
                 <ColumnDefinition Width = "2*"/>
-                <ColumnDefinition Width = "*"/>                
+                <ColumnDefinition Width = "*"/>
             </Grid.ColumnDefinitions>
-            <AppBarButton Icon="Previous" Label="Previous" Grid.Row="0" Grid.Column="0" Tapped="AppBarButton_Tapped_1"/>
-            <AppBarButton Icon="Next" Label="Next" Grid.Row="0" Grid.Column="2" Tapped="AppBarButton_Tapped"/>
-            <TextBlock x:Name="pageOfNumber"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="1 / 7" Grid.Row="0" Grid.Column="1" FontSize="40"/>
+            <AppBarButton x:Name="Previous" Icon="Previous" Label="Previous" Grid.Row="0" Grid.Column="0" Tapped="Previous_Tapped"/>
+            <AppBarButton x:Name="Next" Icon="Next" Label="Next" Grid.Row="0" Grid.Column="2" Tapped="Next_Tapped"/>
+            <TextBlock x:Name="PageNumber"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="1 / 7" Grid.Row="0" Grid.Column="1" FontSize="40"/>
 
 
         </Grid>
@@ -31,10 +31,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image x:Name="tutorialImage" Source="ms-appx:///Assets\TutorialImages\sample_pic.jpg" Grid.Row="0" Grid.Column="0"/>
-            <TextBlock x:Name="tutorialText" Text="Dit is een tutorialpagina die door Johannes ingevult gaat worden.!!" TextWrapping="Wrap" FontSize="40" Grid.Row="1" Grid.Column="0"/>
+            <TextBlock x:Name="tutorialText" TextWrapping="Wrap" FontSize="24" Grid.Column="0" Margin="0,60,25,60" Grid.RowSpan="2"/>
         </Grid>
-        
+
 
     </Grid>
 
