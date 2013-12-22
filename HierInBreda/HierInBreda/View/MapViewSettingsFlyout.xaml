@@ -31,14 +31,14 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ToggleSwitch x:Uid="Legenda" FontFamily="Comic Sans MS"/>
+                <ToggleSwitch x:Uid="Legenda" FontFamily="Comic Sans MS"  Toggled="ToggleSwitch_Toggled"/>
             </Grid>
         </StackPanel>
         <TextBlock x:Uid="SightsListHeader" Name="SightsListHeader" Grid.Row="2" FontSize="25" FontFamily="Comic Sans MS" />
         <Border BorderBrush="Black"  BorderThickness="2" Grid.Row="3">
-            <ListView x:Name="SightsList" SelectionMode="None" ItemsSource="{Binding Path=Sights}" Grid.Row="3" ScrollViewer.VerticalScrollMode="Auto" Height="250" >
+            <ListView x:Name="SightsList" SelectionMode="None" ItemsSource="{Binding Path=Sights}" Grid.Row="3" ScrollViewer.VerticalScrollMode="Auto" Height="250" Tapped="SightsList_Tapped"  >
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate >
                         <Border BorderBrush="Black" BorderThickness="1">
                             <Grid Margin="5" Width="100">
                                 <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                                     <ColumnDefinition Width="100"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0"/>
-                                <TextBlock Grid.Column="1" Text="{Binding name}" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="ListViewItemName" Grid.Column="1" Text="{Binding name}" TextWrapping="Wrap"/>
                             </Grid>
                         </Border>
                     </DataTemplate>

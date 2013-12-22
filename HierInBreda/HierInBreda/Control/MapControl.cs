@@ -8,6 +8,7 @@ using HierInBreda.Model;
 using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.ApplicationModel.Resources;
 
 namespace HierInBreda.Control
 {
@@ -29,16 +30,44 @@ namespace HierInBreda.Control
         private Dictionary<Pushpin, Geofence> sightFences = new Dictionary<Pushpin, Geofence>();
         private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
+        public bool insideGeofence { get; set; }
 
         public MapControl(DataControl dc, MapView mv)
         {
             dataControl = dc;
             mapView = mv;
-            
+            mapView.getInfoButton().IsEnabled = false;
             mapView.sightPinTapped += MapView_sightPinTapped;
             mapView.userPosChanged += MapView_userPosChanged;
+            mapView.flyout.sightsListViewItemTapped += flyout_sightsListViewItemTapped;
             createSights();
-            GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+        }
+
+        void flyout_sightsListViewItemTapped(object source, Sight s)
+        {
+            Sight sight = s;
+            if (sight.img != "")
+            {
+                if (sight.img.Length > 3)
+                {
+                    String[] images = sight.img.Split(',');
+                    mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                    mapView.flyout.Hide();
+                    mapView.sightFlyout.Show();
+                }
+                else
+                {
+                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                    mapView.flyout.Hide();
+                    mapView.sightFlyout.Show();
+                }
+            }
+            else
+            {
+                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                mapView.flyout.Hide();
+                mapView.sightFlyout.Show();
+            }
         }
 
         public async void createRoute()
@@ -49,7 +78,7 @@ namespace HierInBreda.Control
                 {
                     locs.Add(new Bing.Maps.Location(double.Parse(s.lat), double.Parse(s.longi)));
                 }
-                mapView.createRoute(locs);
+                mapView.createRoute2(locs);
         }
 
         void Current_GeofenceStateChanged(GeofenceMonitor sender, object args)
@@ -60,33 +89,56 @@ namespace HierInBreda.Control
                     GeofenceState state = report.NewState;
 
                     Geofence geofence = report.Geofence;
+
+                    if(state == GeofenceState.Exited)
+                    {
+                        mapView.getInfoButton().IsEnabled = false;
+                    }
+
                     if (state == GeofenceState.Entered)
                     {
+                        mapView.getInfoButton().IsEnabled = true;
                         foreach(Pushpin pin in sightpins.Keys)
                         {
                             if(sightpins[pin].Equals(geofence))
                             {
                                 Sight sight = sightpins[pin];
+
+                                String description = sight.disc;
+                                if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
+                                    description = sight.discEng;
+
                                 if (sight.img != "")
                                 {
                                     if (sight.img.Length > 3)
                                     {
                                         String[] images = sight.img.Split(',');
-                                        mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                                        mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
                                         mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                     }
                                     else
                                     {
-                                        mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                        mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                                         mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                     }
                                 }
                                 else
                                 {
-                                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                                    mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                                     mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
                                 }
-                                pin.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
+                                foreach(object o in mapView.getMap().Children)
+                                {
+                                    if(o.GetType() == typeof(Pushpin))
+                                    {
+                                        Pushpin p = o as Pushpin;
+                                        if(p.Equals(pin))
+                                        {
+                                            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
+                                        }
+                                    }
+
+                                }
                             }
                         }
                     }
@@ -121,6 +173,7 @@ namespace HierInBreda.Control
             mapView.flyout.setSights(sights);
             //MapView.createSightPins(locs);
             createRoute();
+            GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
         }
 
 
@@ -165,7 +218,9 @@ namespace HierInBreda.Control
                 else
                     if (!userRadius.Intersects(Route.Bounds))
                     {
-                        mapView.popup = new Windows.UI.Popups.MessageDialog("U wijkt van de Route af", "Route");
+                        ResourceLoader rl = new ResourceLoader();
+                        mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+
                         await mapView.popup.ShowAsync();
                         insideRoute = false;
                     }
@@ -175,21 +230,25 @@ namespace HierInBreda.Control
         void MapView_sightPinTapped(object sender, Pushpin pin)
         {
             Sight sight = sightpins[pin];
+            String description = sight.disc;
+            if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
+                description = sight.discEng;
+
             if (sight.img != "")
             {
                 if (sight.img.Length > 3)
                 {
                     String[] images = sight.img.Split(',');
-                    mapView.sightFlyout.updateSightInfo(images[0], sight.disc, sight.name);
+                    mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
                 }
                 else
                 {
-                    mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                    mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
                 }
             }
             else
             {
-                mapView.sightFlyout.updateSightInfo(sight.img, sight.disc, sight.name);
+                mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
             }
             mapView.sightFlyout.Show();
         }

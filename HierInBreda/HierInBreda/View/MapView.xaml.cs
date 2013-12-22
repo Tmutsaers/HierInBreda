@@ -49,26 +49,35 @@ namespace HierInBreda
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
         public SightInfoFlyout sightFlyout { get; set; }
+        public TutorialViewFlyout turorialViewFlyout { get; set; }
         public MessageDialog popup { get; set; }
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
+        public MapShapeLayer walkedPathLayer = new MapShapeLayer();
 
         public static MapView getInstance()
         {
             return instance != null ? instance : (instance = new MapView());
         }
 
+        public Map getMap()
+        {
+            return Map;
+        }
+
+
         public MapView()
         {
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
             this.InitializeComponent();
             instance = this;
-
+            Map.ShapeLayers.Add(walkedPathLayer);
             zoomToLocation();
             flyout = new MapViewSettingsFlyout(this);
             sightFlyout = new SightInfoFlyout();
+            turorialViewFlyout = new TutorialViewFlyout();
             //flyout.Show();
-            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.jpg");
+            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.png");
             AgsLogo.Source = new BitmapImage(uri);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             System.Diagnostics.Debug.WriteLine("Test");
@@ -82,6 +91,52 @@ namespace HierInBreda
         public AppBarButton getInfoButton()
         {
             return InfoButton;
+        }
+
+        public async void createRoute2(List<Location> locs)
+        {
+            LocationCollection routePoints = new LocationCollection();
+            WaypointCollection col = new WaypointCollection();
+            for(int  i= 0; i < locs.Count/2;i++)
+            {
+                col.Add(new Waypoint(locs[i]));
+            }
+
+            DirectionsManager manager = Map.DirectionsManager;
+            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
+            manager.Waypoints = col;
+
+            RouteResponse resp = await manager.CalculateDirectionsAsync();
+            foreach(Location l in resp.Routes[0].RoutePath.PathPoints)
+            {
+                routePoints.Add(l);
+            }
+
+            manager.Waypoints.Clear();
+            col.Clear();
+
+            for(int i = locs.Count/2;i < locs.Count;i++)
+            {
+                col.Add(new Waypoint(locs[i]));
+            }
+
+            manager.Waypoints = col;
+
+            resp = await manager.CalculateDirectionsAsync();
+            foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
+            {
+                routePoints.Add(l);
+            }
+
+
+            MapPolyline line = new MapPolyline { Locations = routePoints };
+            line.Color = new Windows.UI.Color { A = 200, R = 125, G = 125, B = 0 };
+            line.Width = 10.0;
+
+            MapShapeLayer layer = new MapShapeLayer();
+            layer.Shapes.Add(line);
+
+            Map.ShapeLayers.Add(layer);
         }
 
         public async void createRoute(List<Location> locs)
@@ -172,7 +227,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 5));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.1));
             return fence;
         }
 
@@ -215,6 +270,7 @@ namespace HierInBreda
                         if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
                         {
                             MapLayer.SetPosition(userPin, currentLoc);
+                            drawMovedLine(currentLoc, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude));
                             zoomToLocation2(currentLoc);
                             OnUserPositionChanged(this, currentLoc);
                         }
@@ -225,6 +281,20 @@ namespace HierInBreda
             {
                 System.Diagnostics.Debug.WriteLine(x);
             }
+        }
+
+        public void drawMovedLine(Location l1, Location l2)
+        {
+            foreach (MapShapeLayer layer in Map.ShapeLayers)
+            {
+                if (layer.Equals(walkedPathLayer))
+                {
+                    MapPolyline line = new MapPolyline { Locations = new LocationCollection { l1, l2 } };
+                    line.Color = new Windows.UI.Color { A = 200, B = 100, G = 100, R = 100 };
+                    line.Width = 10.0;
+                }
+            }
+
         }
 
         public bool UserIsInRadius(double radius,Location newLoc,Location oldLoc)
@@ -274,13 +344,34 @@ namespace HierInBreda
 
         private void TutorialButton_Click(object sender, RoutedEventArgs e)
         {
-            MainControl.promptUserForTutorial(this);
+            turorialViewFlyout.Show();
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
-            sightFlyout.Show();
+                InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
+                sightFlyout.Show();
+        }
+
+        public void refresh()
+        {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
+            flyout = new MapViewSettingsFlyout(this);
+            sightFlyout = new SightInfoFlyout();
+
+            ResourceLoader rl = new ResourceLoader();
+            AppbarButton.Label = rl.GetString("AppbarButtonLabel");
+            InfoButton.Label = rl.GetString("InfoButtonLabel");
+            TutorialButton.Label = rl.GetString("TutorialButtonLabel");
+        }
+
+        public void setVisibilityLegenda(Boolean vis)
+        {
+            if (vis)
+                mainGridLegenda.Visibility = Visibility.Visible;
+            else
+                mainGridLegenda.Visibility = Visibility.Collapsed;
+
         }
     }
 }

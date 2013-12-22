@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HierInBreda.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,11 @@ namespace HierInBreda.View
     {
         public SightInfoFlyout()
         {
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageControl.GetInstance().lang;
             this.InitializeComponent();
             SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Assets/agslogo.jpg"));
         }
+
 
         public void updateSightInfo(String imageName,String desc,String name)
         {

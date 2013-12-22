@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 
 namespace HierInBreda.Control
@@ -32,10 +33,10 @@ namespace HierInBreda.Control
 
         private static void startTutorial(IUICommand command)
         {
-            if(mapView.Frame != null)
-            {
-                mapView.Frame.Navigate(typeof(View.TutorialView));
-            }
+            //if (mapView.Frame != null)
+            //{
+            //    mapView.Frame.Navigate(typeof(View.TutorialView));
+            //}
         }
 
         public DataControl getDataControl()
@@ -49,16 +50,17 @@ namespace HierInBreda.Control
 
         public static async void promptUserForTutorial(MapView mapView)
         {
+            ResourceLoader rl = new ResourceLoader();
             MainControl.mapView = mapView;
-            MessageDialog msgDialog = new MessageDialog("Would you like to follow the tutorial?", "Tutorial");
+            MessageDialog msgDialog = new MessageDialog(rl.GetString("TutorialPromptText"), rl.GetString("TutorialButton.Label"));
 
             //OK Button
-            UICommand okButton = new UICommand("OK");
+            UICommand okButton = new UICommand(rl.GetString("OkText"));
             okButton.Invoked = startTutorial;
             msgDialog.Commands.Add(okButton);
 
             //Skip Button
-            UICommand skipButton = new UICommand("Skip");
+            UICommand skipButton = new UICommand(rl.GetString("CancelText"));
             skipButton.Invoked = skipTutorial;
             msgDialog.Commands.Add(skipButton);
 
@@ -105,12 +107,14 @@ namespace HierInBreda.Control
 
         private static void switchToEnglish(IUICommand command)
         {
-
+            LanguageControl.GetInstance().lang = "en";
+            MapView.getInstance().refresh();
         }
 
         private static void switchToDutch(IUICommand command)
         {
-
+            LanguageControl.GetInstance().lang = "nl";
+            MapView.getInstance().refresh();
         }
     }
 }

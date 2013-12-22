@@ -133,7 +133,7 @@
 
       Tot 1605 heeft het gebouw verschillende functies vervuld, waaronder smidse; vanaf 1794 tot 1940 was het als militair hospitaal in gebruik. Tegenwoordig dient het gebouw als onderkomen voor de bibliotheek van de Koninklijke Militaire Academie (KMA).
     </description>
-    <descriptionEng>1st corner Cingelstraat</descriptionEng>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="9">
@@ -246,7 +246,7 @@
     <longitude>4.77638</longitude>
     <image>24,25</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>Judith met het hoofd van Holofernes is in 1947 gemaakt door beeldhouwer Niel Steenbergen als bevrijdingsmonument. De Joodse vrouw Judith staat voor het goede dat het kwade overwint. In haar rechterhand heeft zij het afgehakte hoofd van Holofernes, legeraanvoerder van de Babylonische koning Nebukadnezar.</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -299,10 +299,10 @@
     <image>bieb</image>
     <audio></audio>
     <description>
-      In de Molenstraat ziet u recht de Bibliotheek, ontworpen door architect Herman Hertzberger. Omdat de Molenstraat vrij smal is, heeft de architect ruimte gecreëerd door de bibliotheek schuin oplopende wanden te geven. Op de plaats van de bibliotheek (op de hoek met de Oude Vest) bevond zich vroeger een poort. Boven deze poort bevond zich 's Heeren Gevangenhuys, waar de zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
+      In de Molenstraat ziet u rechts de Bibliotheek, ontworpen door architect Herman Hertzberger. Omdat de Molenstraat vrij smal is, heeft de architect ruimte gecreëerd door de bibliotheek schuin oplopende wanden te geven. Op de plaats van de bibliotheek (op de hoek met de Oude Vest) bevond zich vroeger een poort. Boven deze poort bevond zich 's Heeren Gevangenhuys, waar de zwaarst gestraften werden ondergebracht. De plaats is nog met keitjes in het asfalt aangegeven; de asfaltweg is de plaats van de oude stadsgracht.
     </description>
     <descriptionEng>
-      Molenstraat shows law library, designed by architect Herman Hertzberger. Because Molenstraat is quite narrow, the architect created space to pass the library. sloping walls on the Instead of the library (on the corner of the Oude Vest) was then located a gate. Was above this gate is the Lord Caught Huys, where worst offenders were housed. The place is still cobbled in specified asphalt, the asphalt road is the site of the old moat.
+      At your right in the Molenstraat you see the library, designed by architect Herman Hertzberger. Because Molenstraat is quite narrow, the architect created space to pass the library. sloping walls on the Instead of the library (on the corner of the Oude Vest) was then located a gate. Was above this gate is the Lord Caught Huys, where worst offenders were housed. The place is still cobbled in specified asphalt, the asphalt road is the site of the old moat.
     </descriptionEng>
   </sight>
 
@@ -326,17 +326,21 @@
     <longitude>4.78218</longitude>
     <image>ch</image>
     <audio></audio>
-    <description>2e bocht Kloosterplein</description>
-    <descriptionEng>2nd corner Kloosterplein</descriptionEng>
+    <description>
+      Het Chassé Theater is een groot theater in de binnenstad van Breda, naast de oude Kloosterkazerne. Het theater is vernoemd naar de legerofficier David Hendrik Chassé. Het is gehuisvest in een modern gebouw met een opvallend golvend dak naar een ontwerp van Herman Hertzberger, dat uit 1995 dateert. Het theater bestaat uit drie theater- en drie filmzalen met in totaal ruim 2500 zitplaatsen.
+
+      Voorloper van het Chassé Theater was de Stadsschouwburg Concordia.
+    </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="23">
-    <name>Binding van Isaäc</name>
+    <name>Offer van Isaäc</name>
     <latitude>51.58862</latitude>
     <longitude>4.78079</longitude>
     <image>bi</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>Het beeld Offer van Isaac is gemaakt door de kuntstenaar Menashe Kadishman</description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -346,7 +350,7 @@
     <longitude>4.78076</longitude>
     <image>bey</image>
     <audio></audio>
-    <description>nvt</description>
+    <description>De Beyerd is een Museum voor Grafische Vormgeving. Elke twee maanden kan de voorbijganger een nieuwe inrichting verwachten met steeds andere onderwerpen op het gebied van grafische vormgeving. </description>
     <descriptionEng>n/a</descriptionEng>
   </sight>
 
@@ -356,8 +360,8 @@
     <longitude>4.77982</longitude>
     <image>ghp</image>
     <audio></audio>
-    <description>1e bocht Catharinastraat / Veemarktstraat</description>
-    <descriptionEng>1st corner Catharinastraat / Veemarktstraat</descriptionEng>
+    <description>In het kader van de herontwikkeling van de Gasthuispoort heeft Gemeente Breda het plan van Bedaux de Brouwer Architecten als winnaar van de marktselectie gekozen. Volgens wethouder Wonen en Leven; Bob Bergkamp, versterkt het plan de oostelijke entree van de historische binnenstad.  </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="26">
@@ -366,8 +370,12 @@
     <longitude>4.77801</longitude>
     <image>wm</image>
     <audio></audio>
-    <description>De ingang</description>
-    <descriptionEng>Entrance</descriptionEng>
+    <description>
+      De tuin is gelegen achter de voormalige hofhuizen in de Catharinastraat verlengde van de Reigerstraat. De tuin is vernoemd naar Willem Merkx, burgemeester van Breda van 1967 tot 1983. Het is een kleine groene oase in het midden van de stad.
+
+      In de tuin staan enkele beeldhouwwerken. Vanuit een doorgang achter de volière komt men via het Stadserf bij de achterkant van het stadhuis Breda op de Grote Markt Breda.
+    </description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="27">
@@ -376,8 +384,8 @@
     <longitude>4.77830</longitude>
     <image>bp</image>
     <audio></audio>
-    <description>ingang</description>
-    <descriptionEng>Entrance</descriptionEng>
+    <description>Het Bredase Begijnhof is een door muren omringd complex bestaande uit huisjes en een kleine kerk in het centrum van Breda. De 29 huisjes verdeeld over twee hofjes zijn gegroepeerd rondom een kruidentuin. Hier staat ook een beeldje van twee begijnen in gesprek. Het is gelegen dichtbij het Park Valkenberg.</description>
+    <descriptionEng></descriptionEng>
   </sight>
 
   <sight id="28">
@@ -387,7 +395,7 @@
     <image>logo</image>
     <audio></audio>
     <description>Dit is het einde van de route. Vanaf hier gaan we terug naar het VVV. Hopelijk heeft u genoten van de tour.</description>
-    <descriptionEng>End point</descriptionEng>
+    <descriptionEng></descriptionEng>
   </sight>
   
 </sightList>
