@@ -38,5 +38,10 @@ namespace HierInBreda.View
             ResourceLoader rl = new ResourceLoader();
             Title = rl.GetString("BackButton");
         }
+
+        private void ScrollViewer_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
