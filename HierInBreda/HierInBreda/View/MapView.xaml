@@ -55,6 +55,7 @@
             </Grid>
             
         </Grid>
+        <AppBarButton Name="VVVBackButton" HorizontalAlignment="Left" Label="VVV" Margin="918,6,0,0" VerticalAlignment="Top" Icon="Map" Click="VVVBackButton_Click" />
 
     </Grid>
 </Page>

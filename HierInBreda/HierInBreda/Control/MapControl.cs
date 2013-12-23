@@ -26,7 +26,7 @@ namespace HierInBreda.Control
         public Bing.Maps.Directions.Route Route { get; set; }
         private bool insideRoute = true;
         public DataControl dataControl;
-        private List<Sight> sights;
+        public List<Sight> sights { get; set; }
         private Dictionary<Pushpin, Geofence> sightFences = new Dictionary<Pushpin, Geofence>();
         private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
