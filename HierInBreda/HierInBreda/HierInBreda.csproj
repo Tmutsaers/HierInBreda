@@ -329,6 +329,20 @@
     <Content Include="Images\8.jpg" />
     <Content Include="Images\9.jpg" />
     <Content Include="Common\ReadMe.txt" />
+    <Content Include="Images\an.jpg" />
+    <Content Include="Images\bey.jpg" />
+    <Content Include="Images\bi.JPG" />
+    <Content Include="Images\bieb.jpg" />
+    <Content Include="Images\bp.jpg" />
+    <Content Include="Images\ch.jpg" />
+    <Content Include="Images\ghp.JPG" />
+    <Content Include="Images\gm.jpg" />
+    <Content Include="Images\kk.jpg" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\rid.jpg" />
+    <Content Include="Images\sh.jpg" />
+    <Content Include="Images\vb.jpg" />
+    <Content Include="Images\wm.jpg" />
     <Content Include="Sights.xml">
       <SubType>Designer</SubType>
     </Content>
