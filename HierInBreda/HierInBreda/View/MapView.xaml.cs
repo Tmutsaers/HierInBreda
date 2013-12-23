@@ -54,6 +54,7 @@ namespace HierInBreda
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
         public MapShapeLayer walkedPathLayer = new MapShapeLayer();
+        public MapShapeLayer RouteLayer = new MapShapeLayer();
 
         public static MapView getInstance()
         {
@@ -91,6 +92,27 @@ namespace HierInBreda
         public AppBarButton getInfoButton()
         {
             return InfoButton;
+        }
+
+        public async void createRouteToVVV(Location curLoc,Location vvvLoc)
+        {
+
+            foreach (MapShapeLayer layer in Map.ShapeLayers)
+            {
+                if (layer.Equals(RouteLayer))
+                {
+                    layer.Shapes.Clear();
+                    RouteLayer.Shapes.Clear();
+                }
+            }
+
+            WaypointCollection routePoints = new WaypointCollection { new Waypoint(curLoc), new Waypoint(vvvLoc) };
+            DirectionsManager manager = Map.DirectionsManager;
+            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
+            manager.Waypoints = routePoints;
+
+            RouteResponse resp = await manager.CalculateDirectionsAsync();
+            manager.ShowRoutePath(resp.Routes[0]);
         }
 
         public async void createRoute2(List<Location> locs)
@@ -133,10 +155,9 @@ namespace HierInBreda
             line.Color = new Windows.UI.Color { A = 200, R = 125, G = 125, B = 0 };
             line.Width = 10.0;
 
-            MapShapeLayer layer = new MapShapeLayer();
-            layer.Shapes.Add(line);
+            RouteLayer.Shapes.Add(line);
 
-            Map.ShapeLayers.Add(layer);
+            Map.ShapeLayers.Add(RouteLayer);
         }
 
         public async void createRoute(List<Location> locs)
@@ -372,6 +393,11 @@ namespace HierInBreda
             else
                 mainGridLegenda.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void VVVBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
         }
     }
 }
