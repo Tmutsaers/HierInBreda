@@ -54,6 +54,8 @@ namespace HierInBreda
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
         public MapShapeLayer walkedPathLayer = new MapShapeLayer();
+        public MapShapeLayer RouteLayer = new MapShapeLayer();
+        private DispatcherTimer timer;
 
         public static MapView getInstance()
         {
@@ -93,6 +95,27 @@ namespace HierInBreda
             return InfoButton;
         }
 
+        public async void createRouteToVVV(Location curLoc,Location vvvLoc)
+        {
+
+            foreach (MapShapeLayer layer in Map.ShapeLayers)
+            {
+                if (layer.Equals(RouteLayer))
+                {
+                    layer.Shapes.Clear();
+                    RouteLayer.Shapes.Clear();
+                }
+            }
+
+            WaypointCollection routePoints = new WaypointCollection { new Waypoint(curLoc), new Waypoint(vvvLoc) };
+            DirectionsManager manager = Map.DirectionsManager;
+            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
+            manager.Waypoints = routePoints;
+
+            RouteResponse resp = await manager.CalculateDirectionsAsync();
+            manager.ShowRoutePath(resp.Routes[0]);
+        }
+
         public async void createRoute2(List<Location> locs)
         {
             LocationCollection routePoints = new LocationCollection();
@@ -130,13 +153,12 @@ namespace HierInBreda
 
 
             MapPolyline line = new MapPolyline { Locations = routePoints };
-            line.Color = new Windows.UI.Color { A = 200, R = 125, G = 125, B = 0 };
+            line.Color = new Windows.UI.Color { A = 200, R = 0, G = 0, B = 200 };
             line.Width = 10.0;
 
-            MapShapeLayer layer = new MapShapeLayer();
-            layer.Shapes.Add(line);
+            RouteLayer.Shapes.Add(line);
 
-            Map.ShapeLayers.Add(layer);
+            Map.ShapeLayers.Add(RouteLayer);
         }
 
         public async void createRoute(List<Location> locs)
@@ -248,6 +270,10 @@ namespace HierInBreda
             //_geolocator.ReportInterval = 500;
             _geolocator.DesiredAccuracy = PositionAccuracy.Default;
             _geolocator.PositionChanged += _geolocator_PositionChanged;
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
+            timer.Start();
         }
 
         public void zoomToLocation2(Location l)
@@ -263,7 +289,7 @@ namespace HierInBreda
             {
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    if (currentLoc != null && UserIsInRadius(0.1, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
+                    if (currentLoc != null && UserIsInRadius(10, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
                         currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
@@ -292,6 +318,7 @@ namespace HierInBreda
                     MapPolyline line = new MapPolyline { Locations = new LocationCollection { l1, l2 } };
                     line.Color = new Windows.UI.Color { A = 200, B = 100, G = 100, R = 100 };
                     line.Width = 10.0;
+                    layer.Shapes.Add(line);
                 }
             }
 
@@ -372,6 +399,16 @@ namespace HierInBreda
             else
                 mainGridLegenda.Visibility = Visibility.Collapsed;
 
+        }
+
+        private void VVVBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
+        }
+
+        async void timer_Tick(object sender, object e)
+        {
+            await _geolocator.GetGeopositionAsync();
         }
     }
 }
