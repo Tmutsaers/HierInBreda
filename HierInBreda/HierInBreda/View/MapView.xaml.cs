@@ -55,6 +55,7 @@ namespace HierInBreda
         public MapControl mc { get; set; }
         public MapShapeLayer walkedPathLayer = new MapShapeLayer();
         public MapShapeLayer RouteLayer = new MapShapeLayer();
+        private DispatcherTimer timer;
 
         public static MapView getInstance()
         {
@@ -269,6 +270,10 @@ namespace HierInBreda
             //_geolocator.ReportInterval = 500;
             _geolocator.DesiredAccuracy = PositionAccuracy.Default;
             _geolocator.PositionChanged += _geolocator_PositionChanged;
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
+            timer.Start();
         }
 
         public void zoomToLocation2(Location l)
@@ -284,7 +289,7 @@ namespace HierInBreda
             {
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    if (currentLoc != null && UserIsInRadius(0.1, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
+                    if (currentLoc != null && UserIsInRadius(10, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
                         currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
@@ -313,6 +318,7 @@ namespace HierInBreda
                     MapPolyline line = new MapPolyline { Locations = new LocationCollection { l1, l2 } };
                     line.Color = new Windows.UI.Color { A = 200, B = 100, G = 100, R = 100 };
                     line.Width = 10.0;
+                    layer.Shapes.Add(line);
                 }
             }
 
@@ -398,6 +404,11 @@ namespace HierInBreda
         private void VVVBackButton_Click(object sender, RoutedEventArgs e)
         {
             createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
+        }
+
+        async void timer_Tick(object sender, object e)
+        {
+            await _geolocator.GetGeopositionAsync();
         }
     }
 }
