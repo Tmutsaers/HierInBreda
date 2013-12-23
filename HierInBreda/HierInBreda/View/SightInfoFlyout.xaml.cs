@@ -35,5 +35,10 @@ namespace HierInBreda.View
             SightName.Text = name;
             SightInfo.Text = desc;
         }
+
+        private void ScrollViewer_GotFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

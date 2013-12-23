@@ -29,7 +29,7 @@ namespace HierInBreda.View
             this.InitializeComponent();
             page = FIRST_PAGE_NUM;
             Previous.IsEnabled = false;
-            setText();
+            setTextAndImage();
         }
 
         private void Next_Tapped(object sender, TappedRoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace HierInBreda.View
                 Previous.IsEnabled = true;
             }
             PageNumber.Text = "" + page + " / " + PAGE_MAX;
-            setText();
+            setTextAndImage();
         }
 
         private void Previous_Tapped(object sender, TappedRoutedEventArgs e)
@@ -57,14 +57,18 @@ namespace HierInBreda.View
                 Previous.IsEnabled = true;
             }
             PageNumber.Text = "" + page + " / " + PAGE_MAX;
-            setText();
+            setTextAndImage();
         }
 
 
-        private void setText()
+        private void setTextAndImage()
         {
             ResourceLoader rl = new ResourceLoader();
             tutorialText.Text = rl.GetString("TutorialPage" + page);
+            String languageFolder = "nl/";
+            if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
+                languageFolder = "en/";
+            tutorialImage.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/TutorialImages/" + languageFolder + "page"+ page + ".png"));
         }
     }
 }

@@ -31,7 +31,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="tutorialText" TextWrapping="Wrap" FontSize="24" Grid.Column="0" Margin="0,60,25,60" Grid.RowSpan="2"/>
+            <TextBlock x:Name="tutorialText" TextWrapping="Wrap" FontSize="24" Grid.Column="0" Margin="0,237,25,10" Grid.RowSpan="2"/>
+            <Image x:Name="tutorialImage" HorizontalAlignment="Center" Height="200" Margin="10,10,10,10" VerticalAlignment="Top" />
         </Grid>
 
 

@@ -136,7 +136,7 @@
     <value>Change language</value>
   </data>
   <data name="Legenda.Header" xml:space="preserve">
-    <value>Legenda</value>
+    <value>Legend</value>
   </data>
   <data name="Legenda.OffContent" xml:space="preserve">
     <value>Off</value>
@@ -198,7 +198,7 @@ The menu bar contains from top to bottom:
   <data name="TutorialPage5" xml:space="preserve">
     <value>The route
 
-The route on the map is colored yellow. The part of the route that has been walked by you will be colored gray.</value>
+The route on the map is colored blue. The part of the route that has been walked by you will be colored gray.</value>
   </data>
   <data name="TutorialPage6" xml:space="preserve">
     <value>The sights
