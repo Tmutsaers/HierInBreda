@@ -123,6 +123,9 @@
   <data name="AppbarButtonLabel" xml:space="preserve">
     <value>Opties</value>
   </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Terug</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Annuleer</value>
   </data>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -34,6 +35,8 @@ namespace HierInBreda.View
             SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName + ".jpg"));
             SightName.Text = name;
             SightInfo.Text = desc;
+            ResourceLoader rl = new ResourceLoader();
+            Title = rl.GetString("BackButton");
         }
     }
 }
