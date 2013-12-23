@@ -152,7 +152,7 @@ namespace HierInBreda
 
 
             MapPolyline line = new MapPolyline { Locations = routePoints };
-            line.Color = new Windows.UI.Color { A = 200, R = 125, G = 125, B = 0 };
+            line.Color = new Windows.UI.Color { A = 200, R = 0, G = 0, B = 200 };
             line.Width = 10.0;
 
             RouteLayer.Shapes.Add(line);

@@ -20,11 +20,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Name="SightName" Text="Sight Name" TextAlignment="Center" FontSize="24" Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" Grid.Column="2" FontSize="16" TextWrapping="Wrap" />
+        <ScrollViewer  Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Hidden">
+            <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" Grid.Column="2" FontSize="16" TextWrapping="Wrap"/>
+        </ScrollViewer>
         <Image Name="SightImage" Grid.Column="0" Grid.Row="1"/>
     </Grid>
 </SettingsFlyout>
