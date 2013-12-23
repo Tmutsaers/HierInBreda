@@ -184,11 +184,11 @@ namespace HierInBreda
 
 
             MapPolyline line = new MapPolyline { Locations = routePoints };
-            line.Color = new Windows.UI.Color { A = 200, R = 0, G = 0, B = 200 };
+            line.Color = new Windows.UI.Color { A = 50, R = 0, G = 0, B = 200 };
             line.Width = 10.0;
 
             RouteLayer.Shapes.Add(line);
-
+            mc.pathLocations = routePoints;
             Map.ShapeLayers.Add(RouteLayer);
         }
 
@@ -323,7 +323,6 @@ namespace HierInBreda
                 {
                     if (currentLoc != null && UserIsInRadius(10, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
-                        currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
                         {
@@ -331,6 +330,7 @@ namespace HierInBreda
                             drawMovedLine(currentLoc, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude));
                             zoomToLocation2(currentLoc);
                             OnUserPositionChanged(this, currentLoc);
+                            currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         }
                     }
                 });
@@ -348,7 +348,7 @@ namespace HierInBreda
                 if (layer.Equals(walkedPathLayer))
                 {
                     MapPolyline line = new MapPolyline { Locations = new LocationCollection { l1, l2 } };
-                    line.Color = new Windows.UI.Color { A = 200, B = 100, G = 100, R = 100 };
+                    line.Color = new Windows.UI.Color { A = 255, B = 100, G = 100, R = 100 };
                     line.Width = 10.0;
                     layer.Shapes.Add(line);
                 }
