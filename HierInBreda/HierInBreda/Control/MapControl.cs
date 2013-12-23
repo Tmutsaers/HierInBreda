@@ -92,40 +92,42 @@ namespace HierInBreda.Control
 
                     if(state == GeofenceState.Exited)
                     {
-                        mapView.getInfoButton().IsEnabled = false;
+                        mapView.setInfoIcon(false);
                     }
 
                     if (state == GeofenceState.Entered)
                     {
-                        mapView.getInfoButton().IsEnabled = true;
+
+                        mapView.setInfoIcon(true);
                         foreach(Pushpin pin in sightpins.Keys)
                         {
-                            if(sightpins[pin].Equals(geofence))
+                            if(sightpins[pin].name == geofence.Id)
                             {
                                 Sight sight = sightpins[pin];
-
+                                
+                                
                                 String description = sight.disc;
                                 if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
                                     description = sight.discEng;
-
+                                
                                 if (sight.img != "")
                                 {
                                     if (sight.img.Length > 3)
                                     {
                                         String[] images = sight.img.Split(',');
                                         mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
-                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                        mapView.setInfo();
                                     }
                                     else
                                     {
                                         mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
-                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                        mapView.setInfo();
                                     }
                                 }
                                 else
                                 {
                                     mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
-                                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    mapView.setInfo();
                                 }
                                 foreach(object o in mapView.getMap().Children)
                                 {
@@ -134,13 +136,14 @@ namespace HierInBreda.Control
                                         Pushpin p = o as Pushpin;
                                         if(p.Equals(pin))
                                         {
-                                            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
+                                            mapView.setPinVisited(p);
                                         }
                                     }
 
                                 }
                             }
                         }
+                        
                     }
                 }
         }

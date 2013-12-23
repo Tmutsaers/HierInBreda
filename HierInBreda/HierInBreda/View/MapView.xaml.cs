@@ -116,6 +116,37 @@ namespace HierInBreda
             manager.ShowRoutePath(resp.Routes[0]);
         }
 
+        public async void setInfo()
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                InfoButton.Icon = new SymbolIcon { Symbol = Symbol.Important };
+            });
+        }
+
+        public async void setPinVisited(Pushpin p)
+        {
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
+            });
+        }
+
+        public async void setInfoIcon(bool bol)
+        {
+            try
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    InfoButton.IsEnabled = bol;
+                });
+            }
+            catch(Exception d)
+            {
+
+            }
+        }
+
         public async void createRoute2(List<Location> locs)
         {
             LocationCollection routePoints = new LocationCollection();
@@ -249,7 +280,7 @@ namespace HierInBreda
 
         public Geofence createGeofence(Location l,String name)
         {
-            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 0.1));
+            Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 10));
             return fence;
         }
 
@@ -278,7 +309,8 @@ namespace HierInBreda
 
         public void zoomToLocation2(Location l)
         {
-            Map.SetView(l,15.0);
+            //Map.SetView(l, Map.ZoomLevel);
+            //Map.SetView(l,15.0);
         }
 
 

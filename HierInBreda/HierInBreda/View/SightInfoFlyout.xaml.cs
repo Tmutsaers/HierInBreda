@@ -30,13 +30,16 @@ namespace HierInBreda.View
         }
 
 
-        public void updateSightInfo(String imageName,String desc,String name)
+        public  async void updateSightInfo(String imageName,String desc,String name)
         {
-            SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName + ".jpg"));
-            SightName.Text = name;
-            SightInfo.Text = desc;
-            ResourceLoader rl = new ResourceLoader();
-            Title = rl.GetString("BackButton");
+            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                SightImage.Source = new BitmapImage(new Uri("ms-appx:///" + "Images/" + imageName + ".jpg"));
+                SightName.Text = name;
+                SightInfo.Text = desc;
+                ResourceLoader rl = new ResourceLoader();
+                Title = rl.GetString("BackButton");
+            });
         }
 
         private void ScrollViewer_GotFocus(object sender, RoutedEventArgs e)
