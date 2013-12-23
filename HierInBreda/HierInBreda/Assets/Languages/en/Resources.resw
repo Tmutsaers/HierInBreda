@@ -136,7 +136,7 @@
     <value>Change language</value>
   </data>
   <data name="Legenda.Header" xml:space="preserve">
-    <value>Legenda</value>
+    <value>Legend</value>
   </data>
   <data name="Legenda.OffContent" xml:space="preserve">
     <value>Off</value>
