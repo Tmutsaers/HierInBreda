@@ -31,6 +31,8 @@ namespace HierInBreda.Control
         private Dictionary<Pushpin, Sight> sightpins = new Dictionary<Pushpin, Sight>();
         private Dictionary<Sight, Pushpin> pins = new Dictionary<Sight, Pushpin>();
         public bool insideGeofence { get; set; }
+        public bool showWarn = false;
+        public LocationCollection pathLocations { get; set; }
 
         public MapControl(DataControl dc, MapView mv)
         {
@@ -92,40 +94,42 @@ namespace HierInBreda.Control
 
                     if(state == GeofenceState.Exited)
                     {
-                        mapView.getInfoButton().IsEnabled = false;
+                        mapView.setInfoIcon(false);
                     }
 
                     if (state == GeofenceState.Entered)
                     {
-                        mapView.getInfoButton().IsEnabled = true;
+
+                        mapView.setInfoIcon(true);
                         foreach(Pushpin pin in sightpins.Keys)
                         {
-                            if(sightpins[pin].Equals(geofence))
+                            if(sightpins[pin].name == geofence.Id)
                             {
                                 Sight sight = sightpins[pin];
-
+                                
+                                
                                 String description = sight.disc;
                                 if (Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride == "en")
                                     description = sight.discEng;
-
+                                
                                 if (sight.img != "")
                                 {
                                     if (sight.img.Length > 3)
                                     {
                                         String[] images = sight.img.Split(',');
                                         mapView.sightFlyout.updateSightInfo(images[0], description, sight.name);
-                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                        mapView.setInfo();
                                     }
                                     else
                                     {
                                         mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
-                                        mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                        mapView.setInfo();
                                     }
                                 }
                                 else
                                 {
                                     mapView.sightFlyout.updateSightInfo(sight.img, description, sight.name);
-                                    mapView.getInfoButton().Icon = new SymbolIcon { Symbol = Symbol.Important };
+                                    mapView.setInfo();
                                 }
                                 foreach(object o in mapView.getMap().Children)
                                 {
@@ -134,13 +138,14 @@ namespace HierInBreda.Control
                                         Pushpin p = o as Pushpin;
                                         if(p.Equals(pin))
                                         {
-                                            p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 100, B = 100, G = 100 } };
+                                            mapView.setPinVisited(p);
                                         }
                                     }
 
                                 }
                             }
                         }
+                        
                     }
                 }
         }
@@ -173,6 +178,8 @@ namespace HierInBreda.Control
             mapView.flyout.setSights(sights);
             //MapView.createSightPins(locs);
             createRoute();
+            //drawRouteBounds();
+            //drawRect();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
         }
 
@@ -203,28 +210,112 @@ namespace HierInBreda.Control
             }
 
             userRadius = new LocationRect(circlePoints);
+            var u = 0.001;
+            userRadius = new LocationRect(new LocationCollection{ loc, new Bing.Maps.Location(loc.Latitude+u,loc.Longitude),new Bing.Maps.Location(loc.Latitude,loc.Longitude+u),
+            new Bing.Maps.Location(loc.Latitude+u,loc.Longitude+u), new Bing.Maps.Location(loc.Latitude-u,loc.Longitude), new Bing.Maps.Location(loc.Latitude,loc.Longitude-u),
+            new Bing.Maps.Location(loc.Latitude-u,loc.Longitude-u)});
+        }
+
+        //public void drawRouteBounds()
+        //{
+        //    foreach(Sight s in sights)
+        //    {
+        //        if(!s.Equals(sights[sights.Count-1]))
+        //        {
+        //            Sight s2 = sights[sights.IndexOf(s)+1];
+        //            LocationRect rect = new LocationRect(new LocationCollection{ new Bing.Maps.Location(double.Parse(s.lat),double.Parse(s.longi)),
+        //                new Bing.Maps.Location(double.Parse(s2.lat),double.Parse(s2.longi))});
+        //            routeBounds.Add(rect);
+        //        }
+        //    }
+        //}
+
+        //public void drawRect()
+        //{
+        //    foreach(LocationRect rect in routeBounds)
+        //    {
+        //        MapShapeLayer layer = new MapShapeLayer();
+        //        MapPolyline line = new MapPolyline { Locations = new LocationCollection { rect.Northwest, rect.Southeast } };
+        //        layer.Shapes.Add(line);
+        //        mapView.getMap().ShapeLayers.Add(layer);
+        //    }
+        //}
+
+        public Boolean inRadius(Bing.Maps.Location loc,Bing.Maps.Location curLoc, double radius)
+        {
+            if(getDistanceFromLatLonInKm(loc.Latitude,loc.Longitude,curLoc.Latitude,curLoc.Longitude) <= radius)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public double getDistanceFromLatLonInKm(double lat1, double lon1, double lat2, double lon2)
+        {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1);  // deg2rad below
+            var dLon = deg2rad(lon2 - lon1);
+            var a =
+              Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+              Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) *
+              Math.Sin(dLon / 2) * Math.Sin(dLon / 2)
+              ;
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+        public double deg2rad(double deg)
+        {
+            return deg * (Math.PI / 180);
         }
 
         async void MapView_userPosChanged(object sender, Bing.Maps.Location l)
         {
             UpdateUserRadius("0.1", l);
             MapShapeLayer layer = new MapShapeLayer();
-            if (Route != null)
+            if (pathLocations != null)
             {
-                if (userRadius.Intersects(Route.Bounds) && Route != null)
+                foreach (Bing.Maps.Location loc in pathLocations)
                 {
-                    insideRoute = true;
-                }
-                else
-                    if (!userRadius.Intersects(Route.Bounds))
+                    if (inRadius(loc, l, 0.05))
                     {
-                        ResourceLoader rl = new ResourceLoader();
-                        mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
-
-                        await mapView.popup.ShowAsync();
-                        insideRoute = false;
+                        insideRoute = true;
+                        showWarn = false;
+                        break;
                     }
+                    else
+                        if (!inRadius(loc, l, 0.05))
+                        {
+
+                            insideRoute = false;
+                        }
+
+                }
             }
+            if(insideRoute == false && showWarn == false)
+            {
+                ResourceLoader rl = new ResourceLoader();
+                mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+                showWarn = true;
+                await mapView.popup.ShowAsync();
+            }
+            
+            //if (Route != null)
+            //{
+            //    if (userRadius.Intersects(Route.Bounds) && Route != null)
+            //    {
+            //        insideRoute = true;
+            //    }
+            //    else
+            //        if (!userRadius.Intersects(Route.Bounds))
+            //        {
+            //            ResourceLoader rl = new ResourceLoader();
+            //            mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+
+            //            await mapView.popup.ShowAsync();
+            //            insideRoute = false;
+            //        }
+            //}
         }
 
         void MapView_sightPinTapped(object sender, Pushpin pin)
