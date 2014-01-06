@@ -21,8 +21,8 @@ namespace HierInBreda.View
     public sealed partial class TutorialViewFlyout : SettingsFlyout
     {
         private int page = 0;
-        private int PAGE_MAX = 6;
-        private int FIRST_PAGE_NUM = 1;
+        private const int PAGE_MAX = 6;
+        private const int FIRST_PAGE_NUM = 1;
 
         public TutorialViewFlyout()
         {
