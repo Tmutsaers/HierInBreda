@@ -19,7 +19,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-            <Image x:Name ="flagDutch"  Grid.Column="1" Grid.Row="1" Tapped="flagDutch_Tapped"/>
-            <Image x:Name ="flagEnglish"  Grid.Column="3" Grid.Row="1" Tapped="flagEnglish_Tapped"/>
+        <Image x:Name ="flagDutch"  Grid.Column="1" Grid.Row="1" Source="ms-appx:/Assets/dutchFlag/dutch_flag.png"  Tapped="flagDutch_Tapped"/>
+        <Image x:Name ="flagEnglish"  Grid.Column="3" Grid.Row="1"  Source="ms-appx:/Assets/englishFlag/english_flag.png" Tapped="flagEnglish_Tapped"/>
     </Grid>    
 </Page>

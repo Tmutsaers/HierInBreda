@@ -24,33 +24,33 @@ namespace HierInBreda.View
     /// </summary>
     public sealed partial class StartMenu : Page
     {
-        private int dutchFlagCount;
-        private int englishFlagCount;
+        //private int dutchFlagCount;
+        //private int englishFlagCount;
         private MainControl mainControl;
-        private DispatcherTimer timer;
+        //private DispatcherTimer timer;
 
         public StartMenu()
         {
             this.InitializeComponent();
             mainControl = new MainControl();
-            timer = new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-            timer.Start();
+            //timer = new DispatcherTimer();
+            //timer.Tick += timer_Tick;
+            //timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            //timer.Start();
         }
 
-        void timer_Tick(object sender, object e)
-        {
-            dutchFlagCount++;
-            englishFlagCount++;
-            if (dutchFlagCount >= 87)
-                dutchFlagCount = 0;
-            if (englishFlagCount >= 37)
-                englishFlagCount = 0;
-            flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", dutchFlagCount) + ".gif"));
-            System.Diagnostics.Debug.WriteLine(flagDutch.Source.GetValue(BitmapImage.UriSourceProperty));
-            flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", englishFlagCount) + ".gif"));
-        }       
+        //void timer_Tick(object sender, object e)
+        //{
+        //    dutchFlagCount++;
+        //    englishFlagCount++;
+        //    if (dutchFlagCount >= 87)
+        //        dutchFlagCount = 0;
+        //    if (englishFlagCount >= 37)
+        //        englishFlagCount = 0;
+        //    flagDutch.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/dutchFlag/" + string.Format("{0:00}", dutchFlagCount) + ".gif"));
+        //    System.Diagnostics.Debug.WriteLine(flagDutch.Source.GetValue(BitmapImage.UriSourceProperty));
+        //    flagEnglish.Source = new BitmapImage(new Uri(this.BaseUri, "ms-appx:/Assets/englishFlag/" + string.Format("{0:00}", englishFlagCount) + ".gif"));
+        //}       
 
         private void startMapView(String language)
         {
@@ -66,13 +66,13 @@ namespace HierInBreda.View
 
         private void flagEnglish_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            timer.Stop();
+            //timer.Stop();
             startMapView("en");
         }
 
         private void flagDutch_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            timer.Stop();
+            //timer.Stop();
             startMapView("nl");
         }
     }
