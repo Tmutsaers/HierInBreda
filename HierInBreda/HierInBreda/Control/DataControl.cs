@@ -39,7 +39,7 @@ namespace HierInBreda.Control
         private async void InitData()
         {
             //verwijder table
-            var result1 = await conn.DropTableAsync<Sight>();
+            //var result1 = await conn.DropTableAsync<Sight>();
 
             //Create table
             var result = await conn.CreateTableAsync<Sight>();
