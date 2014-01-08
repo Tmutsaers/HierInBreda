@@ -9,6 +9,7 @@ using Windows.Devices.Geolocation.Geofencing;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.ApplicationModel.Resources;
+using Windows.UI.Popups;
 
 namespace HierInBreda.Control
 {
@@ -296,9 +297,10 @@ namespace HierInBreda.Control
             {
                 ResourceLoader rl = new ResourceLoader();
                 mapView.popup = new Windows.UI.Popups.MessageDialog(rl.GetString("OffRoutePopup"), "Route");
+                mapView.popup.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
                 showWarn = true;
                 await mapView.popup.ShowAsync();
-            }
+            }           
             
             //if (Route != null)
             //{
@@ -316,6 +318,10 @@ namespace HierInBreda.Control
             //            insideRoute = false;
             //        }
             //}
+        }
+
+        private void CommandInvokedHandler(IUICommand command)
+        {
         }
 
         void MapView_sightPinTapped(object sender, Pushpin pin)

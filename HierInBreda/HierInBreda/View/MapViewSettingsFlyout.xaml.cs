@@ -133,20 +133,30 @@ namespace HierInBreda.View
 
         private async void ConnectionButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            MessageDialog mes = new MessageDialog("Deze knop is niet van toepassing voor deze pilot");
+            ResourceLoader rl = new ResourceLoader();
+            MessageDialog mes = new MessageDialog(rl.GetString("unimplemented"));
+            mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
             await mes.ShowAsync();
         }
 
         private async void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            MessageDialog mes = new MessageDialog("Deze knop is niet van toepassing voor deze pilot");
+            ResourceLoader rl = new ResourceLoader();
+            MessageDialog mes = new MessageDialog(rl.GetString("unimplemented"));
+            mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
             await mes.ShowAsync();
         }
 
         private async void SymbolIcon_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            MessageDialog mes = new MessageDialog("Deze knop is niet van toepassing voor deze pilot");
+            ResourceLoader rl = new ResourceLoader();
+            MessageDialog mes = new MessageDialog(rl.GetString("unimplemented"));
+            mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
             await mes.ShowAsync();
+        }
+
+        private void CommandInvokedHandler(IUICommand command)
+        { 
         }
     }
 }
