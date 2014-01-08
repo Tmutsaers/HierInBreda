@@ -141,7 +141,7 @@ namespace HierInBreda
                     InfoButton.IsEnabled = bol;
                 });
             }
-            catch(Exception d)
+            catch(Exception)
             {
 
             }
@@ -422,6 +422,7 @@ namespace HierInBreda
             AppbarButton.Label = rl.GetString("AppbarButtonLabel");
             InfoButton.Label = rl.GetString("InfoButtonLabel");
             TutorialButton.Label = rl.GetString("TutorialButtonLabel");
+            mc.createSights();
         }
 
         public void setVisibilityLegenda(Boolean vis)
