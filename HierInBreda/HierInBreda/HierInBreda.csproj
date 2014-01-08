@@ -299,7 +299,7 @@
     <Content Include="Assets\LegendaIcons\blauweBalk.png" />
     <Content Include="Assets\LegendaIcons\grijzeStip.png" />
     <Content Include="Assets\LegendaIcons\groeneStip.png" />
-    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\agslogo2.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
@@ -311,6 +311,7 @@
     <Content Include="Assets\TutorialImages\nl\page2.png" />
     <Content Include="Assets\TutorialImages\nl\page3.png" />
     <Content Include="Assets\TutorialImages\nl\page4.png" />
+    <Content Include="Assets\VVVLogo.png" />
     <Content Include="Images\1.jpg" />
     <Content Include="Images\10.jpg" />
     <Content Include="Images\11.jpg" />

@@ -79,8 +79,10 @@ namespace HierInBreda
             sightFlyout = new SightInfoFlyout();
             turorialViewFlyout = new TutorialViewFlyout();
             //flyout.Show();
-            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo.png");
+            Uri uri = new Uri("ms-appx:///" + "Assets/agslogo2.png");
+            Uri uri2 = new Uri("ms-appx:///" + "Assets/VVVLogo.png");
             AgsLogo.Source = new BitmapImage(uri);
+            VVVLogo.Source = new BitmapImage(uri2);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
             //System.Diagnostics.Debug.WriteLine("Test");
         }
@@ -141,7 +143,7 @@ namespace HierInBreda
                     InfoButton.IsEnabled = bol;
                 });
             }
-            catch(Exception d)
+            catch(Exception)
             {
 
             }
@@ -350,7 +352,7 @@ namespace HierInBreda
                 if (layer.Equals(walkedPathLayer))
                 {
                     MapPolyline line = new MapPolyline { Locations = new LocationCollection { l1, l2 } };
-                    line.Color = new Windows.UI.Color { A = 255, B = 100, G = 100, R = 100 };
+                    line.Color = new Windows.UI.Color { A = 255, B = 0, G = 0, R = 100 };
                     line.Width = 10.0;
                     layer.Shapes.Add(line);
                 }
@@ -424,6 +426,7 @@ namespace HierInBreda
             AppbarButton.Label = rl.GetString("AppbarButtonLabel");
             InfoButton.Label = rl.GetString("InfoButtonLabel");
             TutorialButton.Label = rl.GetString("TutorialButtonLabel");
+            mc.createSights();
         }
 
         public void setVisibilityLegenda(Boolean vis)
