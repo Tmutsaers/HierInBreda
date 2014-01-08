@@ -84,7 +84,7 @@ namespace HierInBreda
             AgsLogo.Source = new BitmapImage(uri);
             VVVLogo.Source = new BitmapImage(uri2);
             InfoButton.Icon = new SymbolIcon { Symbol = Symbol.MapPin };
-            System.Diagnostics.Debug.WriteLine("Test");
+            //System.Diagnostics.Debug.WriteLine("Test");
         }
 
         public void initMapView()
@@ -153,6 +153,7 @@ namespace HierInBreda
         {
             LocationCollection routePoints = new LocationCollection();
             WaypointCollection col = new WaypointCollection();
+
             for(int  i= 0; i < locs.Count/2;i++)
             {
                 col.Add(new Waypoint(locs[i]));
@@ -161,6 +162,7 @@ namespace HierInBreda
             DirectionsManager manager = Map.DirectionsManager;
             manager.RequestOptions.RouteMode = RouteModeOption.Walking;
             manager.Waypoints = col;
+            manager.RenderOptions.WaypointPushpinOptions.Visible = false;
 
             RouteResponse resp = await manager.CalculateDirectionsAsync();
             foreach(Location l in resp.Routes[0].RoutePath.PathPoints)
@@ -200,8 +202,8 @@ namespace HierInBreda
             for (int i = 0; i < locs.Count; i = i + 2)
             {
                 col.Add(new Waypoint(locs[i]));
-                System.Diagnostics.Debug.WriteLine("Lat: " + locs[i].Latitude);
-                System.Diagnostics.Debug.WriteLine("Lon: " + locs[i].Longitude);
+                //System.Diagnostics.Debug.WriteLine("Lat: " + locs[i].Latitude);
+                //System.Diagnostics.Debug.WriteLine("Lon: " + locs[i].Longitude);
             }
             //col.Add(new Waypoint(locs[0]));
             //col.Add(new Waypoint(locs[locs.Count - 1]));
@@ -231,8 +233,8 @@ namespace HierInBreda
             Map.Children.Add(p);
             p.Background = new SolidColorBrush { Color = new Windows.UI.Color { A = 100, R = 0 ,G = 100, B = 0 } };
             p.Tapped += p_Tapped;
-            System.Diagnostics.Debug.WriteLine("Lat: " + l.Latitude);
-            System.Diagnostics.Debug.WriteLine("Lon: " + l.Longitude);
+            //System.Diagnostics.Debug.WriteLine("Lat: " + l.Latitude);
+            //System.Diagnostics.Debug.WriteLine("Lon: " + l.Longitude);
             return p;
         }
 
@@ -325,7 +327,7 @@ namespace HierInBreda
                 {
                     if (currentLoc != null && UserIsInRadius(10, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
-                        System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
+                        //System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
                         {
                             MapLayer.SetPosition(userPin, currentLoc);
@@ -435,9 +437,22 @@ namespace HierInBreda
 
         }
 
-        private void VVVBackButton_Click(object sender, RoutedEventArgs e)
+        private async void VVVBackButton_Click(object sender, RoutedEventArgs e)
         {
-            createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
+            MessageDialog mes = new MessageDialog("Weet u zeker dat u terug wil naar het vvv. Met deze actie wordt de route afgebroken");
+            mes.Commands.Add(new UICommand("Ok", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            mes.Commands.Add(new UICommand("Annuleer", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            await mes.ShowAsync();
+
+        }
+
+        private void CommandInvokedHandler(IUICommand command)
+        {
+            if(command.Label == "Ok")
+            {
+                createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
+            }
+            
         }
 
         async void timer_Tick(object sender, object e)

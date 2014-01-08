@@ -9,7 +9,7 @@
     IconSource="Assets/SmallLogo.png"
     Title="Settings"
     d:DesignWidth="346">
-    
+
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -53,7 +53,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Border>
-        <AppBarButton x:Uid="LanguageSelectButton" Name="LanguageSelectButton" Icon="World" Grid.Row="4" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/> 
+        <AppBarButton x:Uid="LanguageSelectButton" Name="LanguageSelectButton" Icon="World" Grid.Row="4" FontFamily="Comic Sans MS" Margin="75,0" Tapped="LanguageSelectButton_Tapped"/>
         <!--<Button Name="LanguageSelectButton" Grid.Row="3" Margin="75,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -70,17 +70,21 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <AppBarButton Name="ConnectionButton" Icon="FourBars" />
+            <AppBarButton Name="ConnectionButton" Icon="FourBars" Tapped="ConnectionButton_Tapped" />
             <AppBarButton Name="PowerButton" Grid.Column="1" >
                 <AppBarButton.Icon>
-                    <BitmapIcon UriSource="/Assets/battery_3.png"/>
+                    <BitmapIcon UriSource="/Assets/battery_3.png" Tapped="BitmapIcon_Tapped"/>
                 </AppBarButton.Icon>
             </AppBarButton>
-            <AppBarButton Name="PointerButton" Icon="Directions" Grid.Column="2"/>
-         </Grid>
-        <Button Grid.Row="6">
-            <TextBlock x:Uid="ShowTutorialButton" Name="TutorialButton" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />
-        </Button>
+            <AppBarButton Name="PointerButton" Grid.Column="2">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Directions" Tapped="SymbolIcon_Tapped"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </Grid>
+        <!--<Button Grid.Row="6">
+            <TextBlock x:Uid="ShowTutorialButton" Name="TutorialButton" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />-->
+        <!--</Button>-->
         <TextBlock x:Name="TimeText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
     </Grid>
 </SettingsFlyout>
