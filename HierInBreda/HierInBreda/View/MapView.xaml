@@ -53,9 +53,11 @@
                 <Image x:Name="groen" Source="ms-appx:///Assets\LegendaIcons\groeneStip.png"  Grid.Column="2" Grid.Row="1" Height="25" Width="25"/>
                 <Image x:Name="blauwe" Source="ms-appx:///Assets\LegendaIcons\blauweBalk.png"  Grid.Column="2" Grid.Row="2" Height="25" Width="25"/>
             </Grid>
-            
+
         </Grid>
         <AppBarButton Name="VVVBackButton" HorizontalAlignment="Left" Label="VVV" Margin="918,6,0,0" VerticalAlignment="Top" Icon="Map" Click="VVVBackButton_Click" />
+        <Image x:Name="AgsLogo_Copy" HorizontalAlignment="Left" Height="62" Margin="252,10,0,0" VerticalAlignment="Top" Width="79" />
+        <Image x:Name="VVVLogo" HorizontalAlignment="Left" Height="62" Margin="360,10,0,0" VerticalAlignment="Top" Width="79"/>
 
     </Grid>
 </Page>
