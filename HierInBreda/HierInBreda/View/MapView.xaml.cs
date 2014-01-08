@@ -51,11 +51,15 @@ namespace HierInBreda
         public SightInfoFlyout sightFlyout { get; set; }
         public TutorialViewFlyout turorialViewFlyout { get; set; }
         public MessageDialog popup { get; set; }
+        public MessageDialog InternetPopup { get; set; }
+        public bool popupShown = false;
         public DataControl dc { get; set; }
         public MapControl mc { get; set; }
         public MapShapeLayer walkedPathLayer = new MapShapeLayer();
         public MapShapeLayer RouteLayer = new MapShapeLayer();
         private DispatcherTimer timer;
+        public bool Finished = false;
+        public bool zoomFinished = false;
 
         public static MapView getInstance()
         {
@@ -99,23 +103,30 @@ namespace HierInBreda
 
         public async void createRouteToVVV(Location curLoc,Location vvvLoc)
         {
-
-            foreach (MapShapeLayer layer in Map.ShapeLayers)
+            try
             {
-                if (layer.Equals(RouteLayer))
+                foreach (MapShapeLayer layer in Map.ShapeLayers)
                 {
-                    layer.Shapes.Clear();
-                    RouteLayer.Shapes.Clear();
+                    if (layer.Equals(RouteLayer))
+                    {
+                        layer.Shapes.Clear();
+                        RouteLayer.Shapes.Clear();
+                    }
                 }
+
+                WaypointCollection routePoints = new WaypointCollection { new Waypoint(curLoc), new Waypoint(vvvLoc) };
+                DirectionsManager manager = Map.DirectionsManager;
+                manager.RequestOptions.RouteMode = RouteModeOption.Walking;
+                manager.Waypoints = routePoints;
+
+                RouteResponse resp = await manager.CalculateDirectionsAsync();
+                manager.ShowRoutePath(resp.Routes[0]);
             }
-
-            WaypointCollection routePoints = new WaypointCollection { new Waypoint(curLoc), new Waypoint(vvvLoc) };
-            DirectionsManager manager = Map.DirectionsManager;
-            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
-            manager.Waypoints = routePoints;
-
-            RouteResponse resp = await manager.CalculateDirectionsAsync();
-            manager.ShowRoutePath(resp.Routes[0]);
+            catch(Exception d)
+            {
+                System.Diagnostics.Debug.WriteLine(d);
+                showInternetPopup();
+            }
         }
 
         public async void setInfo()
@@ -151,49 +162,57 @@ namespace HierInBreda
 
         public async void createRoute2(List<Location> locs)
         {
-            LocationCollection routePoints = new LocationCollection();
-            WaypointCollection col = new WaypointCollection();
-
-            for(int  i= 0; i < locs.Count/2;i++)
+            try
             {
-                col.Add(new Waypoint(locs[i]));
+                LocationCollection routePoints = new LocationCollection();
+                WaypointCollection col = new WaypointCollection();
+
+                for (int i = 0; i < locs.Count / 2; i++)
+                {
+                    col.Add(new Waypoint(locs[i]));
+                }
+
+                DirectionsManager manager = Map.DirectionsManager;
+                manager.RequestOptions.RouteMode = RouteModeOption.Walking;
+                manager.Waypoints = col;
+                manager.RenderOptions.WaypointPushpinOptions.Visible = false;
+
+                RouteResponse resp = await manager.CalculateDirectionsAsync();
+                foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
+                {
+                    routePoints.Add(l);
+                }
+
+                manager.Waypoints.Clear();
+                col.Clear();
+
+                for (int i = locs.Count / 2; i < locs.Count; i++)
+                {
+                    col.Add(new Waypoint(locs[i]));
+                }
+
+                manager.Waypoints = col;
+
+                resp = await manager.CalculateDirectionsAsync();
+                foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
+                {
+                    routePoints.Add(l);
+                }
+
+
+                MapPolyline line = new MapPolyline { Locations = routePoints };
+                line.Color = new Windows.UI.Color { A = 50, R = 0, G = 0, B = 200 };
+                line.Width = 10.0;
+
+                RouteLayer.Shapes.Add(line);
+                mc.pathLocations = routePoints;
+                Map.ShapeLayers.Add(RouteLayer);
             }
-
-            DirectionsManager manager = Map.DirectionsManager;
-            manager.RequestOptions.RouteMode = RouteModeOption.Walking;
-            manager.Waypoints = col;
-            manager.RenderOptions.WaypointPushpinOptions.Visible = false;
-
-            RouteResponse resp = await manager.CalculateDirectionsAsync();
-            foreach(Location l in resp.Routes[0].RoutePath.PathPoints)
+            catch(Exception d)
             {
-                routePoints.Add(l);
+                System.Diagnostics.Debug.WriteLine(d);
+                showInternetPopup();
             }
-
-            manager.Waypoints.Clear();
-            col.Clear();
-
-            for(int i = locs.Count/2;i < locs.Count;i++)
-            {
-                col.Add(new Waypoint(locs[i]));
-            }
-
-            manager.Waypoints = col;
-
-            resp = await manager.CalculateDirectionsAsync();
-            foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
-            {
-                routePoints.Add(l);
-            }
-
-
-            MapPolyline line = new MapPolyline { Locations = routePoints };
-            line.Color = new Windows.UI.Color { A = 50, R = 0, G = 0, B = 200 };
-            line.Width = 10.0;
-
-            RouteLayer.Shapes.Add(line);
-            mc.pathLocations = routePoints;
-            Map.ShapeLayers.Add(RouteLayer);
         }
 
         public async void createRoute(List<Location> locs)
@@ -291,24 +310,38 @@ namespace HierInBreda
         //Zooms to the Users Location and makes a User PushPin
         private async void zoomToLocation()
         {
-            _geolocator = new Geolocator();
-            Geoposition currentPos = await _geolocator.GetGeopositionAsync();
-            currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
-            userPin = new Pushpin();
-            ResourceLoader rl = new ResourceLoader();
-            userPin.Text = rl.GetString("UserPinText");
-            userPin.Background = new SolidColorBrush(new Windows.UI.Color { A = 100, B = 0, G = 0, R = 100 });
-            MapLayer.SetPosition(userPin, currentLoc);
-            Map.Children.Add(userPin);
-            Map.SetView(currentLoc, 15.0);
-            //_geolocator.MovementThreshold = 10;
-            //_geolocator.ReportInterval = 500;
-            _geolocator.DesiredAccuracy = PositionAccuracy.Default;
-            _geolocator.PositionChanged += _geolocator_PositionChanged;
-            timer = new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
-            timer.Start();
+            try
+            {
+                _geolocator = new Geolocator();
+                Geoposition currentPos = await _geolocator.GetGeopositionAsync();
+                currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
+                userPin = new Pushpin();
+                ResourceLoader rl = new ResourceLoader();
+                userPin.Text = rl.GetString("UserPinText");
+                userPin.Background = new SolidColorBrush(new Windows.UI.Color { A = 100, B = 0, G = 0, R = 100 });
+                MapLayer.SetPosition(userPin, currentLoc);
+                Map.Children.Add(userPin);
+                Map.SetView(currentLoc, 15.0);
+                //_geolocator.MovementThreshold = 10;
+                //_geolocator.ReportInterval = 500;
+                _geolocator.DesiredAccuracy = PositionAccuracy.Default;
+                _geolocator.PositionChanged += _geolocator_PositionChanged;
+                timer = new DispatcherTimer();
+                timer.Tick += timer_Tick;
+                timer.Interval = new TimeSpan(0, 0, 0, 0, 2000);
+                timer.Start();
+                if(Finished == false)
+                {
+                    Finished = true;
+                    zoomFinished = true;
+                    mc.createRoute();
+                }
+            }
+            catch(Exception d)
+            {
+                System.Diagnostics.Debug.WriteLine(d);
+                showInternetPopup();
+            }
         }
 
         public void zoomToLocation2(Location l)
@@ -342,6 +375,7 @@ namespace HierInBreda
             catch (Exception x)
             {
                 System.Diagnostics.Debug.WriteLine(x);
+                showInternetPopup();
             }
         }
 
@@ -457,7 +491,55 @@ namespace HierInBreda
 
         async void timer_Tick(object sender, object e)
         {
-            await _geolocator.GetGeopositionAsync();
+            try
+            {
+                await _geolocator.GetGeopositionAsync();
+                if(Finished == false)
+                {
+                    Finished = true;
+                    mc.createRoute();
+                }
+            }
+            catch(Exception d)
+            {
+                
+                System.Diagnostics.Debug.WriteLine(d);
+                showInternetPopup();
+            }
+        }
+
+        public async void showInternetPopup()
+        {
+            try
+            {
+                if (popupShown == false)
+                {
+                    InternetPopup = new Windows.UI.Popups.MessageDialog("No internet Connection", "Internet");
+                    InternetPopup.Commands.Add(new UICommand("Try Again", new UICommandInvokedHandler(this.CommandInvokedHandler2)));
+                    popupShown = true;
+                    await InternetPopup.ShowAsync();
+                }
+            }
+            catch(Exception d)
+            {
+
+            }
+        }
+
+        private void CommandInvokedHandler2(IUICommand command)
+        {
+            // Display message showing the label of the command that was invoked
+            popupShown = false;
+            if (zoomFinished == false)
+            {
+                Finished = false;
+                zoomToLocation();
+            }
+            else
+            {
+                Finished = false;
+                timer_Tick(new Object(), new object());
+            }
         }
     }
 }
