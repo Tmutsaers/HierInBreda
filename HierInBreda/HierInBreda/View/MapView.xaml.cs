@@ -437,9 +437,10 @@ namespace HierInBreda
 
         private async void VVVBackButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog mes = new MessageDialog("Weet u zeker dat u terug wil naar het vvv. Met deze actie wordt de route afgebroken");
-            mes.Commands.Add(new UICommand("Ok", new UICommandInvokedHandler(this.CommandInvokedHandler)));
-            mes.Commands.Add(new UICommand("Annuleer", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            ResourceLoader rl = new ResourceLoader();
+            MessageDialog mes = new MessageDialog(rl.GetString("VVVWarning"));
+            mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            mes.Commands.Add(new UICommand(rl.GetString("Cancel"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
             await mes.ShowAsync();
 
         }

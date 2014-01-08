@@ -126,6 +126,9 @@
   <data name="BackButton" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="OffRoutePopup" xml:space="preserve">
     <value>You deviate from the route.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OkText" xml:space="preserve">
     <value>Yes</value>
@@ -211,7 +217,13 @@ The sights are shown as green symbols on the map. If you are near a sight the sy
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Would you like to follow the tutorial?</value>
   </data>
+  <data name="unimplemented" xml:space="preserve">
+    <value>This button is not implemented for this pilot</value>
+  </data>
   <data name="UserPinText" xml:space="preserve">
     <value>You</value>
+  </data>
+  <data name="VVVWarning" xml:space="preserve">
+    <value>Are you sure you want to go back to the vvv. With this action the tour will be aborted.</value>
   </data>
 </root>

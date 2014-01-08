@@ -126,6 +126,9 @@
   <data name="BackButton" xml:space="preserve">
     <value>Terug</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleer</value>
+  </data>
   <data name="CancelText" xml:space="preserve">
     <value>Annuleer</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="OffRoutePopup" xml:space="preserve">
     <value>U wijkt van de Route af.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OkText" xml:space="preserve">
     <value>Ja</value>
@@ -211,7 +217,13 @@ De bezienswaardigheden worden getoond als groene symbolen op de kaart. Als u in 
   <data name="TutorialPromptText" xml:space="preserve">
     <value>Wilt u de handleiding bekijken?</value>
   </data>
+  <data name="unimplemented" xml:space="preserve">
+    <value>Deze knop is niet van toepassing voor deze pilot</value>
+  </data>
   <data name="UserPinText" xml:space="preserve">
     <value>Jij</value>
+  </data>
+  <data name="VVVWarning" xml:space="preserve">
+    <value>Weet u zeker dat u terug wil naar het vvv. Met deze actie wordt de route afgebroken</value>
   </data>
 </root>
