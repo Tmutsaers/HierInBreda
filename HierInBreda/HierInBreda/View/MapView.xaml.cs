@@ -346,7 +346,7 @@ namespace HierInBreda
 
         public void zoomToLocation2(Location l)
         {
-            //Map.SetView(l, Map.ZoomLevel);
+            Map.SetView(l, Map.ZoomLevel);
             //Map.SetView(l,15.0);
         }
 
@@ -365,7 +365,7 @@ namespace HierInBreda
                         {
                             MapLayer.SetPosition(userPin, currentLoc);
                             drawMovedLine(currentLoc, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude));
-                            zoomToLocation2(currentLoc);
+                            //zoomToLocation2(currentLoc);
                             OnUserPositionChanged(this, currentLoc);
                             currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         }

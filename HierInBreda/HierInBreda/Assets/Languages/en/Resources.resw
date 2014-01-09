@@ -201,7 +201,7 @@ The menu bar contains from top to bottom:
 - Legend (on / off) 
 - List of sights
 - Change language
-- Connection - battery status - GPS
+- Connection - battery status - Current position
 - The current local time</value>
   </data>
   <data name="TutorialPage5" xml:space="preserve">

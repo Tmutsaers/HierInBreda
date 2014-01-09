@@ -29,7 +29,7 @@ namespace HierInBreda.View
         private HierInBreda.Common.ObservableDictionary defaultViewModel = new HierInBreda.Common.ObservableDictionary();
         MapView mapView;
         private List<Sight> sights = new List<Sight>();
-
+        public bool zoom;
         public event SightsListViewItemTappedHandler sightsListViewItemTapped;
         
 
@@ -149,10 +149,12 @@ namespace HierInBreda.View
 
         private async void SymbolIcon_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ResourceLoader rl = new ResourceLoader();
-            MessageDialog mes = new MessageDialog(rl.GetString("unimplemented"));
-            mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
-            await mes.ShowAsync();
+            //ResourceLoader rl = new ResourceLoader();
+            //MessageDialog mes = new MessageDialog(rl.GetString("unimplemented"));
+            //mes.Commands.Add(new UICommand(rl.GetString("Ok"), new UICommandInvokedHandler(this.CommandInvokedHandler)));
+            //await mes.ShowAsync();
+            
+            mapView.zoomToLocation2(mapView.currentLoc);
         }
 
         private void CommandInvokedHandler(IUICommand command)
