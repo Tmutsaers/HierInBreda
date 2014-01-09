@@ -460,6 +460,9 @@ namespace HierInBreda
             AppbarButton.Label = rl.GetString("AppbarButtonLabel");
             InfoButton.Label = rl.GetString("InfoButtonLabel");
             TutorialButton.Label = rl.GetString("TutorialButtonLabel");
+            legendaBezochteBZW.Text = rl.GetString("Legend11");
+            legendaOnbezochteBZW.Text = rl.GetString("Legend21");
+            legendaRoute.Text = rl.GetString("Legenda31");
             mc.createSights();
         }
 

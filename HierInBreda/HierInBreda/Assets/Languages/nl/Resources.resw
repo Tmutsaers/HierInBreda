@@ -226,4 +226,22 @@ De bezienswaardigheden worden getoond als groene symbolen op de kaart. Als u in 
   <data name="VVVWarning" xml:space="preserve">
     <value>Weet u zeker dat u terug wil naar het vvv. Met deze actie wordt de route afgebroken</value>
   </data>
+  <data name="Legend1.Text" xml:space="preserve">
+    <value>Bezochte bezienswaardigheid</value>
+  </data>
+  <data name="Legend11" xml:space="preserve">
+    <value>Bezochte bezienswaardigheid</value>
+  </data>
+  <data name="Legend2.Text" xml:space="preserve">
+    <value>Niet bezochte bezienswaardigheid</value>
+  </data>
+  <data name="Legend21" xml:space="preserve">
+    <value>Niet bezochte bezienswaardigheid</value>
+  </data>
+  <data name="Legend3.Text" xml:space="preserve">
+    <value>Route</value>
+  </data>
+  <data name="Legend31" xml:space="preserve">
+    <value>Route</value>
+  </data>
 </root>
