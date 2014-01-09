@@ -226,4 +226,22 @@ The sights are shown as green symbols on the map. If you are near a sight the sy
   <data name="VVVWarning" xml:space="preserve">
     <value>Are you sure you want to go back to the vvv. With this action the tour will be aborted.</value>
   </data>
+  <data name="Legend1.Text" xml:space="preserve">
+    <value>Visited sight</value>
+  </data>
+  <data name="Legend11" xml:space="preserve">
+    <value>Visited sight</value>
+  </data>
+  <data name="Legend2.Text" xml:space="preserve">
+    <value>Unvisited sight</value>
+  </data>
+  <data name="Legend21" xml:space="preserve">
+    <value>Unvisited sight</value>
+  </data>
+  <data name="Legend3.Text" xml:space="preserve">
+    <value>Route</value>
+  </data>
+  <data name="Legend31" xml:space="preserve">
+    <value>Route</value>
+  </data>
 </root>
