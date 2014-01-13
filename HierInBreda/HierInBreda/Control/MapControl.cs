@@ -34,6 +34,7 @@ namespace HierInBreda.Control
         public bool insideGeofence { get; set; }
         public bool showWarn = false;
         public LocationCollection pathLocations { get; set; }
+        public Bing.Maps.Location userLoc { get; set; }
 
         public MapControl(DataControl dc, MapView mv)
         {
@@ -95,6 +96,7 @@ namespace HierInBreda.Control
 
                     if(state == GeofenceState.Exited)
                     {
+                        if(checkIfInGeofence() == false)
                         mapView.setInfoIcon(false);
                     }
 
@@ -149,6 +151,18 @@ namespace HierInBreda.Control
                         
                     }
                 }
+        }
+
+        public bool checkIfInGeofence()
+        {
+            foreach(Sight s in sights)
+            {
+                if(inRadius(new Bing.Maps.Location(double.Parse(s.lat),double.Parse(s.longi)),userLoc,0.01))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public async void createSights()
@@ -273,6 +287,7 @@ namespace HierInBreda.Control
         async void MapView_userPosChanged(object sender, Bing.Maps.Location l)
         {
             UpdateUserRadius("0.1", l);
+            userLoc = l;
             MapShapeLayer layer = new MapShapeLayer();
             if (pathLocations != null)
             {
