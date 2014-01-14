@@ -196,6 +196,7 @@ namespace HierInBreda.Control
             //drawRouteBounds();
             //drawRect();
             GeofenceMonitor.Current.GeofenceStateChanged += Current_GeofenceStateChanged;
+           // mapView.flyout.getDistance(sights);
         }
 
 

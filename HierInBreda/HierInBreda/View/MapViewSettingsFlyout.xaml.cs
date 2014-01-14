@@ -43,7 +43,32 @@ namespace HierInBreda.View
             timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             timer.Start();
             this.Loaded += MapViewSettingsFlyout_Loaded;
+
+            
+
+         
         }
+
+        //public void getDistance(List<Sight> list)
+        //{
+        //    List<Bing.Maps.Location> locations = new List<Bing.Maps.Location>();
+        //    List<Bing.Maps.Location> locations2 = new List<Bing.Maps.Location>();
+        //    int i = 0;
+
+        //    foreach (Sight sight in list)
+        //    {
+        //        if (i < list.Count / 2)
+        //            locations.Add(new Bing.Maps.Location(double.Parse(sight.lat), double.Parse(sight.longi)));
+        //        else
+        //            locations2.Add(new Bing.Maps.Location(double.Parse(sight.lat), double.Parse(sight.longi)));
+        //        i++;
+        //    }
+        //    Double km1 = Convert.ToDouble(mapView.getTotalDistanceKM(locations));
+        //    Double km2 = Convert.ToDouble(mapView.getTotalDistanceKM(locations2));
+        //    Double km = km1 + km2;
+
+        //    DistanceText.Text = km + "  Km";
+        //}
 
         protected void OnSightsListViewItemTapped(object o, Sight s)
         {
@@ -64,7 +89,7 @@ namespace HierInBreda.View
         {
             ResourceLoader rl = new ResourceLoader();
 
-            TimeText.Text = String.Format(rl.GetString("TimeText") + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));
+            TimeText.Text = String.Format(rl.GetString("TimeText") + string.Format("{0:00}", System.DateTime.Now.Hour) + ":" + string.Format("{0:00}", System.DateTime.Now.Minute) +":" + string.Format("{0:00}", System.DateTime.Now.Second));            
         }      
 
         public HierInBreda.Common.ObservableDictionary DefaultViewModel

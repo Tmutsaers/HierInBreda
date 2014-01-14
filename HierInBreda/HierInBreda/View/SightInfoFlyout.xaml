@@ -9,24 +9,22 @@
     IconSource="Assets/SmallLogo.png"
     Title="Terug"
     Width="683.194"
-    Height="100"
-    >
+    Height="1200" >
     
-    <Grid Height="660" Width="645">
+    <Grid Height="1200" Width="645">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>           
         </Grid.ColumnDefinitions>
-        <TextBlock Name="SightName" Text="Sight Name" TextAlignment="Center" FontSize="24" Grid.Row="0" Grid.Column="0"/>
-        <ScrollViewer  Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Hidden">
-            <TextBlock Name="SightInfo" Text="Test" Grid.Row="1" Grid.Column="2" FontSize="16" TextWrapping="Wrap"/>
-        </ScrollViewer>
-        <Image Name="SightImage" Grid.Column="0" Grid.Row="1"/>
+        <TextBlock Name="SightName" Text="Sight Name" TextAlignment="Center" FontSize="24" Grid.Row="0" Grid.Column="1"/>       
+        <TextBlock Name="SightInfo" Text="Test" Grid.Row="3" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
+        <Image Name="SightImage" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </SettingsFlyout>
