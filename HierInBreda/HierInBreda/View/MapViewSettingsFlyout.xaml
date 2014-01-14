@@ -24,6 +24,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <Grid>
@@ -86,5 +87,6 @@
             <TextBlock x:Uid="ShowTutorialButton" Name="TutorialButton" FontFamily="Comic Sans MS" Tapped="TextBlock_Tapped" />-->
         <!--</Button>-->
         <TextBlock x:Name="TimeText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="7"/>
+        <TextBlock x:Name="DistanceText" FontSize="15" FontFamily="Comic Sans MS"  Grid.Row="8"/>
     </Grid>
 </SettingsFlyout>

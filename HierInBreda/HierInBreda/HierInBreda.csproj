@@ -15,6 +15,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>HierInBreda_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxPackageDir>G:\</AppxPackageDir>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -118,6 +121,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BingMapsRESTServices.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
@@ -164,6 +168,7 @@
   <ItemGroup>
     <Content Include="Assets\agslogo.png" />
     <Content Include="Assets\AlertImage.png" />
+    <Content Include="Assets\AppStoreLogo.scale-100.png" />
     <Content Include="Assets\battery_0.png" />
     <Content Include="Assets\battery_1.png" />
     <Content Include="Assets\battery_2.png" />
@@ -300,9 +305,13 @@
     <Content Include="Assets\LegendaIcons\grijzeStip.png" />
     <Content Include="Assets\LegendaIcons\groeneStip.png" />
     <Content Include="Assets\agslogo2.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-100.jpg" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.jpg" />
+    <Content Include="Assets\StoreLogo.scale-180.jpg" />
     <Content Include="Assets\TutorialImages\en\page1.png" />
     <Content Include="Assets\TutorialImages\en\page2.png" />
     <Content Include="Assets\TutorialImages\en\page3.png" />
