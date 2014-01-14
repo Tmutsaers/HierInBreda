@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="5432e153-285d-4989-af67-735ff376a297" Publisher="CN=Tim" Version="1.0.0.0" />
+  <Identity Name="5432e153-285d-4989-af67-735ff376a297" Publisher="CN=Tim" Version="1.0.5.0" />
   <Properties>
     <DisplayName>HierInBreda</DisplayName>
     <PublisherDisplayName>Tim</PublisherDisplayName>
