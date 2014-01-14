@@ -122,6 +122,28 @@ namespace HierInBreda
                 manager.Waypoints = routePoints;
 
                 RouteResponse resp = await manager.CalculateDirectionsAsync();
+                resp.Routes[0].RoutePath.LineWidth = 10.0;
+                resp.Routes[0].RoutePath.LineColor = new Windows.UI.Color { A = 200, R = 200, B = 0, G = 2 };
+                MapShapeLayer layer10 = new MapShapeLayer();
+                
+                
+
+                LocationCollection locs = new LocationCollection();
+                foreach(Bing.Maps.Location l in resp.Routes[0].RoutePath.PathPoints)
+                {
+                    Pushpin p = new Pushpin();
+                    p.Text = "Pin";
+                    MapLayer.SetPosition(p, l);
+                    Map.Children.Add(p);
+                    locs.Add(l);
+                }
+                MapPolyline line = new MapPolyline { Locations = locs };
+                line.Color = new Windows.UI.Color { A = 100, G = 0, B = 200, R = 0 };
+                line.Visible = true;
+                line.Width = 10.0;
+                layer10.Shapes.Add(line);
+                Map.ShapeLayers.Add(layer10);
+
                 manager.ShowRoutePath(resp.Routes[0]);
             }
             catch(Exception d)
@@ -531,7 +553,7 @@ namespace HierInBreda
 
         }
 
-        private void CommandInvokedHandler(IUICommand command)
+        private async void CommandInvokedHandler(IUICommand command)
         {
             if(command.Label == "Ok")
             {
