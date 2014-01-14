@@ -113,11 +113,14 @@ namespace HierInBreda
                         RouteLayer.Shapes.Clear();
                     }
                 }
+                Map.ShapeLayers.Clear();
 
                 WaypointCollection routePoints = new WaypointCollection { new Waypoint(curLoc), new Waypoint(vvvLoc) };
                 DirectionsManager manager = Map.DirectionsManager;
+                manager.Waypoints.Clear();
                 manager.RequestOptions.RouteMode = RouteModeOption.Walking;
                 manager.Waypoints = routePoints;
+                manager.RenderOptions.WalkingPolylineOptions.Visible = true;
 
                 RouteResponse resp = await manager.CalculateDirectionsAsync();
                 manager.ShowRoutePath(resp.Routes[0]);
@@ -312,6 +315,7 @@ namespace HierInBreda
         {
             try
             {
+                _geolocator = null;
                 _geolocator = new Geolocator();
                 Geoposition currentPos = await _geolocator.GetGeopositionAsync();
                 currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
