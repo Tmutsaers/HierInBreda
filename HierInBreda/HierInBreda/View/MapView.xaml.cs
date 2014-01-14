@@ -26,6 +26,8 @@ using Windows.UI.Popups;
 using System.Globalization;
 using System.Resources;
 using Windows.ApplicationModel.Resources;
+using System.Runtime.Serialization.Json;
+using BingMapsRESTService.Common.JSON;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,15 +38,16 @@ namespace HierInBreda
     /// </summary>
     /// 
     public delegate void SightPinTappedHandler(object sender,Pushpin pin);
-    public delegate void UserPositionChangedHandler(object sender,Location l);
+    public delegate void UserPositionChangedHandler(object sender,Bing.Maps.Location l);
 
     public sealed partial class MapView : Page
     {
+        private Response dresp;
         private static MapView instance;
         public event SightPinTappedHandler sightPinTapped;
         public event UserPositionChangedHandler userPosChanged;
         private Geolocator _geolocator;
-        public Location currentLoc { get; set; }
+        public Bing.Maps.Location currentLoc { get; set; }
         private Pushpin userPin;
         public MapViewSettingsFlyout flyout { get; set; }
         public MapControl control;
@@ -70,7 +73,6 @@ namespace HierInBreda
         {
             return Map;
         }
-
 
         public MapView()
         {
@@ -101,7 +103,7 @@ namespace HierInBreda
             return InfoButton;
         }
 
-        public async void createRouteToVVV(Location curLoc,Location vvvLoc)
+        public async void createRouteToVVV(Bing.Maps.Location curLoc,Bing.Maps.Location vvvLoc)
         {
             try
             {
@@ -160,8 +162,52 @@ namespace HierInBreda
             }
         }
 
-        public async void createRoute2(List<Location> locs)
+        private async Task<Response> GetResponse(Uri uri)
         {
+            System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+            var response = await client.GetAsync(uri);
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            {
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Response));
+                return ser.ReadObject(stream) as Response;
+            }
+        }
+
+        public async Task<double> getTotalDistanceKM(List<Bing.Maps.Location> locs)
+        {
+            string yuri = "http://dev.virtualearth.net/REST/V1/Routes/Walking?o=json";
+            int count = 0;
+            foreach (Bing.Maps.Location l in locs)
+            {
+                if (count >= 25) break; //limited to 25 locs....
+                double lat, longt;
+                lat = l.Latitude;
+                longt = l.Longitude;
+                yuri += string.Format("&wp.{0}={1},{2}", count, lat.ToString(CultureInfo.InvariantCulture), longt.ToString(CultureInfo.InvariantCulture)); //not sure if lat and long need to switch. msdn is very helpful (not)
+                count++;
+            }
+            //yuri += "&optmz=distance"; // uncomment if you need to optimise for anything.
+            yuri += string.Format("&key={0}", Map.Credentials);
+            Response r = await GetResponse(new Uri(yuri));
+            if (r != null &&
+                    r.ResourceSets != null &&
+                    r.ResourceSets.Length > 0 &&
+                    r.ResourceSets[0].Resources != null &&
+                    r.ResourceSets[0].Resources.Length > 0)
+            {
+                BingMapsRESTService.Common.JSON.Route route = r.ResourceSets[0].Resources[0] as BingMapsRESTService.Common.JSON.Route;
+                return route.TravelDistance;
+            }
+            else
+            {
+                return 42.0f;
+            }
+        }
+
+        public async void createRoute2(List<Bing.Maps.Location> locs)
+        {
+            double km = await getTotalDistanceKM(locs);
+            int breakpoint;
             try
             {
                 LocationCollection routePoints = new LocationCollection();
@@ -178,7 +224,7 @@ namespace HierInBreda
                 manager.RenderOptions.WaypointPushpinOptions.Visible = false;
 
                 RouteResponse resp = await manager.CalculateDirectionsAsync();
-                foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
+                foreach (Bing.Maps.Location l in resp.Routes[0].RoutePath.PathPoints)
                 {
                     routePoints.Add(l);
                 }
@@ -194,7 +240,7 @@ namespace HierInBreda
                 manager.Waypoints = col;
 
                 resp = await manager.CalculateDirectionsAsync();
-                foreach (Location l in resp.Routes[0].RoutePath.PathPoints)
+                foreach (Bing.Maps.Location l in resp.Routes[0].RoutePath.PathPoints)
                 {
                     routePoints.Add(l);
                 }
@@ -215,7 +261,7 @@ namespace HierInBreda
             }
         }
 
-        public async void createRoute(List<Location> locs)
+        public async void createRoute(List<Bing.Maps.Location> locs)
         {
             WaypointCollection col = new WaypointCollection();
             for (int i = 0; i < locs.Count; i = i + 2)
@@ -244,7 +290,7 @@ namespace HierInBreda
             mc.Route = route_response.Routes[0];
         }
 
-        public Pushpin createSightPin(Location l,String id)
+        public Pushpin createSightPin(Bing.Maps.Location l,String id)
         {
             Pushpin p = new Pushpin();
             p.Text = id;
@@ -257,11 +303,11 @@ namespace HierInBreda
             return p;
         }
 
-        public List<Pushpin> createSightPins(List<Location> locations)
+        public List<Pushpin> createSightPins(List<Bing.Maps.Location> locations)
         {
             clearGeofences();
             List<Pushpin> pins = new List<Pushpin>();
-            foreach(Location l in locations)
+            foreach(Bing.Maps.Location l in locations)
             {
                 Pushpin p = new Pushpin();
                 p.Text = "BZW";
@@ -287,9 +333,9 @@ namespace HierInBreda
             }
         }
 
-        protected void OnUserPositionChanged(object o,Location l)
+        protected void OnUserPositionChanged(object o,Bing.Maps.Location l)
         {
-            Location loc = l;
+            Bing.Maps.Location loc = l;
             if(l != null && userPosChanged != null)
             {
                 userPosChanged(this, l);
@@ -301,7 +347,7 @@ namespace HierInBreda
             GeofenceMonitor.Current.Geofences.Clear();
         }
 
-        public Geofence createGeofence(Location l,String name)
+        public Geofence createGeofence(Bing.Maps.Location l,String name)
         {
             Geofence fence = new Geofence(name, new Geocircle(new BasicGeoposition { Altitude = 0.0, Latitude = l.Latitude, Longitude = l.Longitude }, 10));
             return fence;
@@ -314,7 +360,7 @@ namespace HierInBreda
             {
                 _geolocator = new Geolocator();
                 Geoposition currentPos = await _geolocator.GetGeopositionAsync();
-                currentLoc = new Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
+                currentLoc = new Bing.Maps.Location(currentPos.Coordinate.Latitude, currentPos.Coordinate.Longitude);
                 userPin = new Pushpin();
                 ResourceLoader rl = new ResourceLoader();
                 userPin.Text = rl.GetString("UserPinText");
@@ -344,7 +390,7 @@ namespace HierInBreda
             }
         }
 
-        public void zoomToLocation2(Location l)
+        public void zoomToLocation2(Bing.Maps.Location l)
         {
             Map.SetView(l, Map.ZoomLevel);
             //Map.SetView(l,15.0);
@@ -358,16 +404,16 @@ namespace HierInBreda
             {
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    if (currentLoc != null && UserIsInRadius(10, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
+                    if (currentLoc != null && UserIsInRadius(10, new Bing.Maps.Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude), currentLoc))
                     {
                         //System.Diagnostics.Debug.WriteLine("Latitude:  {0} \nLongitude: {1}", args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         if (args.Position.Coordinate.Point.Position.Latitude > 0 && args.Position.Coordinate.Point.Position.Longitude > 0)
                         {
                             MapLayer.SetPosition(userPin, currentLoc);
-                            drawMovedLine(currentLoc, new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude));
+                            drawMovedLine(currentLoc, new Bing.Maps.Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude));
                             //zoomToLocation2(currentLoc);
                             OnUserPositionChanged(this, currentLoc);
-                            currentLoc = new Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
+                            currentLoc = new Bing.Maps.Location(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
                         }
                     }
                 });
@@ -379,7 +425,7 @@ namespace HierInBreda
             }
         }
 
-        public void drawMovedLine(Location l1, Location l2)
+        public void drawMovedLine(Bing.Maps.Location l1, Bing.Maps.Location l2)
         {
             foreach (MapShapeLayer layer in Map.ShapeLayers)
             {
@@ -394,7 +440,7 @@ namespace HierInBreda
 
         }
 
-        public bool UserIsInRadius(double radius,Location newLoc,Location oldLoc)
+        public bool UserIsInRadius(double radius,Bing.Maps.Location newLoc,Bing.Maps.Location oldLoc)
         {
             if(getDistanceFromLatLonInKm(newLoc.Latitude,newLoc.Longitude,oldLoc.Latitude,oldLoc.Longitude) <= radius)
             {
@@ -489,7 +535,7 @@ namespace HierInBreda
         {
             if(command.Label == "Ok")
             {
-                createRouteToVVV(currentLoc, new Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
+                createRouteToVVV(currentLoc, new Bing.Maps.Location(double.Parse(mc.sights[0].lat), double.Parse(mc.sights[0].longi)));
             }
             
         }
